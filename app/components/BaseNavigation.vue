@@ -19,11 +19,16 @@ const route = useRoute();
       class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
       <!-- Logo -->
-      <a href="/" class="flex items-center space-x-3">
+      <a href="/" class="flex flex-col items-center">
         <span
           class="self-center text-2xl text-gold font-semibold whitespace-nowrap"
         >
           Y A P I H A N
+        </span>
+        <span
+          class="self-center text-l font-semibold whitespace-nowrap text-gold mt-1"
+        >
+          I N Ş A A T
         </span>
       </a>
 
