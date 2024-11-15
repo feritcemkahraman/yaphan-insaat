@@ -28,7 +28,7 @@ const route = useRoute();
         <span
           class="self-center text-l font-semibold whitespace-nowrap text-gold mt-1"
         >
-          I N Ş A A T
+          İ N Ş A A T
         </span>
       </a>
 
