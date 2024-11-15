@@ -279,6 +279,56 @@
     </div>
   </section>
   <!-- Son Projeler Bölümü Sonu -->
+
+  <!-- Çözüm Ortaklarımız Bölümü Başlangıcı -->
+
+  <section class="relative py-16 px-4 max-w-7xl mx-auto">
+    <!-- Arka plan görseli -->
+    <div
+      class="absolute top-0 left-0 w-full h-[60vh] bg-cover bg-center z-0"
+      :style="{
+        backgroundImage: `url('/images/background.jpg')`,
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backgroundBlend: 'overlay',
+      }"
+    ></div>
+
+    <!-- İçerik -->
+    <div class="relative z-10">
+      <!-- Başlık -->
+      <div class="text-center mb-12">
+        <p class="text-gray-300 text-sm uppercase tracking-wider mb-2">
+          ÇÖZÜM ORTAKLARIMIZ
+        </p>
+        <h2 class="text-white text-3xl md:text-4xl font-bold">
+          Çözüm ortaklarımızla kurduğumuz güçlü iş birlikleri sayesinde, her
+          projede en yüksek kaliteyi ve güveni sunmayı başarıyoruz.
+        </h2>
+      </div>
+
+      <!-- Logolar -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div
+          v-for="logo in logos"
+          :key="logo.id"
+          class="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center"
+        >
+          <img :src="logo.src" :alt="logo.alt" class="max-h-12 w-auto" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Çözüm Ortaklarımız Bölümü Sonu -->
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const logos = [
+  { id: 1, src: "/images/turkuaz-logo.png", alt: "Turkuaz" },
+  { id: 2, src: "/images/segna-logo.png", alt: "Segna" },
+  { id: 3, src: "/images/integral-logo.png", alt: "Integral" },
+  { id: 4, src: "/images/ahlatci-logo.png", alt: "Ahlatci" },
+  { id: 5, src: "/images/ah-enerji-logo.png", alt: "AH Enerji" },
+  { id: 6, src: "/images/uzay-logo.png", alt: "Uzay" },
+];
+</script>
