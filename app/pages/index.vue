@@ -282,19 +282,19 @@
 
   <!-- Çözüm Ortaklarımız Bölümü Başlangıcı -->
 
-  <section class="relative py-16 px-4 max-w-7xl mx-auto">
+  <section class="relative py-16 px-4 w-full">
     <!-- Arka plan görseli -->
     <div
-      class="absolute top-0 left-0 w-full h-[60vh] bg-cover bg-center z-0"
-      :style="{
-        backgroundImage: `url('/images/background.jpg')`,
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
-        backgroundBlend: 'overlay',
-      }"
+      class="absolute top-0 left-0 w-full h-[40vh] bg-cover bg-center z-0"
+      style="
+        background-image: url('/yapihancozumortaklari.jpg');
+        background-color: rgba(0, 0, 0, 0.6);
+        background-blend-mode: overlay;
+      "
     ></div>
 
     <!-- İçerik -->
-    <div class="relative z-10">
+    <div class="relative z-10 max-w-7xl mx-auto">
       <!-- Başlık -->
       <div class="text-center mb-12">
         <p class="text-gray-300 text-sm uppercase tracking-wider mb-2">
@@ -307,28 +307,77 @@
       </div>
 
       <!-- Logolar -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-        <div
-          v-for="logo in logos"
-          :key="logo.id"
-          class="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center"
-        >
-          <img :src="logo.src" :alt="logo.alt" class="max-h-12 w-auto" />
+      <div class="logo-slider">
+        <div class="logo-track">
+          <!-- İlk set logolar -->
+          <div
+            v-for="logo in logos"
+            :key="logo.id"
+            class="logo-slide bg-white p-4 md:p-3 lg:p-2 rounded-lg shadow-lg flex items-center justify-center"
+          >
+            <img
+              :src="logo.src"
+              :alt="logo.alt"
+              class="w-full h-auto object-contain max-h-24"
+            />
+          </div>
+          <!-- Klonlanmış set logolar -->
+          <div
+            v-for="logo in logos"
+            :key="'clone-' + logo.id"
+            class="logo-slide bg-white p-4 md:p-3 lg:p-2 rounded-lg shadow-lg flex items-center justify-center"
+          >
+            <img
+              :src="logo.src"
+              :alt="logo.alt"
+              class="w-full h-auto object-contain max-h-24"
+            />
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Çözüm Ortaklarımız Bölümü Sonu -->
 </template>
 
 <script setup lang="ts">
 const logos = [
-  { id: 1, src: "/images/turkuaz-logo.png", alt: "Turkuaz" },
-  { id: 2, src: "/images/segna-logo.png", alt: "Segna" },
-  { id: 3, src: "/images/integral-logo.png", alt: "Integral" },
-  { id: 4, src: "/images/ahlatci-logo.png", alt: "Ahlatci" },
-  { id: 5, src: "/images/ah-enerji-logo.png", alt: "AH Enerji" },
-  { id: 6, src: "/images/uzay-logo.png", alt: "Uzay" },
+  { id: 1, src: "/turkuaz-logo.png", alt: "Turkuaz" },
+  { id: 2, src: "/segna-logo.png", alt: "Segna" },
+  { id: 3, src: "/integral-logo.png", alt: "Integral" },
+  { id: 4, src: "/ahlatci-logo.png", alt: "Ahlatci" },
+  { id: 5, src: "/ah-enerji-logo.png", alt: "AH Enerji" },
+  { id: 6, src: "/uzay-logo.png", alt: "Uzay" },
 ];
 </script>
+
+<style scoped>
+.logo-slider {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logo-track {
+  display: inline-flex;
+  animation: scroll 20s linear infinite;
+}
+
+.logo-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-slide {
+  flex: 0 0 16.66%; /* 100% / 6 logos per row */
+  box-sizing: border-box;
+  margin: 0 10px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+</style>
