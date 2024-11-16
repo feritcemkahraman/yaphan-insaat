@@ -1,48 +1,86 @@
-<script setup lang="ts">
-import { ref } from "vue";
-</script>
-
 <template>
-  <footer class="bg-white rounded-lg shadow m-4 text-center">
-    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-      <!-- YapıHan Yazısı ve Menü Öğeleri Ortalaması -->
-      <div class="flex flex-col md:flex-row justify-between">
-        <!-- Logo Yazısı -->
-        <a href="#" class="flex items-center justify-center mb-4 space-x-3">
-          <span
-            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-            >Y A P I H A N</span
-          >
-        </a>
+  <footer class="relative w-full text-white">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/footer-bg.jpg"
+        alt="Footer background"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/80"></div>
+    </div>
 
-        <!-- Menü Öğeleri -->
-        <ul
-          class="flex flex-wrap mb-6 text-sm font-medium justify-center text-gray-500 dark:text-gray-400"
+    <!-- Footer Content -->
+    <div class="relative z-10 container mx-auto px-4 md:px-8">
+      <!-- Main Footer Content -->
+      <div class="pt-24 pb-8">
+        <div class="flex flex-col md:flex-row md:justify-between">
+          <!-- Left Section - Logo & Description -->
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <span
+          class="self-center text-2xl text-gold font-semibold whitespace-nowrap"
         >
-          <li>
-            <a href="#" class="hover:underline me-4 md:me-6">About</a>
-          </li>
-          <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-          </li>
-          <li>
-            <a href="#" class="hover:underline">Contact</a>
-          </li>
-        </ul>
+          Y A P I H A N
+        </span>
+        <span
+          class="self-center text-l font-semibold whitespace-nowrap text-gold mt-1"
+        >
+          İ N Ş A A T
+        </span>
+            <p class="text-sm leading-relaxed opacity-90 max-w-lg">
+              YapıHan İnşaat olarak, işimizin temelinde kolektif bir tasarım anlayışı
+              yatmaktadır. İlk günden bu yana, fikirlerin paylaşılmasının, ortak
+              emeğin, bilgi alışverişinin ve tutkunun projelerimizi
+              mükemmelleştirdiğine inanıyoruz.
+            </p>
+          </div>
+
+          <!-- Right Section - Contact & Social -->
+          <div class="md:text-right">
+            <h3 class="text-sm text-blue-400 uppercase tracking-wider mb-4">
+              Bize Ulaşın
+            </h3>
+            <div class="space-y-2 mb-6">
+              <p class="text-sm">+1 (234) 567 89 99</p>
+              <p class="text-sm">info@yapihan.com.tr</p>
+              <p class="text-sm">
+                Üçutlar Mahallesi, Dr. İlhan Gürel Caddesi 68-14, Merkez/Çorum
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <hr
-        class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
-      />
-
-      <span
-        class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"
-        >© 2024 <a href="/" class="hover:underline">YapıHan Inşaat</a>. Tüm hakları
-        saklıdır.</span
+      <!-- Bottom Section - Copyright & Social -->
+      <div
+        class="py-8 border-t border-white/10 flex flex-col md:flex-row md:justify-between items-center"
       >
+        <p class="text-xs text-white uppercase tracking-wider mb-4 md:mb-0">
+          YAPIHAN (C) 2024 TÜM HAKLARI SAKLIDIR.
+        </p>
+
+        <!-- Social Media Icons -->
+        <div class="flex space-x-4">
+          <a
+            href="#"
+            class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+          >
+            <i class="fab fa-facebook-f text-sm"></i>
+          </a>
+          <a
+            href="#"
+            class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+          >
+            <i class="fab fa-instagram text-sm"></i>
+          </a>
+          <a
+            href="#"
+            class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+          >
+            <i class="fab fa-twitter text-sm"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
 </template>
