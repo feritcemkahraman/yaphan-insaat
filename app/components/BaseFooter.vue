@@ -22,24 +22,24 @@
               <span class="text-2xl text-gold font-semibold whitespace-nowrap">
                 Y A P I H A N
               </span>
-              <span
-                class="text-2xl  whitespace-nowrap text-gold mt-1 ml-2"
-              >
+              <span class="text-2xl whitespace-nowrap text-gold mt-1 ml-2">
                 İ N Ş A A T
               </span>
             </div>
             <!-- Açıklama -->
             <p class="text-sm leading-relaxed opacity-90 max-w-lg mt-4">
-              YapıHan İnşaat olarak, işimizin temelinde kolektif bir tasarım anlayışı
-              yatmaktadır. İlk günden bu yana, fikirlerin paylaşılmasının, ortak
-              emeğin, bilgi alışverişinin ve tutkunun projelerimizi
-              mükemmelleştirdiğine inanıyoruz.
+              YapıHan İnşaat olarak, işimizin temelinde kolektif bir tasarım
+              anlayışı yatmaktadır. İlk günden bu yana, fikirlerin
+              paylaşılmasının, ortak emeğin, bilgi alışverişinin ve tutkunun
+              projelerimizi mükemmelleştirdiğine inanıyoruz.
             </p>
           </div>
 
           <!-- Sağ Bölüm - İletişim -->
           <div class="md:text-right footer-right">
-            <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3
+              class="text-sm font-semibold text-white uppercase tracking-wider mb-4"
+            >
               Bize Ulaşın
             </h3>
             <div class="space-y-2 mb-6">
@@ -58,7 +58,8 @@
         class="py-4 border-t border-white/10 flex flex-col md:flex-row md:justify-between items-center footer-bottom"
       >
         <p class="text-xs text-white/70 uppercase tracking-wider mb-4 md:mb-0">
-          YAPIHAN (C) 2024 TÜM HAKLARI SAKLIDIR.
+          YAPIHAN İNŞAAT - HAN HOLDİNG KURULUŞUDUR (C) 2024 TÜM HAKLARI
+          SAKLIDIR.
         </p>
 
         <!-- Sosyal Medya İkonları -->
