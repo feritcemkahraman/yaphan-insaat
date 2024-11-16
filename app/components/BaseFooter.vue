@@ -30,7 +30,7 @@
             </div>
             <!-- Açıklama -->
             <p class="text-sm leading-relaxed opacity-90 max-w-lg mt-4">
-              YapıHan olarak, işimizin temelinde kolektif bir tasarım anlayışı
+              YapıHan İnşaat olarak, işimizin temelinde kolektif bir tasarım anlayışı
               yatmaktadır. İlk günden bu yana, fikirlerin paylaşılmasının, ortak
               emeğin, bilgi alışverişinin ve tutkunun projelerimizi
               mükemmelleştirdiğine inanıyoruz.
@@ -39,7 +39,7 @@
 
           <!-- Sağ Bölüm - İletişim -->
           <div class="md:text-right footer-right">
-            <h3 class="text-sm text-blue-400 uppercase tracking-wider mb-4">
+            <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
               Bize Ulaşın
             </h3>
             <div class="space-y-2 mb-6">
