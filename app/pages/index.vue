@@ -337,6 +337,8 @@
       </div>
     </div>
   </section>
+  <!-- Çözüm Ortaklarımız Bölümü Sonu -->
+  <hr class="my-12 border-white" />
 </template>
 
 <script setup lang="ts">
