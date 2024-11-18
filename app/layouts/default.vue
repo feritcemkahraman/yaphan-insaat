@@ -16,17 +16,18 @@
       <!-- Asıl İçerik -->
       <BaseNavigation />
       <slot />
-      <BaseFooter />
+      <BaseFooter v-if="!isProjelerPage" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
+import { ref, computed } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 
 const loading = ref(false);
 const router = useRouter();
+const route = useRoute();
 
 // Sayfa geçişlerini dinlemek için router kullanımı
 router.beforeEach((to, from, next) => {
@@ -39,8 +40,11 @@ router.afterEach(() => {
   // Sayfa değişimi tamamlandığında belirli bir süre sonra preloader'ı kaldır
   setTimeout(() => {
     loading.value = false;
-  }, 3000); // 3 saniyelik preloader gösterim süresi
+  }, 3000); // 3 saniyelik preloader süresi
 });
+
+// Sadece projeler sayfasında footer'ı gizlemek için computed property
+const isProjelerPage = computed(() => route.name === 'projeler');
 </script>
 
 <style scoped>
@@ -54,52 +58,52 @@ router.afterEach(() => {
   align-items: center;
   justify-content: center;
   background-color: white;
-  z-index: 9999; /* Diğer içeriklerin üzerinde yer alması için yüksek z-index değeri */
+  z-index: 9999;
 }
 
 .preloader-text-wrapper {
-  position: relative; /* İçerideki öğeleri konumlandırmak için relative pozisyon */
-  text-align: center; /* Metni ortalamak için */
+  position: relative;
+  text-align: center;
 }
 
 .preloader-text {
-  font-size: 4rem; /* Yazı boyutu */
+  font-size: 4rem;
   color: white;
   letter-spacing: 2px;
   margin: 0;
-  position: relative; /* z-index için pozisyon vermemiz gerektiği için relative */
-  z-index: 3; /* Yazının üstte kalması için yüksek bir z-index değeri */
+  position: relative;
+  z-index: 3;
 }
 
 .preloader-border {
   position: absolute;
-  top: -20px; /* Yazının biraz üstünden başlatılması */
-  left: -20px; /* Yazının biraz solundan başlatılması */
-  right: -20px; /* Yazının biraz sağından çıkması */
-  bottom: -20px; /* Yazının biraz altına kadar inmesi */
-  background: black; /* Dolu bir arka plan yap */
-  z-index: -1; /* Loading yazısının arkasında kalacak */
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: black;
+  z-index: -1;
   animation: loading-animation 3s ease-in-out forwards;
 }
 
 .preloader-subtext {
-  font-size: 2rem; /* Yazı boyutunu artırdık */
-  font-weight: bold; /* Kalın font */
-  color: white; /* Yazı rengini siyah yaptık, görünür olması için */
-  text-transform: uppercase; /* Büyük harflerle yazı */
-  margin-top: 10px; /* Üstten biraz boşluk */
-  z-index: 4; /* Yazının üstte kalması için daha yüksek bir z-index değeri */
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  margin-top: 10px;
+  z-index: 4;
 }
 
 @keyframes loading-animation {
   0% {
-    clip-path: inset(0 100% 0 0); /* Sol baştan başla */
+    clip-path: inset(0 100% 0 0);
   }
   50% {
-    clip-path: inset(0 0% 0 0); /* Tam dolduğunda tüm alanı göster */
+    clip-path: inset(0 0% 0 0);
   }
   100% {
-    clip-path: inset(0 0% 0 100%); /* Sol taraftan itibaren kaybol */
+    clip-path: inset(0 0% 0 100%);
   }
 }
 </style>

@@ -1,8 +1,12 @@
-<script setup lang="ts"></script>
-<template>
-  <div>
-    <h1 class="font-bold text-2xl flex items-center justify-center h-screen">
-      Burası Projeler
-    </h1>
-  </div>
-</template>
+<script setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+// Sayfa yüklendiğinde yönlendirme yap
+onMounted(() => {
+  window.location.href = "/projeler/index.html"; // Statik HTML dosyasına yönlendir
+});
+</script>
+
+<template></template>
