@@ -119,20 +119,41 @@
     initTouchEvents() {
       let touchStartX = 0;
       let touchEndX = 0;
+      let touchStartY = 0;
+      let touchEndY = 0;
+      let isTapping = false;
 
       const handleTouchStart = (e) => {
         touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isTapping = true;
       };
 
       const handleTouchMove = (e) => {
         touchEndX = e.touches[0].clientX;
+        touchEndY = e.touches[0].clientY;
+
+        // Eğer belirli bir mesafeden fazla hareket varsa, tıklama olarak sayma
+        if (
+          Math.abs(touchStartX - touchEndX) > 10 ||
+          Math.abs(touchStartY - touchEndY) > 10
+        ) {
+          isTapping = false;
+        }
       };
 
-      const handleTouchEnd = () => {
+      const handleTouchEnd = (e) => {
         const diffX = touchStartX - touchEndX;
+        const currentSlide = this.DOM.slides[this.current];
 
-        if (Math.abs(diffX) > 50) {
-          // En az 50px kaydırma olmalı
+        if (isTapping) {
+          // Eğer sadece dokunma varsa ve current slide ise link kontrolü yap
+          const slideLink = currentSlide.getAttribute("data-link");
+          if (slideLink) {
+            window.location.href = slideLink;
+          }
+        } else if (Math.abs(diffX) > 50) {
+          // Kaydırma hareketi - en az 50px kaydırma olmalı
           if (diffX > 0) {
             this.navigate("next");
           } else {
@@ -140,8 +161,12 @@
           }
         }
 
+        // Reset values
         touchStartX = 0;
         touchEndX = 0;
+        touchStartY = 0;
+        touchEndY = 0;
+        isTapping = false;
       };
 
       this.DOM.el.addEventListener("touchstart", handleTouchStart);

@@ -556,7 +556,13 @@
         } else if (slide.isPositionedLeft()) {
           this.navigate("prev");
         } else {
-          this.showContent();
+          // Check if slide has a data-link attribute and is current
+          const slideLink = slide.DOM.el.getAttribute("data-link");
+          if (slideLink && slide.isPositionedCenter()) {
+            window.location.href = slideLink;
+          } else {
+            this.showContent();
+          }
         }
       };
       for (let slide of this.slides) {
