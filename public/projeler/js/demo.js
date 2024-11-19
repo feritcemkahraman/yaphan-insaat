@@ -551,11 +551,6 @@
     initEvents() {
       // Clicking the next and previous slide starts the navigation / clicking the current shows its content..
       this.clickFn = (slide) => {
-        // Eğer ortadaki slide ise, hiçbir şey yapma
-        if (slide.isPositionedCenter()) {
-          return;
-        }
-
         if (slide.isPositionedRight()) {
           this.navigate("next");
         } else if (slide.isPositionedLeft()) {
@@ -564,7 +559,6 @@
           this.showContent();
         }
       };
-
       for (let slide of this.slides) {
         slide.DOM.imgWrap.addEventListener("click", () => this.clickFn(slide));
       }
@@ -754,23 +748,3 @@
     () => document.body.classList.remove("loading")
   );
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".slide");
-
-  slides.forEach((slide) => {
-    const imgWrap = slide.querySelector(".slide__img-wrap");
-
-    imgWrap.addEventListener("click", (event) => {
-      if (slide.classList.contains("slide--current")) {
-        event.stopPropagation();
-
-        const slideLink = slide.getAttribute("data-link");
-
-        if (slideLink) {
-          window.location.href = slideLink;
-        }
-      }
-    });
-  });
-});
