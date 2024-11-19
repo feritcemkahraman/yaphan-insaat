@@ -130,6 +130,7 @@ html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
+  appearance: button;
   cursor: pointer;
 }
 button[disabled],
@@ -143,6 +144,7 @@ input[type="radio"] {
 }
 input[type="search"] {
   -webkit-appearance: textfield;
+  appearance: textfield;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -150,6 +152,7 @@ input[type="search"] {
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
+  appearance: none;
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner {
@@ -981,5 +984,48 @@ a:focus {
   .content,
   .slideshow__deco {
     display: none;
+  }
+}
+
+@media screen and (max-width: 50em) {
+  /* Gereksiz elementleri gizle */
+  .cursor,
+  .frame,
+  .content,
+  .slideshow__deco {
+    display: none;
+  }
+}
+
+/* Anasayfa link stili */
+.home-link {
+  position: fixed;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #bca78c;
+  text-decoration: none;
+  z-index: 1000;
+  padding: 1rem;
+  transition: color 0.3s ease;
+}
+
+.home-link:hover {
+  color: #a18b6d;
+}
+
+/* Masaüstü görünümü */
+@media screen and (min-width: 849px) {
+  .home-link {
+    top: 2rem;
+    right: 2rem;
+  }
+}
+
+/* Mobil görünüm */
+@media screen and (max-width: 848px) {
+  .home-link {
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

@@ -66,21 +66,21 @@
         <div class="flex space-x-4">
           <a
             href="#"
-            class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+            class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors text-white"
           >
-            <i class="fab fa-facebook-f text-sm"></i>
+            <i class="fa-brands fa-facebook text-white"></i>
           </a>
           <a
             href="#"
             class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
           >
-            <i class="fab fa-instagram text-sm"></i>
+            <i class="fab fa-instagram"></i>
           </a>
           <a
             href="#"
             class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
           >
-            <i class="fab fa-twitter text-sm"></i>
+            <i class="fab fa-twitter"></i>
           </a>
         </div>
       </div>
@@ -118,6 +118,4 @@
 }
 </style>
 
-<script setup>
-// Bileşen mantığı gerekiyorsa buraya eklenebilir
-</script>
+<script setup></script>
