@@ -1,5 +1,4 @@
 <script setup>
-// Script kısmı aynı kalacak
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
@@ -82,19 +81,15 @@ const route = useRoute();
             </div>
 
             <!-- Dropdown Menü -->
-            <div v-else class="dropdown-container h-full flex items-center">
-              <NuxtLink
-                :to="item.path"
-                class="px-4 py-2 font-bold uppercase transition-colors hover:text-gold"
-                :class="[
-                  route.path.startsWith(item.path) ? 'text-gold' : 'text-white',
-                ]"
+            <div v-else class="menu-item">
+              <div
+                class="px-4 py-2 font-bold uppercase transition-colors hover:text-gold text-white cursor-pointer"
               >
                 {{ item.name }}
-              </NuxtLink>
+              </div>
 
               <!-- Dropdown İçeriği -->
-              <div class="dropdown-content">
+              <div class="dropdown-menu">
                 <NuxtLink
                   v-for="dropdownItem in item.dropdownItems"
                   :key="dropdownItem.path"
@@ -111,42 +106,95 @@ const route = useRoute();
       </div>
     </div>
 
-    <!-- Mobil Menü (değişmedi) -->
+    <!-- Mobil Menü -->
     <div
       v-show="isMenuOpen"
       class="fixed inset-0 bg-black bg-opacity-95 z-50 md:hidden"
     >
-      <!-- Mobil menü içeriği aynı kalacak -->
-      <!-- ... -->
+      <!-- Kapatma Butonu -->
+      <div class="p-4 flex justify-end">
+        <button
+          @click="isMenuOpen = false"
+          class="text-white hover:text-gray-400"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-10 w-10"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobil Menü Linkleri -->
+      <div class="flex flex-col items-center justify-center h-full">
+        <template v-for="item in menuItems" :key="item.path">
+          <template v-if="!item.hasDropdown">
+            <NuxtLink
+              :to="item.path"
+              class="px-4 py-4 text-white uppercase text-2xl hover:text-gray-400"
+              @click="isMenuOpen = false"
+            >
+              {{ item.name }}
+            </NuxtLink>
+          </template>
+          <template v-else>
+            <div class="flex flex-col items-center">
+              <div
+                class="px-4 py-4 text-white uppercase text-2xl hover:text-gray-400 cursor-pointer"
+                @click="isProjectsDropdownOpen = !isProjectsDropdownOpen"
+              >
+                {{ item.name }}
+              </div>
+              <div
+                v-show="isProjectsDropdownOpen"
+                class="flex flex-col items-center"
+              >
+                <NuxtLink
+                  v-for="dropdownItem in item.dropdownItems"
+                  :key="dropdownItem.path"
+                  :to="dropdownItem.path"
+                  class="px-4 py-2 text-white uppercase text-xl hover:text-gray-400"
+                  @click="isMenuOpen = false"
+                >
+                  {{ dropdownItem.name }}
+                </NuxtLink>
+              </div>
+            </div>
+          </template>
+        </template>
+      </div>
     </div>
   </nav>
 </template>
 
 <style scoped>
-.dropdown-container {
+.menu-item {
   position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 100%;
-  min-width: 200px;
-  z-index: 50;
-  background-color: #4c4c4c;
-}
-
-.dropdown-container:hover .dropdown-content {
-  display: block;
-}
-
-/* Menü öğelerini hizalamak için ek stiller */
-.dropdown-container,
-.dropdown-container > a {
   height: 100%;
   display: flex;
   align-items: center;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: #4c4c4c;
+  z-index: 50;
+}
+
+.menu-item:hover .dropdown-menu {
+  display: block;
 }
 </style>
