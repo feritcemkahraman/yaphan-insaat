@@ -1024,8 +1024,12 @@ a:focus {
 /* Mobil görünüm */
 @media screen and (max-width: 848px) {
   .home-link {
+    font-size: 1rem;
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
+    background-color: rgba(160, 160, 160, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
   }
 }
