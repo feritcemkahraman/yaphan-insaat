@@ -35,18 +35,6 @@ export default defineNuxtConfig({
     },
   },
   css: [
-    "flowbite/dist/flowbite.css", // Örneğin burada eklenen CSS dosyası
-  ],
-
-  // Server Middleware
-  serverMiddleware: [
-    {
-      path: "/projeler", // Bu rota için middleware devrede
-      handler: (req, res) => {
-        // '/github-repo/index.html' sayfasına yönlendirme yapılıyor
-        res.writeHead(302, { Location: "/projeler/index.html" });
-        res.end();
-      },
-    },
+    "flowbite/dist/flowbite.css",
   ],
 });

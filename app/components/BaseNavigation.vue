@@ -9,12 +9,12 @@ const menuItems = [
   { path: "/", name: "Anasayfa" },
   { path: "/hakkimizda", name: "Hakkımızda" },
   {
-    path: "/projeler",
+    path: "#",
     name: "Projeler",
     hasDropdown: true,
     dropdownItems: [
-      { path: "/projeler/tamamlanan", name: "Tamamlanan Projeler" },
-      { path: "/projeler/devameden", name: "Devam Eden Projeler" },
+      { path: "/projeler/tamamlanan/index.html", name: "Tamamlanan Projeler", isExternal: true },
+      { path: "/projeler/devameden/index.html", name: "Devam Eden Projeler", isExternal: true },
     ],
   },
   { path: "/iletisim", name: "İletİşİm" },
@@ -90,15 +90,16 @@ const route = useRoute();
 
               <!-- Dropdown İçeriği -->
               <div class="dropdown-menu">
-                <NuxtLink
+                <a
                   v-for="dropdownItem in item.dropdownItems"
                   :key="dropdownItem.path"
-                  :to="dropdownItem.path"
+                  :href="dropdownItem.path"
                   class="block px-4 py-2 text-white font-bold uppercase transition-colors hover:text-gold"
                   :class="[route.path === dropdownItem.path ? 'text-gold' : '']"
+                  :target="dropdownItem.isExternal ? '_self' : undefined"
                 >
                   {{ dropdownItem.name }}
-                </NuxtLink>
+                </a>
               </div>
             </div>
           </template>
@@ -158,15 +159,16 @@ const route = useRoute();
                 v-show="isProjectsDropdownOpen"
                 class="flex flex-col items-center"
               >
-                <NuxtLink
+                <a
                   v-for="dropdownItem in item.dropdownItems"
                   :key="dropdownItem.path"
-                  :to="dropdownItem.path"
+                  :href="dropdownItem.path"
                   class="px-4 py-2 text-white uppercase text-xl hover:text-gray-400"
                   @click="isMenuOpen = false"
+                  :target="dropdownItem.isExternal ? '_self' : undefined"
                 >
                   {{ dropdownItem.name }}
-                </NuxtLink>
+                </a>
               </div>
             </div>
           </template>
