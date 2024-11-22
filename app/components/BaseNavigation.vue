@@ -17,7 +17,7 @@ const menuItems = [
       { path: "/projeler/devameden/index.html", name: "Devam Eden Projeler", isExternal: true },
     ],
   },
-  { path: "/iletisim", name: "İletİşİm" },
+  { path: "/iletisim", name: "Bize Ulaşın" },
 ];
 
 const route = useRoute();

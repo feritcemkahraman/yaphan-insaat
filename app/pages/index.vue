@@ -1,14 +1,22 @@
 <template>
-  <!-- Banner bölümü başlangıcı -->
-  <div class="w-full h-screen">
-    <div class="relative">
-      <img
-        class="object-cover w-full h-[calc(100vh-4rem)]"
-        src="/banner.webp"
-        alt="yapihan banner"
-      />
+   <!-- Banner bölümü başlangıcı -->
+   <div class="w-full h-screen">
+    <div class="relative h-[calc(100vh-4rem)] overflow-hidden">
+      <div
+        class="absolute w-full h-[130%] -top-[15%] left-0 parallax-container"
+      >
+        <img
+          class="object-cover w-full h-full"
+          src="/banner.webp"
+          alt="yapihan banner"
+        />
+      </div>
       <div
         class="absolute inset-0 flex flex-col items-center justify-center mx-2 md:mx-0 text-white"
+        :style="{
+          transform: `translateY(${-scrollPosition * 0.3}px)`,
+          transition: 'transform 0.3s cubic-bezier(0.33, 1, 0.68, 1)'
+        }"
       >
         <p class="text-lg mb-4">Y A P I H A N</p>
         <div class="text-center max-w-6xl mb-12">
@@ -36,40 +44,69 @@
   <!-- Banner bölümü sonu -->
 
   <!--Hakkımızda bölümü başlangıcı-->
-  <div class="flex flex-col md:flex-row mb-32 mx-4 md:mx-0">
-    <img
-      class="w-full md:w-auto mb-4 md:mt-10 md:ml-96 md:mb-24"
-      src="/tec.png"
-      alt="tec"
-    />
-    <div
-      class="flex flex-col items-center md:items-start text-center md:text-start md:mt-10 md:ml-24"
-    >
-      <span class="text-l mb-4">H a k k ı m ı z d a</span>
-      <h3 class="text-5xl mb-8">Güven İnşa Ediyoruz...</h3>
-      <p class="max-w-2xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum,
-        veritatis voluptate iste sint nostrum consequuntur blanditiis? At, sit
-        soluta, officiis mollitia hic voluptate quibusdam, explicabo obcaecati
-        debitis odit quasi distinctio vitae provident et. Aspernatur nesciunt
-        necessitatibus quos sunt quidem vitae excepturi, possimus voluptas
-        beatae, aliquid adipisci facilis quod quae odio!
-        <br />
-        <br />
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
-        ipsam esse nemo eaque quidem. Delectus deleniti reprehenderit porro
-        minus atque saepe consequuntur, placeat cum earum explicabo est eos
-        ducimus voluptatem cupiditate esse maiores? Nobis doloribus nihil
-        doloremque nostrum suscipit repudiandae expedita porro in laborum,
-        reprehenderit molestiae minus quis veniam rerum.
-      </p>
-      <button
-        class="border-2 border-black py-2 px-8 mt-8 hover:bg-black hover:text-white transition-colors"
-      >
-        Hakkımızda
-      </button>
+  <section class="py-20 md:pb-48 w-full">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <!-- Image Section -->
+        <div class="relative min-h-[400px]">
+          <div class="relative h-full">
+            <!-- First Image -->
+            <NuxtImg
+              src="/serenity-villa.webp"
+              alt="About 1"
+              class="absolute w-3/5 h-4/5 object-cover"
+              loading="lazy"
+            />
+            <!-- Second Image -->
+            <NuxtImg
+              src="/banner.webp"
+              alt="About 2"
+              class="absolute w-3/5 h-4/5 object-cover mt-[20%] ml-[40%]"
+              loading="lazy"
+            />
+            <!-- Decorative Border -->
+            <div class="absolute w-3/5 h-4/5 top-[10%] left-[20%] border-4 border-blue-600 -z-10" />
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div>
+          <h4 class="text-blue-600 font-bold mb-2">Hakkımızda</h4>
+          <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+            A Creative Architecture Agency For Your Dream Home
+          </h1>
+          <p class="mb-4">
+            Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. 
+            Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+          </p>
+          <p class="mb-8">
+            Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. 
+            Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.
+          </p>
+
+          <!-- Experience Counter -->
+          <div class="flex items-center mb-16 md:mb-24">
+            <div class="flex items-center justify-center border-4 border-blue-600 w-32 h-32">
+              <span class="text-6xl font-bold">10+</span>
+            </div>
+            <div class="ml-6">
+              <h3 class="text-2xl font-bold">Yıllık</h3>
+              <h3 class="text-2xl font-bold">Sektör</h3>
+              <h3 class="text-2xl font-bold">Tecrübesiyle</h3>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <NuxtLink 
+            to="/hakkimizda" 
+            class="bg-blue-600 text-white px-8 py-3 rounded hover:bg-blue-700 transition-colors"
+          >
+            Daha Fazla
+          </NuxtLink>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
   <!--Hakkımızda bölümü sonu-->
 
   <!-- Planlama bölümü başlangıcı -->
@@ -350,9 +387,29 @@ const logos = [
   { id: 5, src: "/ah-enerji-logo.png", alt: "AH Enerji" },
   { id: 6, src: "/uzay-logo.png", alt: "Uzay" },
 ];
+const scrollPosition = ref(0)
+
+onMounted(() => {
+  const handleScroll = () => {
+    requestAnimationFrame(() => {
+      scrollPosition.value = window.scrollY
+    })
+  }
+  
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+  })
+})
 </script>
 
 <style scoped>
+.parallax-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
 .logo-slider {
   overflow: hidden;
   white-space: nowrap;
@@ -382,4 +439,5 @@ const logos = [
     transform: translateX(-50%);
   }
 }
+
 </style>
