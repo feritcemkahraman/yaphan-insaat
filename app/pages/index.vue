@@ -54,14 +54,22 @@
             <NuxtImg
               src="/serenity-villa.webp"
               alt="About 1"
-              class="absolute w-3/5 h-4/5 object-cover"
+              class="absolute w-3/5 h-4/5 object-cover will-change-transform"
+              :style="{
+                transform: firstImageTransform,
+                transition: 'transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)'
+              }"
               loading="lazy"
             />
             <!-- Second Image -->
             <NuxtImg
               src="/banner.webp"
               alt="About 2"
-              class="absolute w-3/5 h-4/5 object-cover mt-[20%] ml-[40%]"
+              class="absolute w-3/5 h-4/5 object-cover mt-[20%] ml-[40%] will-change-transform"
+              :style="{
+                transform: secondImageTransform,
+                transition: 'transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)'
+              }"
               loading="lazy"
             />
             <!-- Decorative Border -->
@@ -436,9 +444,37 @@ const logos = [
   { id: 6, src: "/uzay-logo.png", alt: "Uzay" },
 ];
 
+const targetScrollPosition = ref(0)
 const scrollPosition = ref(0)
 
+// Smooth scroll position update
+const updateScrollPosition = () => {
+  const currentScroll = window.scrollY
+  targetScrollPosition.value = currentScroll
+  
+  const lerp = (start: number, end: number, factor: number) => {
+    return start + (end - start) * factor
+  }
+  
+  scrollPosition.value = lerp(scrollPosition.value, targetScrollPosition.value, 0.1)
+  
+  requestAnimationFrame(updateScrollPosition)
+}
+
+const firstImageTransform = computed(() => {
+  const maxMove = 30
+  const movement = -scrollPosition.value * 0.02
+  return `translateY(${Math.max(-maxMove, Math.min(movement, maxMove))}px)`
+})
+
+const secondImageTransform = computed(() => {
+  const maxMove = 30
+  const movement = scrollPosition.value * 0.02
+  return `translateY(${Math.max(-maxMove, Math.min(movement, maxMove))}px)`
+})
+
 onMounted(() => {
+  updateScrollPosition()
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -454,7 +490,7 @@ onMounted(() => {
 
   const handleScroll = () => {
     requestAnimationFrame(() => {
-      scrollPosition.value = window.scrollY
+      targetScrollPosition.value = window.scrollY
     })
   }
   
