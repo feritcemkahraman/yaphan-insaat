@@ -85,21 +85,21 @@
           </p>
 
           <!-- Experience Counter -->
-          <div class="flex items-center mb-16 md:mb-24">
-            <div class="flex items-center justify-center border-4 border-blue-600 w-32 h-32">
-              <span class="text-6xl font-bold">10+</span>
+          <div class="flex items-center ml-10 md:ml-0 mb-16 md:mb-16">
+            <div ref="counterRef" class="flex items-center justify-center border-4 border-blue-600 w-32 h-32">
+              <span class="text-6xl font-bold">{{ counter }}+</span>
             </div>
             <div class="ml-6">
-              <h3 class="text-2xl font-bold">Yıllık</h3>
-              <h3 class="text-2xl font-bold">Sektör</h3>
-              <h3 class="text-2xl font-bold">Tecrübesiyle</h3>
+              <h3 class="text-2xl font-bold">{{ text1 }}</h3>
+              <h3 class="text-2xl font-bold">{{ text2 }}</h3>
+              <h3 class="text-2xl font-bold">{{ text3 }}</h3>
             </div>
           </div>
 
           <!-- CTA Button -->
           <NuxtLink 
             to="/hakkimizda" 
-            class="bg-blue-600 text-white px-8 py-3 rounded hover:bg-blue-700 transition-colors"
+            class="bg-blue-600 text-white ml-28 md:ml-0 px-8 py-3 rounded hover:bg-blue-700 transition-colors"
           >
             Daha Fazla
           </NuxtLink>
@@ -379,6 +379,54 @@
 </template>
 
 <script setup lang="ts">
+const counter = ref(0)
+const counterRef = ref(null)
+const text1 = ref('')
+const text2 = ref('')
+const text3 = ref('')
+const targetValue = 10
+const duration = 2000
+const hasAnimated = ref(false)
+
+const typeWriter = async (text: string, targetRef: Ref<string>, delay: number = 100) => {
+  const chars = text.split('')
+  for (let i = 0; i < chars.length; i++) {
+    await new Promise(resolve => setTimeout(resolve, delay))
+    targetRef.value += chars[i]
+  }
+}
+
+const startTypeWriter = async () => {
+  text1.value = ''
+  text2.value = ''
+  text3.value = ''
+  
+  await typeWriter('Yıllık', text1)
+  await typeWriter('Sektör', text2)
+  await typeWriter('Tecrübesiyle', text3)
+}
+
+const startCounter = () => {
+  if (hasAnimated.value) return
+
+  const startTime = Date.now()
+  const updateCounter = () => {
+    const currentTime = Date.now()
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    
+    counter.value = Math.floor(progress * targetValue)
+    
+    if (progress < 1) {
+      requestAnimationFrame(updateCounter)
+    }
+  }
+  
+  updateCounter()
+  startTypeWriter()
+  hasAnimated.value = true
+}
+
 const logos = [
   { id: 1, src: "/turkuaz-logo.png", alt: "Turkuaz" },
   { id: 2, src: "/segna-logo.png", alt: "Segna" },
@@ -387,9 +435,23 @@ const logos = [
   { id: 5, src: "/ah-enerji-logo.png", alt: "AH Enerji" },
   { id: 6, src: "/uzay-logo.png", alt: "Uzay" },
 ];
+
 const scrollPosition = ref(0)
 
 onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startCounter()
+        observer.disconnect()
+      }
+    })
+  }, { threshold: 0.5 })
+
+  if (counterRef.value) {
+    observer.observe(counterRef.value)
+  }
+
   const handleScroll = () => {
     requestAnimationFrame(() => {
       scrollPosition.value = window.scrollY

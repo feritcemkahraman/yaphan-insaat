@@ -12,6 +12,7 @@ module.exports = {
   theme: {
     colors: {
       gold: "#bca78c",
+      nice: "#C29E7C",
     },
   },
   plugins: [require("flowbite/plugin")],

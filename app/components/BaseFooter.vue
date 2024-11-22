@@ -44,7 +44,7 @@
             </h3>
             <div class="space-y-2 mb-6">
               <p class="text-sm">+1 (234) 567 89 99</p>
-              <p class="text-sm">info@yapihan.com.tr</p>
+              <p class="text-sm">info@yapihaninsaat.com</p>
               <p class="text-sm">
                 Üçutlar Mahallesi, Dr. İlhan Gürel Caddesi 68-14, Merkez/Çorum
               </p>
@@ -65,19 +65,19 @@
         <!-- Sosyal Medya İkonları -->
         <div class="flex space-x-4">
           <a
-            href="#"
+            href="/"
             class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors text-white"
           >
             <i class="fa-brands fa-facebook text-white"></i>
           </a>
           <a
-            href="#"
+            href="/"
             class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
           >
             <i class="fab fa-instagram"></i>
           </a>
           <a
-            href="#"
+            href="/"
             class="w-8 h-8 border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
           >
             <i class="fab fa-twitter"></i>
