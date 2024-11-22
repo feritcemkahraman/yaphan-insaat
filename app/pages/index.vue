@@ -107,7 +107,7 @@
           <!-- CTA Button -->
           <NuxtLink 
             to="/hakkimizda" 
-            class="bg-blue-600 text-white ml-28 md:ml-0 px-8 py-3 rounded hover:bg-blue-700 transition-colors"
+            class="bg-blue-600 text-white ml-28 md:ml-0 px-8 py-4 rounded hover:bg-blue-700 transition-colors"
           >
             Daha Fazla
           </NuxtLink>
