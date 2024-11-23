@@ -177,7 +177,7 @@
             <h3 class="text-xl font-bold mb-4">Dış Mekan</h3>
             <p class="text-gray-600 leading-relaxed">
               Yapılarımızın dış görünüşünde sağlamlık ve zarafeti birleştirerek,
-              çevreye değer katan bir mimari yaklaşımı benimsiyoruz. Yapılfan
+              çevreye değer katan bir mimari yaklaşımı benimsiyoruz. YapıHan
               olarak, dış cephedeki her detayla kalıcı izler bırakmayı
               hedefliyoruz.
             </p>

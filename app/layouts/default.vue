@@ -43,8 +43,8 @@ router.afterEach(() => {
   }, 3000); // 3 saniyelik preloader süresi
 });
 
-// Sadece projeler sayfasında footer'ı gizlemek için computed property
-const isProjelerPage = computed(() => route.name === 'projeler');
+// Sadece serenity sayfasında footer'ı gizlemek için computed property
+const isProjelerPage = computed(() => route.path.includes('serenity'));
 </script>
 
 <style scoped>
