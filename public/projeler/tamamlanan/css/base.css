@@ -1024,6 +1024,7 @@ a:focus {
 /* Mobil görünüm */
 @media screen and (max-width: 848px) {
   .home-link {
+    color: white;
     font-size: 1rem;
     top: 1rem;
     left: 50%;

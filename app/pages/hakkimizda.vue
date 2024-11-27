@@ -23,7 +23,7 @@
           MİSYONUMUZ
         </p>
         <h2 class="text-2xl font-bold mb-4">İnşaat Sektöründe Geleceği Şekillendiren Yapılar Oluşturmak</h2>
-        <p class="text-gray-600 mb-4">Yapıhan olarak vizyonumuz, inşaat sektöründe yenilikçi ve sürdürülebilir yaklaşımlarla geleceği şekillendiren lider bir marka olmaktır. Yaşam alanlarının sadece birer yapı değil, insanların hayatlarına değer katan mekanlar olduğunu bilincindeyiz. Bu nedenle, modern mimariye estetik tasarımlarla birleştirerek, fonksiyonel ve konforlu villalar inşa etmeyi hedefliyoruz.</p>
+        <p class="text-gray-600 mb-4">YapıHan olarak vizyonumuz, inşaat sektöründe yenilikçi ve sürdürülebilir yaklaşımlarla geleceği şekillendiren lider bir marka olmaktır. Yaşam alanlarının sadece birer yapı değil, insanların hayatlarına değer katan mekanlar olduğunu bilincindeyiz. Bu nedenle, modern mimariye estetik tasarımlarla birleştirerek, fonksiyonel ve konforlu villalar inşa etmeyi hedefliyoruz.</p>
         <div class="grid grid-cols-2 gap-4">
           <div>
             <h3 class="text-lg font-bold mb-2">Sürdürülebilir ve Çevre Dostu Projeler</h3>
@@ -75,7 +75,7 @@
         </div>
       </div>
       <div class="order-1 md:order-2">
-        <img src="/image1.jpg" alt="Modern House" class="w-full md:w-4/5 h-auto shadow-lg mx-auto" />
+        <img src="/vizyonumuz.webp" alt="Modern House" class="w-full md:w-4/5 h-auto shadow-lg mx-auto" />
       </div>
     </div>
   </div>
