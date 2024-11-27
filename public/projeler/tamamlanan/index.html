@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="tr" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Diagonal Slideshow | Codrops</title>
+    <title>
+      Tamamlanan Projelerimiz | Lüks Villa ve Konut Referanslarımız - YapıHan
+      İnşaat
+    </title>
     <meta
       name="description"
-      content="A triple view diagonal slideshow with content preview."
+      content="YapıHan İnşaat'ın İstanbul Beykoz'da tamamladığı lüks villa ve konut projeleri. Beykoz'un en prestijli lokasyonlarında teslim ettiğimiz modern ve kaliteli yapılarımızı inceleyin."
     />
-    <meta name="keywords" content="" />
-    <meta name="author" content="Codrops" />
+    <meta
+      name="keywords"
+      content="tamamlanan projeler, yapıhan referanslar, beykoz tamamlanan villalar, bitmiş konut projeleri, müteahhit referansları, lüks villa projeleri istanbul"
+    />
+    <meta name="author" content="YapıHan İnşaat" />
+
+    <!-- Open Graph / Social Media -->
+    <meta
+      property="og:title"
+      content="Tamamlanan Projelerimiz | YapıHan İnşaat"
+    />
+    <meta
+      property="og:description"
+      content="YapıHan İnşaat'ın İstanbul Beykoz'da tamamladığı lüks villa ve konut projeleri."
+    />
+    <meta property="og:image" content="/img/yapihan-logo.png" />
+    <meta property="og:url" content="/projeler/tamamlanan" />
+    <meta property="og:type" content="website" />
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="/projeler/tamamlanan" />
+
+    <!-- Existing CSS -->
     <link rel="stylesheet" type="text/css" href="css/base.css" />
+
+    <!-- CSS Support Check Script -->
     <script>
       document.documentElement.className = "js";
       var supportsCssVars = function () {
@@ -32,6 +59,47 @@
         alert(
           "Please view this demo in a modern browser that supports CSS Variables."
         );
+    </script>
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "YapıHan İnşaat - Tamamlanan Projeler",
+        "description": "İstanbul Beykoz'da tamamladığımız lüks villa ve konut projeleri",
+        "url": "/projeler/tamamlanan",
+        "areaServed": {
+          "@type": "City",
+          "name": "İstanbul",
+          "containsPlace": {
+            "@type": "District",
+            "name": "Beykoz"
+          }
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Tamamlanan Lüks Projeler",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Lüks Villa Projeleri",
+                "description": "Beykoz'da tamamlanan özel tasarım lüks villalar"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Modern Konut Projeleri",
+                "description": "İstanbul'un en değerli lokasyonlarında tamamlanan modern konutlar"
+              }
+            }
+          ]
+        }
+      }
     </script>
   </head>
   <body>
@@ -331,7 +399,9 @@
           <span class="content__number">8</span>
           <h3 class="content__title">Yeni Proje Başlığı</h3>
           <h4 class="content__subtitle">Yeni Proje Alt Başlığı</h4>
-          <div class="content__text">Yeni proje hakkında detaylı açıklama buraya gelecek.</div>
+          <div class="content__text">
+            Yeni proje hakkında detaylı açıklama buraya gelecek.
+          </div>
         </div>
         <button class="content__close">
           <svg class="icon icon--longarrow">

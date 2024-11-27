@@ -13,8 +13,16 @@ const menuItems = [
     name: "Projeler",
     hasDropdown: true,
     dropdownItems: [
-      { path: "/projeler/tamamlanan/index.html", name: "Tamamlanan Projeler", isExternal: true },
-      { path: "/projeler/devameden/index.html", name: "Devam Eden Projeler", isExternal: true },
+      {
+        path: "/projeler/tamamlanan/index.html",
+        name: "Tamamlanan Projeler",
+        isExternal: true,
+      },
+      {
+        path: "/projeler/devameden/index.html",
+        name: "Devam Eden Projeler",
+        isExternal: true,
+      },
     ],
   },
   { path: "/bize-ulasin", name: "Bize Ulaşın" },

@@ -17,6 +17,8 @@
     "@nuxt/icon": "^1.6.1",
     "@nuxt/image": "^1.8.1",
     "@nuxtjs/google-fonts": "^3.2.0",
+    "@nuxtjs/robots": "^5.0.0",
+    "@nuxtjs/sitemap": "^7.0.0",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "flowbite": "^2.5.2",
     "gsap": "^3.12.5",

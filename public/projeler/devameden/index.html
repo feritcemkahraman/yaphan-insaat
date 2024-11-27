@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="tr" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Diagonal Slideshow | Codrops</title>
+    <title>
+      Devam Eden Projelerimiz | Yeni Lüks Villa ve Konut Projeleri - YapıHan
+      İnşaat
+    </title>
     <meta
       name="description"
-      content="A triple view diagonal slideshow with content preview."
+      content="YapıHan İnşaat'ın İstanbul Beykoz'da devam eden lüks villa ve konut projeleri. Yatırım fırsatlarını kaçırmayın, Beykoz'un en değerli lokasyonlarındaki yeni projelerimizi inceleyin."
     />
-    <meta name="keywords" content="" />
-    <meta name="author" content="Codrops" />
+    <meta
+      name="keywords"
+      content="devam eden projeler, yeni villa projeleri, beykoz yeni projeler, yapım aşamasında projeler, yatırımlık villalar, lüks konut projeleri istanbul"
+    />
+    <meta name="author" content="YapıHan İnşaat" />
+
+    <!-- Open Graph / Social Media -->
+    <meta
+      property="og:title"
+      content="Devam Eden Projelerimiz | YapıHan İnşaat"
+    />
+    <meta
+      property="og:description"
+      content="YapıHan İnşaat'ın İstanbul Beykoz'da devam eden lüks villa ve konut projeleri."
+    />
+    <meta property="og:image" content="/img/yapihan-logo.png" />
+    <meta property="og:url" content="/projeler/devameden" />
+    <meta property="og:type" content="website" />
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="/projeler/devameden" />
+
+    <!-- Existing CSS -->
     <link rel="stylesheet" type="text/css" href="css/base.css" />
+
+    <!-- CSS Support Check Script -->
     <script>
       document.documentElement.className = "js";
       var supportsCssVars = function () {
@@ -32,6 +59,47 @@
         alert(
           "Please view this demo in a modern browser that supports CSS Variables."
         );
+    </script>
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "YapıHan İnşaat - Devam Eden Projeler",
+        "description": "İstanbul Beykoz'da devam eden lüks villa ve konut projeleri",
+        "url": "/projeler/devameden",
+        "areaServed": {
+          "@type": "City",
+          "name": "İstanbul",
+          "containsPlace": {
+            "@type": "District",
+            "name": "Beykoz"
+          }
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Devam Eden Lüks Projeler",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Yeni Lüks Villa Projeleri",
+                "description": "Beykoz'da yapım aşamasında olan özel tasarım lüks villalar"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Yeni Modern Konut Projeleri",
+                "description": "İstanbul'un en değerli lokasyonlarında yapım aşamasındaki modern konutlar"
+              }
+            }
+          ]
+        }
+      }
     </script>
   </head>
   <body>

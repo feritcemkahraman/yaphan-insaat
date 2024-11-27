@@ -1,19 +1,63 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
   compatibilityDate: "2024-04-03",
-
   future: {
     compatibilityVersion: 4,
   },
-
-  experimental: {},
-  unhead: {},
+  experimental: {
+    payloadExtraction: false,
+  },
   devtools: { enabled: true },
+  alias: {
+    "@": "/<rootDir>",
+    "~": "/<rootDir>",
+  },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "tr",
+      },
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "format-detection", content: "telephone=no" },
+        { name: "robots", content: "index, follow" },
+        {
+          name: "description",
+          content:
+            "YapıHan İnşaat, İstanbul'da 10 yılı aşkın tecrübesiyle konut projeleri, ticari yapılar ve renovasyon işleri yapan güvenilirliği bilinen bir inşaat firmasıdır.",
+        },
+        {
+          name: "keywords",
+          content:
+            "yapıhan inşaat, istanbul inşaat firması, güvenilir müteahhit, lüks konut projeleri, ticari yapılar, bina renovasyonu, istanbul, beykoz, inşaat, villa inşaatı, kat karşılığı, arsa satışı, arsa alımı, kat karşılığı inşaat",
+        },
+        { property: "og:site_name", content: "YapıHan İnşaat" },
+        { property: "og:type", content: "website" },
+        { property: "og:locale", content: "tr_TR" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      link: [
+        { rel: "canonical", href: "https://yapihaninsaat.com" },
+        {
+          rel: "stylesheet",
+          href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
+        },
+      ],
+      script: [],
+    },
+    baseURL:
+      process.env.NODE_ENV === "production" ? "https://yapihaninsaat.com" : "",
+    buildAssetsDir: "/_nuxt/",
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "@nuxt/icon",
     "@nuxt/image",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
   ],
   build: {
     transpile: ["gsap"],
@@ -23,18 +67,33 @@ export default defineNuxtConfig({
       Montserrat: true,
     },
   },
-  app: {
-    head: {
-      script: [],
-      link: [
-        {
-          rel: "stylesheet",
-          href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
-        },
+  sitemap: {
+    hostname: "https://yapihaninsaat.com",
+    gzip: true,
+  },
+  robots: {
+    UserAgent: "*",
+    Allow: "/",
+    Disallow: ["/admin", "/*.json", "/*.xml"],
+    Sitemap: "https://yapihaninsaat.com/sitemap.xml",
+  },
+  css: ["flowbite/dist/flowbite.css"],
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        "/",
+        "/hakkimizda",
+        "/bize-ulasin",
+        "/projeler/tamamlanan",
+        "/projeler/devameden",
       ],
     },
   },
-  css: [
-    "flowbite/dist/flowbite.css",
-  ],
+  routeRules: {
+    "/": { ssr: true },
+    "/hakkimizda": { ssr: true },
+    "/bize-ulasin": { ssr: true },
+    "/projeler/**": { ssr: true },
+  },
 });

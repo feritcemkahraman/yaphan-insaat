@@ -1,43 +1,46 @@
 <template>
-   <!-- Banner bölümü başlangıcı -->
-   <div class="w-full h-screen">
+  <!-- Banner bölümü başlangıcı -->
+  <div class="w-full h-screen">
     <div class="relative h-[calc(100vh-4rem)] overflow-hidden">
       <div
         class="absolute w-full h-[130%] -top-[15%] left-0 parallax-container"
+        :style="{
+          transform: `translateY(${scrollPosition * 0.15}px)`,
+          transition: 'transform 0.3s cubic-bezier(0.33, 1, 0.68, 1)',
+        }"
       >
         <img
           class="object-cover w-full h-full"
-          src="/banner.webp"
+          src="/banner.jpg"
           alt="yapihan banner"
         />
       </div>
       <div
         class="absolute inset-0 flex flex-col items-center justify-center mx-2 md:mx-0 text-white"
-        :style="{
-          transform: `translateY(${-scrollPosition * 0.3}px)`,
-          transition: 'transform 0.3s cubic-bezier(0.33, 1, 0.68, 1)'
-        }"
       >
-        <p class="text-lg mb-4">Y A P I H A N</p>
-        <div class="text-center max-w-6xl mb-12">
-          <span class="text-3xl md:text-5xl font-bold">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </span>
-          <br />
-          <br />
-          <span class="text-l"
-            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-            quo suscipit eos esse quod! Excepturi praesentium veniam eligendi
-            incidunt perferendis rem vitae neque voluptatem, sint deserunt?
-            Expedita reiciendis voluptatum, tenetur dolores ea vero illo
-            exercitationem magnam vel similique accusantium atque.</span
-          >
+        <div class="bg-black/40 backdrop-blur-sm p-8 rounded-lg max-w-6xl">
+          <p class="text-lg mb-4 text-center">Y A P I H A N</p>
+          <div class="text-center mb-12">
+            <span class="text-3xl md:text-5xl font-bold">
+              Güven ve Kalite İnşa Ediyoruz.
+            </span>
+            <br />
+            <br />
+            <span class="text-xl"
+              >Kaliteli ve güvenilir projeler hayata geçirerek, inşaat
+              sektöründe sağlam temeller atıyor; her adımda müşteri
+              memnuniyetini ön planda tutarak uzun vadeli, güvene dayalı
+              ilişkiler üretmeyi amaçlıyoruz.</span
+            >
+          </div>
+          <div class="text-center">
+            <NuxtLink
+              to="/hakkimizda"
+              class="mt-4 px-10 py-2 border-2 rounded hover:backdrop-blur transition-all inline-block"
+              >Hakkımızda</NuxtLink
+            >
+          </div>
         </div>
-        <NuxtLink
-          to="/hakkimizda"
-          class="mt-4 px-10 py-2 border-2 rounded hover:backdrop-blur transition-all"
-          >Hakkımızda</NuxtLink
-        >
       </div>
     </div>
   </div>
@@ -57,44 +60,56 @@
               class="absolute w-3/5 h-4/5 object-cover will-change-transform"
               :style="{
                 transform: firstImageTransform,
-                transition: 'transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)'
+                transition: 'transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)',
               }"
               loading="lazy"
             />
             <!-- Second Image -->
             <NuxtImg
-              src="/banner.webp"
+              src="/yapihan-hakkinda-section.jpg"
               alt="About 2"
               class="absolute w-3/5 h-4/5 object-cover mt-[20%] ml-[40%] will-change-transform"
               :style="{
                 transform: secondImageTransform,
-                transition: 'transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)'
+                transition: 'transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)',
               }"
               loading="lazy"
             />
             <!-- Decorative Border -->
-            <div class="absolute w-3/5 h-4/5 top-[10%] left-[20%] border-4 border-blue-600 -z-10" />
+            <div
+              class="absolute w-3/5 h-4/5 top-[10%] left-[20%] border-4 border-blue-600 -z-10"
+            />
           </div>
         </div>
 
         <!-- Content Section -->
         <div>
           <h4 class="text-blue-600 font-bold mb-2">Hakkımızda</h4>
-          <h1 class="text-4xl lg:text-5xl font-bold mb-6">
-            A Creative Architecture Agency For Your Dream Home
+          <h1 class="text-4xl md:text-3xl font-bold mb-6">
+            Geleceği İnşa Ediyoruz. <br />
+            Vizyonumuz doğrultusunda, sektörde kalıcı değerler yaratmayı
+            amaçlıyoruz.
           </h1>
           <p class="mb-4">
-            Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. 
-            Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+            YapıHan olarak, belirlediğimiz vizyon ve misyon doğrultusunda
+            çalışmalarımıza yön veriyor, sektörde kalıcı ve olumlu izler
+            bırakmayı hedefliyoruz. Güçlü ekibimiz ve değerlerimizle, geleceğe
+            güvenle bakıyoruz.
           </p>
           <p class="mb-8">
-            Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. 
-            Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.
+            Yenilikçi çözümlerimiz ve sürdürülebilir projelerimizle, müşteri
+            memnuniyetini en üst düzeyde tutmayı, sektörde örnek alınan bir
+            marka olmayı ve topluma değer katan çalışmalara imza atmayı
+            hedefliyoruz. Güven, kalite ve dürüstlük ilkelerimizle hareket
+            ederek, geleceği birlikte inşa ediyoruz.
           </p>
 
           <!-- Experience Counter -->
           <div class="flex items-center ml-10 md:ml-0 mb-16 md:mb-16">
-            <div ref="counterRef" class="flex items-center justify-center border-4 border-blue-600 w-32 h-32">
+            <div
+              ref="counterRef"
+              class="flex items-center justify-center border-4 border-blue-600 w-32 h-32"
+            >
               <span class="text-6xl font-bold">{{ counter }}+</span>
             </div>
             <div class="ml-6">
@@ -105,8 +120,8 @@
           </div>
 
           <!-- CTA Button -->
-          <NuxtLink 
-            to="/hakkimizda" 
+          <NuxtLink
+            to="/hakkimizda"
             class="bg-blue-600 text-white ml-28 md:ml-0 px-8 py-4 rounded hover:bg-blue-700 transition-colors"
           >
             Daha Fazla
@@ -387,53 +402,89 @@
 </template>
 
 <script setup lang="ts">
-const counter = ref(0)
-const counterRef = ref(null)
-const text1 = ref('')
-const text2 = ref('')
-const text3 = ref('')
-const targetValue = 10
-const duration = 2000
-const hasAnimated = ref(false)
+import { useSeo } from "../../composables/useSeo";
 
-const typeWriter = async (text: string, targetRef: Ref<string>, delay: number = 100) => {
-  const chars = text.split('')
+const { setSeo } = useSeo();
+
+setSeo({
+  title:
+    "YapıHan İnşaat - Güven ve Kalite İnşa Ediyoruz | İstanbul'da Lüx Villa Projeleri ve Lüks Konut Projeleri",
+  description:
+    "YapıHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. İstanbul'da 20 yılı aşkın tecrübemizle, modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
+  keywords:
+    "yapıhan inşaat, istanbul lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması istanbul",
+  image: "/banner.webp",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "YapıHan İnşaat",
+    description:
+      "İstanbul'da 10 yılı aşkın tecrübesiyle lüks villa projeleri ve lüks konut projeleri ve ticari yapılar inşa eden güvenilir inşaat firması",
+    url: "https://yapihaninsaat.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "İstanbul",
+      addressCountry: "TR",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+90-XXX-XXX-XXXX",
+      contactType: "yapihan insaat bilgi",
+    },
+  },
+});
+
+const counter = ref(0);
+const counterRef = ref(null);
+const text1 = ref("");
+const text2 = ref("");
+const text3 = ref("");
+const targetValue = 10;
+const duration = 2000;
+const hasAnimated = ref(false);
+
+const typeWriter = async (
+  text: string,
+  targetRef: Ref<string>,
+  delay: number = 100
+) => {
+  const chars = text.split("");
   for (let i = 0; i < chars.length; i++) {
-    await new Promise(resolve => setTimeout(resolve, delay))
-    targetRef.value += chars[i]
+    await new Promise((resolve) => setTimeout(resolve, delay));
+    targetRef.value += chars[i];
   }
-}
+};
 
 const startTypeWriter = async () => {
-  text1.value = ''
-  text2.value = ''
-  text3.value = ''
-  
-  await typeWriter('Yıllık', text1)
-  await typeWriter('Sektör', text2)
-  await typeWriter('Tecrübesiyle', text3)
-}
+  text1.value = "";
+  text2.value = "";
+  text3.value = "";
+
+  await typeWriter("Yıllık", text1);
+  await typeWriter("Sektör", text2);
+  await typeWriter("Tecrübesiyle", text3);
+};
 
 const startCounter = () => {
-  if (hasAnimated.value) return
+  if (hasAnimated.value) return;
 
-  const startTime = Date.now()
+  const startTime = Date.now();
   const updateCounter = () => {
-    const currentTime = Date.now()
-    const elapsed = currentTime - startTime
-    const progress = Math.min(elapsed / duration, 1)
-    
-    counter.value = Math.floor(progress * targetValue)
-    
+    const currentTime = Date.now();
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    counter.value = Math.floor(progress * targetValue);
+
     if (progress < 1) {
-      requestAnimationFrame(updateCounter)
+      requestAnimationFrame(updateCounter);
     }
-  }
-  
-  updateCounter()
-  startTypeWriter()
-  hasAnimated.value = true
-}
+  };
+
+  updateCounter();
+  startTypeWriter();
+  hasAnimated.value = true;
+};
 
 const logos = [
   { id: 1, src: "/turkuaz-logo.png", alt: "Turkuaz" },
@@ -444,62 +495,69 @@ const logos = [
   { id: 6, src: "/uzay-logo.png", alt: "Uzay" },
 ];
 
-const targetScrollPosition = ref(0)
-const scrollPosition = ref(0)
+const targetScrollPosition = ref(0);
+const scrollPosition = ref(0);
 
 // Smooth scroll position update
 const updateScrollPosition = () => {
-  const currentScroll = window.scrollY
-  targetScrollPosition.value = currentScroll
-  
+  const currentScroll = window.scrollY;
+  targetScrollPosition.value = currentScroll;
+
   const lerp = (start: number, end: number, factor: number) => {
-    return start + (end - start) * factor
-  }
-  
-  scrollPosition.value = lerp(scrollPosition.value, targetScrollPosition.value, 0.1)
-  
-  requestAnimationFrame(updateScrollPosition)
-}
+    return start + (end - start) * factor;
+  };
+
+  scrollPosition.value = lerp(
+    scrollPosition.value,
+    targetScrollPosition.value,
+    0.1
+  );
+
+  requestAnimationFrame(updateScrollPosition);
+};
 
 const firstImageTransform = computed(() => {
-  const maxMove = 30
-  const movement = -scrollPosition.value * 0.02
-  return `translateY(${Math.max(-maxMove, Math.min(movement, maxMove))}px)`
-})
+  const maxMove = 30;
+  const movement = -scrollPosition.value * 0.02;
+  return `translateY(${Math.max(-maxMove, Math.min(movement, maxMove))}px)`;
+});
 
 const secondImageTransform = computed(() => {
-  const maxMove = 30
-  const movement = scrollPosition.value * 0.02
-  return `translateY(${Math.max(-maxMove, Math.min(movement, maxMove))}px)`
-})
+  const maxMove = 30;
+  const movement = scrollPosition.value * 0.02;
+  return `translateY(${Math.max(-maxMove, Math.min(movement, maxMove))}px)`;
+});
 
 onMounted(() => {
-  updateScrollPosition()
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        startCounter()
-        observer.disconnect()
-      }
-    })
-  }, { threshold: 0.5 })
+  updateScrollPosition();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startCounter();
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
 
   if (counterRef.value) {
-    observer.observe(counterRef.value)
+    observer.observe(counterRef.value);
   }
 
   const handleScroll = () => {
     requestAnimationFrame(() => {
-      targetScrollPosition.value = window.scrollY
-    })
-  }
-  
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  
+      targetScrollPosition.value = window.scrollY;
+    });
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
   onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll)
-  })
-})
+    window.removeEventListener("scroll", handleScroll);
+  });
+});
 </script>
 
 <style scoped>
@@ -537,5 +595,4 @@ onMounted(() => {
     transform: translateX(-50%);
   }
 }
-
 </style>
