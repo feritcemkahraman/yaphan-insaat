@@ -1,12 +1,5 @@
 /**
- * demo.js
- * http://www.codrops.com
- *
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- *
- * Copyright 2018, Codrops
- * http://www.codrops.com
+ * Slideshow and content interaction
  */
 {
   // From http://www.quirksmode.org/js/events_properties.html#position
