@@ -26,20 +26,20 @@ export default defineNuxtConfig({
         {
           name: "description",
           content:
-            "YapıHan İnşaat, İstanbul'da 10 yılı aşkın tecrübesiyle konut projeleri, ticari yapılar ve renovasyon işleri yapan güvenilirliği bilinen bir inşaat firmasıdır.",
+            "YapHan İnşaat, İstanbul'da 10 yılı aşkın tecrübesiyle konut projeleri, ticari yapılar ve renovasyon işleri yapan güvenilirliği bilinen bir inşaat firmasıdır.",
         },
         {
           name: "keywords",
           content:
-            "yapıhan inşaat, istanbul inşaat firması, güvenilir müteahhit, lüks konut projeleri, ticari yapılar, bina renovasyonu, istanbul, beykoz, inşaat, villa inşaatı, kat karşılığı, arsa satışı, arsa alımı, kat karşılığı inşaat",
+            "yaphan inşaat, istanbul inşaat firması, güvenilir müteahhit, lüks konut projeleri, ticari yapılar, bina renovasyonu, istanbul, beykoz, inşaat, villa inşaatı, kat karşılığı, arsa satışı, arsa alımı, kat karşılığı inşaat",
         },
-        { property: "og:site_name", content: "YapıHan İnşaat" },
+        { property: "og:site_name", content: "YapHan İnşaat" },
         { property: "og:type", content: "website" },
         { property: "og:locale", content: "tr_TR" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
       link: [
-        { rel: "canonical", href: "https://yapihaninsaat.com" },
+        { rel: "canonical", href: "https://yaphan.com.tr" },
         {
           rel: "stylesheet",
           href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
@@ -48,7 +48,7 @@ export default defineNuxtConfig({
       script: [],
     },
     baseURL:
-      process.env.NODE_ENV === "production" ? "https://yapihaninsaat.com" : "",
+      process.env.NODE_ENV === "production" ? "https://yaphan.com.tr" : "",
     buildAssetsDir: "/_nuxt/",
   },
   modules: [
@@ -68,7 +68,7 @@ export default defineNuxtConfig({
     },
   },
   sitemap: {
-    hostname: "https://yapihaninsaat.com",
+    hostname: "https://yaphan.com.tr",
     gzip: true,
   },
   robots: {

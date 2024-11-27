@@ -192,7 +192,7 @@
             <h3 class="text-xl font-bold mb-4">Dış Mekan</h3>
             <p class="text-gray-600 leading-relaxed">
               Yapılarımızın dış görünüşünde sağlamlık ve zarafeti birleştirerek,
-              çevreye değer katan bir mimari yaklaşımı benimsiyoruz. YapıHan
+              çevreye değer katan bir mimari yaklaşımı benimsiyoruz. YapHan
               olarak, dış cephedeki her detayla kalıcı izler bırakmayı
               hedefliyoruz.
             </p>
@@ -408,19 +408,19 @@ const { setSeo } = useSeo();
 
 setSeo({
   title:
-    "YapıHan İnşaat - Güven ve Kalite İnşa Ediyoruz | İstanbul'da Lüx Villa Projeleri ve Lüks Konut Projeleri",
+    "YapHan İnşaat - Güven ve Kalite İnşa Ediyoruz | İstanbul'da Lüx Villa Projeleri ve Lüks Konut Projeleri",
   description:
-    "YapıHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. İstanbul'da 20 yılı aşkın tecrübemizle, modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
+    "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. İstanbul'da 20 yılı aşkın tecrübemizle, modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
   keywords:
-    "yapıhan inşaat, istanbul lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması istanbul",
+    "yaphan inşaat, istanbul lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması istanbul",
   image: "/banner.webp",
   schema: {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "YapıHan İnşaat",
+    name: "YapHan İnşaat",
     description:
       "İstanbul'da 10 yılı aşkın tecrübesiyle lüks villa projeleri ve lüks konut projeleri ve ticari yapılar inşa eden güvenilir inşaat firması",
-    url: "https://yapihaninsaat.com",
+    url: "https://yaphan.com.tr",
     address: {
       "@type": "PostalAddress",
       addressLocality: "İstanbul",

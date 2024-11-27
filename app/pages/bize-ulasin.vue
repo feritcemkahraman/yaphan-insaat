@@ -57,7 +57,7 @@
             </div>
             <div class="ml-4">
               <p class="text-gray-600 mb-1">Mail</p>
-              <h3 class="text-xl font-bold">info@yapihaninsaat.com</h3>
+              <h3 class="text-xl font-bold">info@yaphan.com.tr</h3>
             </div>
           </div>
         </div>
@@ -169,24 +169,24 @@ import { useSeo } from "../../composables/useSeo";
 const { setSeo } = useSeo();
 
 setSeo({
-  title: "İletişim - YapıHan İnşaat | Bize Ulaşın",
+  title: "İletişim - YapHan İnşaat | Bize Ulaşın",
   description:
-    "YapıHan İnşaat ile iletişime geçin. İstanbul'da inşaat, renovasyon ve tadilat projeleriniz için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.",
+    "YapHan İnşaat ile iletişime geçin. İstanbul'da inşaat, renovasyon ve tadilat projeleriniz için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.",
   keywords:
-    "yapıhan inşaat iletişim, inşaat firması iletişim, yapıhan telefon, yapıhan adres, inşaat firması istanbul",
+    "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres, inşaat firması istanbul",
   schema: {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "YapıHan İnşaat İletişim",
+    name: "YapHan İnşaat İletişim",
     description:
-      "YapıHan İnşaat iletişim bilgileri ve formu. Projeleriniz için bizimle iletişime geçin.",
-    url: "https://yapihaninsaat.com/bize-ulasin",
+      "YapHan İnşaat iletişim bilgileri ve formu. Projeleriniz için bizimle iletişime geçin.",
+    url: "https://yaphan.com.tr/bize-ulasin",
     mainEntity: {
       "@type": "Organization",
-      name: "YapıHan İnşaat",
+      name: "YapHan İnşaat",
       description:
         "İstanbul'da inşaat ve renovasyon hizmetleri sunan profesyonel inşaat firması",
-      url: "https://yapihaninsaat.com",
+      url: "https://yaphan.com.tr",
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+90-212-123-4567",

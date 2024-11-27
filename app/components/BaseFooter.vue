@@ -20,7 +20,7 @@
             <!-- Güncellenmiş Logo Yazısı -->
             <div class="logo-section">
               <span class="text-2xl text-gold font-semibold whitespace-nowrap">
-                Y A P I H A N
+                Y A P H A N
               </span>
               <span class="text-2xl whitespace-nowrap text-gold mt-1 ml-2">
                 İ N Ş A A T
@@ -28,7 +28,7 @@
             </div>
             <!-- Açıklama -->
             <p class="text-sm leading-relaxed opacity-90 max-w-lg mt-4">
-              YapıHan İnşaat olarak, işimizin temelinde kolektif bir tasarım
+              YapHan İnşaat olarak, işimizin temelinde kolektif bir tasarım
               anlayışı yatmaktadır. İlk günden bu yana, fikirlerin
               paylaşılmasının, ortak emeğin, bilgi alışverişinin ve tutkunun
               projelerimizi mükemmelleştirdiğine inanıyoruz.
@@ -44,7 +44,7 @@
             </h3>
             <div class="space-y-2 mb-6">
               <p class="text-sm">+1 (234) 567 89 99</p>
-              <p class="text-sm">info@yapihaninsaat.com</p>
+              <p class="text-sm">info@yaphan.com.tr</p>
               <p class="text-sm">
                 Üçutlar Mahallesi, Dr. İlhan Gürel Caddesi 68-14, Merkez/Çorum
               </p>
@@ -58,8 +58,7 @@
         class="py-4 border-t border-white/10 flex flex-col md:flex-row md:justify-between items-center footer-bottom"
       >
         <p class="text-xs text-white/70 uppercase tracking-wider mb-4 md:mb-0">
-          YAPIHAN İNŞAAT - HAN HOLDİNG KURULUŞUDUR (C) 2024 TÜM HAKLARI
-          SAKLIDIR.
+          YAPHAN İNŞAAT - HAN HOLDİNG KURULUŞUDUR (C) 2024 TÜM HAKLARI SAKLIDIR.
         </p>
 
         <!-- Sosyal Medya İkonları -->

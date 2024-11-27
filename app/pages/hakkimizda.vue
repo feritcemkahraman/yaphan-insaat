@@ -3,7 +3,7 @@
   <div class="bg-gray-800 py-20 px-4 md:px-8">
     <div class="max-w-3xl mx-auto text-center opacity-0 animate-fade-in">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        <p class="text-gray-400 text-lg mb-4">YapıHan İnşaat Hakkında</p>
+        <p class="text-gray-400 text-lg mb-4">YapHan İnşaat Hakkında</p>
         Projelerimize, yenilikçi çözümler ve kapsamlı analizlerle yön veriyoruz.
       </h2>
     </div>
@@ -26,7 +26,7 @@
           İnşaat Sektöründe Geleceği Şekillendiren Yapılar Oluşturmak
         </h2>
         <p class="text-gray-600 mb-4">
-          YapıHan olarak vizyonumuz, inşaat sektöründe yenilikçi ve
+          YapHan olarak vizyonumuz, inşaat sektöründe yenilikçi ve
           sürdürülebilir yaklaşımlarla geleceği şekillendiren lider bir marka
           olmaktır. Yaşam alanlarının sadece birer yapı değil, insanların
           hayatlarına değer katan mekanlar olduğunu bilincindeyiz. Bu nedenle,
@@ -182,21 +182,24 @@ import { useSeo } from "../../composables/useSeo";
 const { setSeo } = useSeo();
 
 setSeo({
-  title: "Hakkımızda - YapıHan İnşaat | İstanbul'un Güvenilir İnşaat Firması",
+  title: "Hakkımızda - YapHan İnşaat | İstanbul'un Güvenilir İnşaat Şirketi",
   description:
-    "20 yılı aşkın tecrübesiyle YapıHan İnşaat, modern mimari ve kaliteli işçiliği birleştirerek İstanbul'da lüks konut projeleri inşa ediyor. Misyonumuz, vizyonumuz ve değerlerimiz hakkında bilgi edinin.",
+    "10 yılı aşkın tecrübesiyle YapHan İnşaat, modern mimari ve kaliteli işçiliği birleştirerek İstanbul'da lüks konut projeleri inşa ediyor. Misyonumuz, vizyonumuz ve değerlerimiz hakkında bilgi edinin.",
   keywords:
-    "yapıhan inşaat hakkında, yapıhan inşaat misyon, yapıhan inşaat vizyon, istanbul inşaat firması, güvenilir müteahhit",
+    "yaphan inşaat hakkında, yaphan inşaat misyon, yaphan inşaat vizyon, istanbul inşaat firması, güvenilir müteahhit",
   image: "/misyon.jpg",
   schema: {
     "@context": "https://schema.org",
     "@type": "AboutPage",
+    name: "YapHan İnşaat Hakkımızda",
+    description: "YapHan İnşaat kurumsal bilgileri, misyon ve vizyonu",
+    url: "https://yaphan.com.tr/hakkimizda",
     mainEntity: {
       "@type": "Organization",
-      name: "YapıHan İnşaat",
+      name: "YapHan İnşaat",
       description:
         "İstanbul'da 20 yılı aşkın tecrübesiyle modern ve lüks konut projeleri inşa eden güvenilir inşaat firması",
-      url: "https://yapihaninsaat.com/hakkimizda",
+      url: "https://yaphan.com.tr/hakkimizda",
       foundingDate: "2003",
       address: {
         "@type": "PostalAddress",
@@ -208,7 +211,7 @@ setSeo({
 });
 
 const handleParallax = () => {
-  const parallaxBg = document.querySelector(".parallax-bg");
+  const parallaxBg = document.querySelector(".parallax-bg") as HTMLElement;
   if (!parallaxBg) return;
 
   const container = document.querySelector(".parallax-container");
