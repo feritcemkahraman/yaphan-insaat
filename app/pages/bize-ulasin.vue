@@ -64,43 +64,61 @@
 
         <!-- Contact Form -->
         <div class="flex flex-col justify-between space-y-4 mt-4">
-          <form @submit.prevent="handleSubmit" class="space-y-4">
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="space-y-4"
+          >
+            <!-- Web3Forms Access Key -->
+            <input
+              type="hidden"
+              name="access_key"
+              value="acc22e6b-e4ba-44ec-a868-148bafea8d2f"
+            />
+
+            <!-- Subject -->
+            <input
+              type="hidden"
+              name="subject"
+              value="Yeni İletişim Formu Mesajı - YapHan İnşaat"
+            />
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="relative">
                 <input
                   type="text"
-                  id="name"
-                  v-model="formData.name"
+                  name="name"
                   class="w-full px-4 py-3 border border-black focus:ring-2 focus:ring-nice focus:border-transparent resize-none outline-none"
                   placeholder="Adınız Soyadınız"
+                  required
                 />
               </div>
               <div class="relative">
                 <input
                   type="email"
-                  id="email"
-                  v-model="formData.email"
+                  name="email"
                   class="w-full px-4 py-3 border border-black focus:ring-2 focus:ring-nice focus:border-transparent resize-none outline-none"
                   placeholder="Email"
+                  required
                 />
               </div>
             </div>
             <div class="relative">
               <input
-                type="text"
-                id="phone"
-                v-model="formData.phone"
+                type="tel"
+                name="phone"
                 class="w-full px-4 py-3 border border-black focus:ring-2 focus:ring-nice focus:border-transparent resize-none outline-none"
                 placeholder="Telefon"
+                required
               />
             </div>
             <div class="relative">
               <textarea
-                id="message"
-                v-model="formData.message"
+                name="message"
                 rows="4"
                 class="w-full px-4 py-3 border border-black focus:ring-2 focus:ring-nice focus:border-transparent resize-none outline-none"
                 placeholder="Mesajınız"
+                required
               ></textarea>
             </div>
             <button type="submit" class="w-full py-4 px-6 relative mt-auto">

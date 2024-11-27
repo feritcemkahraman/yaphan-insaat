@@ -7,7 +7,7 @@
           <!-- Arka Planda Genişleyen Border -->
           <div class="preloader-border"></div>
           <!-- Loading Yazısı -->
-          <h1 class="preloader-text">Y a p ı H a n</h1>
+          <h1 class="preloader-text">Y a p H a n</h1>
           <h3 class="preloader-subtext">HAN HOLDING KURULUŞUDUR</h3>
         </div>
       </div>
