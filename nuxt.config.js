@@ -76,7 +76,6 @@ export default defineNuxtConfig({
     Allow: "/",
     Disallow: ["/admin", "/*.json", "/*.xml"],
     Sitemap: "https://yaphan.com.tr/sitemap.xml",
-    robotsTxt: false,
   },
   css: ["flowbite/dist/flowbite.css"],
   nitro: {

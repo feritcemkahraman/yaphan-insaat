@@ -19,7 +19,7 @@
         class="absolute inset-0 flex flex-col items-center justify-center mx-2 md:mx-0 text-white"
       >
         <div class="bg-black/40 backdrop-blur-sm p-8 rounded-lg max-w-6xl">
-          <p class="text-lg mb-4 text-center">Y A P I H A N</p>
+          <p class="text-lg mb-4 text-center">Y A P H A N</p>
           <div class="text-center mb-12">
             <span class="text-3xl md:text-5xl font-bold">
               Güven ve Kalite İnşa Ediyoruz.
@@ -91,7 +91,7 @@
             amaçlıyoruz.
           </h1>
           <p class="mb-4">
-            YapıHan olarak, belirlediğimiz vizyon ve misyon doğrultusunda
+            YapHan olarak, belirlediğimiz vizyon ve misyon doğrultusunda
             çalışmalarımıza yön veriyor, sektörde kalıcı ve olumlu izler
             bırakmayı hedefliyoruz. Güçlü ekibimiz ve değerlerimizle, geleceğe
             güvenle bakıyoruz.

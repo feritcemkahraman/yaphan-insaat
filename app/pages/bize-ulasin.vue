@@ -119,15 +119,15 @@
     <!-- Map Section -->
     <div class="w-full h-[450px] mt-16 mb-[90px]">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192698.6296291909!2d28.871754982031245!3d41.005495899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1656923428240!5m2!1str!2str"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.2626248658207!2d34.96412060000001!3d40.5799581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4086d58d9d1e55a5%3A0x601a6c6d76414539!2sYeksun%20M%C3%BChendislik!5e0!3m2!1str!2str!4v1732711220636!5m2!1str!2str"
         width="100%"
         height="100%"
         style="border: 0"
-        :allowfullscreen="true"
+        allowfullscreen
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-      >
-      </iframe>
+        title="Yeksun Mühendislik Google Maps"
+      ></iframe>
     </div>
   </div>
   <div class="container mx-auto px-8 py-12">
