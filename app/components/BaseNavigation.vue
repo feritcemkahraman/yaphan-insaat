@@ -41,7 +41,7 @@ const route = useRoute();
         <span
           class="self-center text-2xl text-gold font-semibold whitespace-nowrap"
         >
-          Y A P I H A N
+          Y A P H A N
         </span>
         <span
           class="self-center text-l font-semibold whitespace-nowrap text-gold mt-1"

@@ -1,1 +1,15 @@
+User-agent: *
+Allow: /
 
+# Sitemap
+Sitemap: https://yaphan.com.tr/sitemap.xml
+
+# Disallow admin and private paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Crawl-delay
+Crawl-delay: 10

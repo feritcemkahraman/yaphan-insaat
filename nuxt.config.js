@@ -13,6 +13,27 @@ export default defineNuxtConfig({
     "@": "/<rootDir>",
     "~": "/<rootDir>",
   },
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/google-fonts",
+    "@nuxt/icon",
+    "@nuxt/image",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
+  ],
+  sitemap: {
+    hostname: 'https://yaphan.com.tr',
+    gzip: true,
+    exclude: [
+      '/admin/**',
+      '/private/**'
+    ],
+    defaults: {
+      changefreq: 'daily',
+      priority: 0.8,
+      lastmod: new Date().toISOString()
+    }
+  },
   app: {
     head: {
       htmlAttrs: {
@@ -51,14 +72,6 @@ export default defineNuxtConfig({
       process.env.NODE_ENV === "production" ? "https://yaphan.com.tr" : "",
     buildAssetsDir: "/_nuxt/",
   },
-  modules: [
-    "@nuxtjs/tailwindcss",
-    "@nuxtjs/google-fonts",
-    "@nuxt/icon",
-    "@nuxt/image",
-    "@nuxtjs/sitemap",
-    "@nuxtjs/robots",
-  ],
   build: {
     transpile: ["gsap"],
   },
@@ -66,10 +79,6 @@ export default defineNuxtConfig({
     families: {
       Montserrat: true,
     },
-  },
-  sitemap: {
-    hostname: "https://yaphan.com.tr",
-    gzip: true,
   },
   robots: {
     UserAgent: "*",
