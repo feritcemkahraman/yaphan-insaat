@@ -75,6 +75,18 @@
               name="access_key"
               value="acc22e6b-e4ba-44ec-a868-148bafea8d2f"
             />
+            <!-- Forward to Email -->
+            <input
+              type="hidden"
+              name="from_name"
+              value="YapHan İnşaat Website"
+            />
+            <input
+              type="hidden"
+              name="redirect"
+              value="https://web3forms.com/success"
+            />
+            <input type="hidden" name="replyto" value="info@yaphan.com.tr" />
 
             <!-- Subject -->
             <input
