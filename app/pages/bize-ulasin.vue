@@ -217,40 +217,37 @@ setSeo({
 
 const handleSubmit = async (event: { target: any }) => {
   const form = event.target;
-  const formData = new FormData();
-
-  // Web3Forms gerekli alanları
-  formData.append("access_key", "7b591374-bc17-48b4-aad3-e4af50415e5e");
-  formData.append("from_name", "YapHan İnşaat Website");
-  formData.append("replyto", "info@yaphan.com.tr");
-  formData.append("subject", "Yeni İletişim Formu Mesajı - YapHan İnşaat");
-
-  // Form alanları
-  formData.append("name", form.name.value);
-  formData.append("email", form.email.value);
-  formData.append("phone", form.phone.value);
-  formData.append("message", form.message.value);
-
+  
   try {
-    const response = await fetch("https://api.web3forms.com/submit", {
+    const response = await fetch("/api/contact", {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        message: form.message.value
+      }),
     });
 
     const data = await response.json();
+    console.log("Form yanıtı:", data);
 
     if (data.success) {
       isSuccess.value = true;
       form.reset();
-      // 10 saniye sonra başarı mesajını kaldır
       setTimeout(() => {
         isSuccess.value = false;
       }, 10000);
     } else {
-      console.error("Form submission error:", data.message);
+      console.error("Form gönderim hatası:", data.error);
+      alert("Form gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
     }
   } catch (error) {
-    console.error("Form submission failed:", error);
+    console.error("Form gönderim hatası:", error);
+    alert("Form gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
   }
 };
 
