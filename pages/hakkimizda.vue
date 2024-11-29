@@ -176,9 +176,6 @@
 </style>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from "vue";
-import { useSeo } from "../../composables/useSeo";
-
 const { setSeo } = useSeo();
 
 setSeo({

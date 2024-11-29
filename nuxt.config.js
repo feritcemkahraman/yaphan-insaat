@@ -11,26 +11,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   alias: {
     "@": "/<rootDir>",
-    "~": "/<rootDir>",
   },
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "@nuxt/icon",
     "@nuxt/image",
-    "@nuxtjs/sitemap",
-    "@nuxtjs/robots",
-  ],
-  sitemap: {
-    hostname: "https://yaphan.com.tr",
-    gzip: true,
-    exclude: ["/admin/**", "/private/**"],
-    defaults: {
-      changefreq: "daily",
-      priority: 0.8,
-      lastmod: new Date().toISOString(),
-    },
-  },
+    ],
   app: {
     head: {
       htmlAttrs: {
@@ -65,65 +52,19 @@ export default defineNuxtConfig({
       ],
       script: [],
     },
-    baseURL:
-      process.env.NODE_ENV === "production" ? "https://yaphan.com.tr" : "",
-    buildAssetsDir: "/_nuxt/",
   },
-  build: {
-    transpile: ["gsap"],
-  },
+  build: {},
   googleFonts: {
     families: {
       Montserrat: true,
     },
   },
-  robots: {
-    UserAgent: "*",
-    Allow: "/",
-    Disallow: ["/admin", "/*.json", "/*.xml"],
-    Sitemap: "https://yaphan.com.tr/sitemap.xml",
-  },
   css: ["flowbite/dist/flowbite.css"],
   nitro: {
+    serveStatic: true,
     prerender: {
       crawlLinks: true,
-      routes: [
-        "/",
-        "/hakkimizda",
-        "/bize-ulasin",
-        "/projeler/tamamlanan",
-        "/projeler/devameden",
-      ],
-    },
-  },
-  routeRules: {
-    "/": {
-      ssr: true,
-      prerender: true,
-      cache: {
-        maxAge: 60 * 60 * 24, // 24 saat cache
-      },
-    },
-    "/hakkimizda": {
-      ssr: true,
-      prerender: true,
-      cache: {
-        maxAge: 60 * 60 * 24 * 7, // 1 hafta cache
-      },
-    },
-    "/bize-ulasin": {
-      ssr: true,
-      prerender: true,
-      cache: {
-        maxAge: 60 * 60 * 24 * 7, // 1 hafta cache
-      },
-    },
-    "/projeler/**": {
-      ssr: true,
-      prerender: true,
-      cache: {
-        maxAge: 60 * 60, // 1 saat cache (projeler daha sık güncellenebilir)
-      },
+      routes: ["/", "/200.html", "/404.html"],
     },
   },
 });

@@ -174,9 +174,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useSeo } from "../../composables/useSeo";
-
 const { setSeo } = useSeo();
 const isSuccess = ref(false);
 
@@ -217,7 +214,7 @@ setSeo({
 
 const handleSubmit = async (event: { target: any }) => {
   const form = event.target;
-  
+
   try {
     const response = await fetch("/api/contact", {
       method: "POST",
@@ -228,7 +225,7 @@ const handleSubmit = async (event: { target: any }) => {
         name: form.name.value,
         email: form.email.value,
         phone: form.phone.value,
-        message: form.message.value
+        message: form.message.value,
       }),
     });
 
