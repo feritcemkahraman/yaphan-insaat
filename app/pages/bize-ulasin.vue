@@ -64,36 +64,17 @@
 
         <!-- Contact Form -->
         <div class="flex flex-col justify-between space-y-4 mt-4">
-          <form
-            action="https://api.web3forms.com/submit"
-            method="POST"
-            class="space-y-4"
-          >
-            <!-- Web3Forms Access Key -->
-            <input
-              type="hidden"
-              name="access_key"
-              value="acc22e6b-e4ba-44ec-a868-148bafea8d2f"
-            />
-            <!-- Forward to Email -->
-            <input
-              type="hidden"
-              name="from_name"
-              value="YapHan İnşaat Website"
-            />
-            <input
-              type="hidden"
-              name="redirect"
-              value="https://web3forms.com/success"
-            />
-            <input type="hidden" name="replyto" value="info@yaphan.com.tr" />
-
-            <!-- Subject -->
-            <input
-              type="hidden"
-              name="subject"
-              value="Yeni İletişim Formu Mesajı - YapHan İnşaat"
-            />
+          <form @submit.prevent="handleSubmit" class="space-y-4">
+            <!-- Success Message -->
+            <div
+              v-if="isSuccess"
+              class="p-4 bg-green-50 border border-green-200 rounded-md mb-4"
+            >
+              <p class="text-green-700 font-bold text-center">
+                Mesajınız başarılı bir şekilde bize ulaştı. İnceleyip en kısa
+                zamanda dönüş sağlayacağız, teşekkürler.
+              </p>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="relative">
@@ -197,6 +178,7 @@ import { ref } from "vue";
 import { useSeo } from "../../composables/useSeo";
 
 const { setSeo } = useSeo();
+const isSuccess = ref(false);
 
 setSeo({
   title: "İletişim - YapHan İnşaat | Bize Ulaşın",
@@ -233,26 +215,42 @@ setSeo({
   },
 });
 
-const formData = ref({
-  name: "",
-  email: "",
-  phone: "",
-  message: "",
-});
+const handleSubmit = async (event: { target: any }) => {
+  const form = event.target;
+  const formData = new FormData();
 
-const handleSubmit = async () => {
+  // Web3Forms gerekli alanları
+  formData.append("access_key", "7b591374-bc17-48b4-aad3-e4af50415e5e");
+  formData.append("from_name", "YapHan İnşaat Website");
+  formData.append("replyto", "info@yaphan.com.tr");
+  formData.append("subject", "Yeni İletişim Formu Mesajı - YapHan İnşaat");
+
+  // Form alanları
+  formData.append("name", form.name.value);
+  formData.append("email", form.email.value);
+  formData.append("phone", form.phone.value);
+  formData.append("message", form.message.value);
+
   try {
-    // Form submission logic here
-    console.log("Form submitted:", formData.value);
-    // Reset form after successful submission
-    formData.value = {
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    };
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      isSuccess.value = true;
+      form.reset();
+      // 10 saniye sonra başarı mesajını kaldır
+      setTimeout(() => {
+        isSuccess.value = false;
+      }, 10000);
+    } else {
+      console.error("Form submission error:", data.message);
+    }
   } catch (error) {
-    console.error("Error submitting form:", error);
+    console.error("Form submission failed:", error);
   }
 };
 
