@@ -60,13 +60,8 @@ export default defineNuxtConfig({
     },
   },
   css: ["flowbite/dist/flowbite.css"],
-  runtimeConfig: {
-    emailPassword: process.env.NUXT_EMAIL_PASSWORD || '',
-    public: {
-      // public runtime config
-    }
-  },
   nitro: {
+    preset: 'cloudflare-pages',
     serveStatic: true,
     prerender: {
       crawlLinks: true,
@@ -78,9 +73,17 @@ export default defineNuxtConfig({
         headers: {
           'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type'
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Credentials': 'true',
+          'Access-Control-Max-Age': '86400'
         }
       }
+    }
+  },
+  runtimeConfig: {
+    emailPassword: process.env.NUXT_EMAIL_PASSWORD || '',
+    public: {
+      // public runtime config
     }
   }
 });

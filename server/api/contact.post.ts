@@ -6,19 +6,28 @@ export default defineEventHandler(async (event) => {
   // CORS başlıkları
   setResponseHeaders(event, {
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Accept',
+    'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    'Access-Control-Allow-Headers': '*',
+    'Access-Control-Allow-Credentials': 'true',
     'Access-Control-Max-Age': '86400'
   })
 
   // OPTIONS request'i için erken dönüş
-  const method = getMethod(event)
-  if (method === 'OPTIONS') {
-    return send(event, { status: 'ok' })
+  if (getMethod(event) === 'OPTIONS') {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Max-Age': '86400'
+      }
+    })
   }
 
   // Sadece POST isteklerine izin ver
-  if (method !== 'POST') {
+  if (getMethod(event) !== 'POST') {
     throw createError({
       statusCode: 405,
       statusMessage: 'Method Not Allowed'
@@ -75,19 +84,44 @@ export default defineEventHandler(async (event) => {
       replyTo: body.email
     })
 
-    return { success: true, message: 'Mail başarıyla gönderildi' }
+    return new Response(JSON.stringify({ 
+      success: true, 
+      message: 'Mail başarıyla gönderildi' 
+    }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
   } catch (error: unknown) {
     console.error('E-posta gönderimi hatası:', error)
     
     // H3 error objesi kontrolü
     if (error && typeof error === 'object' && 'statusCode' in error) {
-      throw error
+      const h3Error = error as { statusCode: number; statusMessage: string }
+      return new Response(JSON.stringify({
+        success: false,
+        error: h3Error.statusMessage
+      }), {
+        status: h3Error.statusCode,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
     }
     
     // Diğer hatalar için
-    throw createError({
-      statusCode: 500,
-      statusMessage: error instanceof Error ? error.message : 'Beklenmeyen bir hata oluştu'
+    return new Response(JSON.stringify({
+      success: false,
+      error: error instanceof Error ? error.message : 'Beklenmeyen bir hata oluştu'
+    }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
     })
   }
 })
