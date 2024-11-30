@@ -67,6 +67,7 @@ export default defineEventHandler(async (event): Promise<ContactFormResponse> =>
       logger: true
     })
 
+    console.log('Sending email...')
     const mailOptions = {
       from: {
         name: body.name,
@@ -90,7 +91,6 @@ export default defineEventHandler(async (event): Promise<ContactFormResponse> =>
       `
     }
 
-    console.log('Sending email...')
     await transporter.sendMail(mailOptions)
     console.log('Email sent successfully')
 
@@ -99,11 +99,11 @@ export default defineEventHandler(async (event): Promise<ContactFormResponse> =>
       message: 'Mesajınız başarıyla gönderildi.'
     }
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error in contact form:', error)
     return {
       success: false,
-      error: 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.'
+      error: error.message || 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.'
     }
   }
 })

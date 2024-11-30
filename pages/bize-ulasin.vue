@@ -189,6 +189,7 @@ interface ContactFormData {
 
 const { setSeo } = useSeo();
 const isSuccess = ref(false);
+const isLoading = ref(false);
 
 setSeo({
   title: "İletişim - YapHan İnşaat | Bize Ulaşın",
@@ -227,6 +228,7 @@ setSeo({
 
 const handleSubmit = async (event: { target: any }) => {
   const form = event.target;
+  isLoading.value = true;
 
   try {
     console.log("Form gönderiliyor...");
@@ -240,7 +242,10 @@ const handleSubmit = async (event: { target: any }) => {
 
     const response = await $fetch<ContactFormResponse>("/api/contact", {
       method: "POST",
-      body: formData
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: formData,
     });
 
     console.log("Form yanıtı:", response);
@@ -252,11 +257,16 @@ const handleSubmit = async (event: { target: any }) => {
         isSuccess.value = false;
       }, 10000);
     } else {
-      throw new Error(response.error || 'Beklenmeyen bir hata oluştu');
+      throw new Error(response.error || "Beklenmeyen bir hata oluştu");
     }
   } catch (error: any) {
     console.error("Form gönderim hatası:", error);
-    alert(error.message || 'Form gönderimi sırasında bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+    alert(
+      error.message ||
+        "Form gönderimi sırasında bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+    );
+  } finally {
+    isLoading.value = false;
   }
 };
 
