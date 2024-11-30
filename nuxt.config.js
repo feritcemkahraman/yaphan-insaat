@@ -51,7 +51,7 @@ export default defineNuxtConfig({
   },
   css: ["flowbite/dist/flowbite.css"],
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: "cloudflare-pages",
     serveStatic: true,
     prerender: {
       crawlLinks: true,
@@ -59,15 +59,11 @@ export default defineNuxtConfig({
     },
     routeRules: {
       // API yapılandırmasını kaldırıyoruz
-    }
+    },
   },
   runtimeConfig: {
-    emailHost: process.env.NUXT_EMAIL_HOST || 'smtp.gmail.com',
-    emailPort: process.env.NUXT_EMAIL_PORT || '587',
-    emailUser: process.env.NUXT_EMAIL_USER,
-    emailPassword: process.env.NUXT_EMAIL_PASSWORD,
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://yaphan.com.tr'
-    }
-  }
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://yaphan.com.tr",
+    },
+  },
 });

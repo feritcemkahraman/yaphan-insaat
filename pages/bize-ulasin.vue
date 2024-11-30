@@ -76,6 +76,10 @@
               </p>
             </div>
 
+            <input type="hidden" name="access_key" value="7b591374-bc17-48b4-aad3-e4af50415e5e">
+            <input type="hidden" name="subject" value="Yeni İletişim Formu Mesajı">
+            <input type="hidden" name="from_name" value="YapHan Website">
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="relative">
                 <input
@@ -114,13 +118,17 @@
                 required
               ></textarea>
             </div>
-            <button type="submit" class="w-full py-4 px-6 relative mt-auto">
+            <button 
+              type="submit" 
+              class="w-full py-4 px-6 relative mt-auto"
+              :disabled="isLoading"
+            >
               <div
                 class="absolute inset-0 bg-nice hover:bg-nice/80 transition duration-200 ease-in-out"
               ></div>
-              <span class="relative z-10 text-white text-xl font-semibold"
-                >Mesajı Gönder</span
-              >
+              <span class="relative z-10 text-white text-xl font-semibold">
+                {{ isLoading ? 'Gönderiliyor...' : 'Mesajı Gönder' }}
+              </span>
             </button>
           </form>
         </div>
@@ -174,121 +182,62 @@
 </template>
 
 <script setup lang="ts">
-import nodemailer from "nodemailer";
-import type { TransportOptions } from "nodemailer";
-import type SMTPTransport from "nodemailer/lib/smtp-transport";
+import { ref } from 'vue';
+import { useSeo } from '~/composables/useSeo';
 
 definePageMeta({
-  layout: "default",
+  layout: 'default'
 });
 
-interface ContactFormResponse {
-  success: boolean;
-  message?: string;
-  error?: string;
-}
-
-interface ContactFormData {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}
-
-const config = useRuntimeConfig();
 const { setSeo } = useSeo();
 const isSuccess = ref(false);
 const isLoading = ref(false);
 
-setSeo({
-  title: "İletişim - YapHan İnşaat | Bize Ulaşın",
-  description:
-    "YapHan İnşaat ile iletişime geçin. İstanbul'da inşaat, renovasyon ve tadilat projeleriniz için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.",
-  keywords:
-    "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres, inşaat firması istanbul",
-  schema: {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: "YapHan İnşaat İletişim",
-    description:
-      "YapHan İnşaat iletişim bilgileri ve formu. Projeleriniz için bizimle iletişime geçin.",
-    url: "https://yaphan.com.tr/bize-ulasin",
-    mainEntity: {
-      "@type": "Organization",
-      name: "YapHan İnşaat",
-      description:
-        "İstanbul'da inşaat ve renovasyon hizmetleri sunan profesyonel inşaat firması",
-      url: "https://yaphan.com.tr",
-      contactPoint: {
-        "@type": "ContactPoint",
-        telephone: "+90-212-123-4567",
-        contactType: "customer service",
-        areaServed: "TR",
-        availableLanguage: ["Turkish", "English"],
-      },
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "İstanbul",
-        addressCountry: "TR",
-      },
-    },
-  },
-});
-
-const handleSubmit = async (event: { target: any }) => {
-  const form = event.target;
+const handleSubmit = async (event: Event) => {
+  event.preventDefault();
+  const form = event.target as HTMLFormElement;
   isLoading.value = true;
 
   try {
-    const formData: ContactFormData = {
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      message: form.message.value,
-    };
+    const formData = new FormData(form);
+    formData.append('to_email', 'info@yaphan.com.tr');
 
-    // SMTP transporter oluşturma
-    const transportConfig: SMTPTransport.Options = {
-      host: config.emailHost,
-      port: parseInt(config.emailPort),
-      secure: false,
-      auth: {
-        user: config.emailUser,
-        pass: config.emailPassword,
-      },
-    };
-
-    const transporter = nodemailer.createTransport(transportConfig);
-
-    // Email gönderme
-    await transporter.sendMail({
-      from: config.emailUser,
-      to: config.emailUser,
-      subject: "Yeni İletişim Formu Mesajı",
-      html: `
-        <h3>Yeni İletişim Formu Mesajı</h3>
-        <p><strong>İsim:</strong> ${formData.name}</p>
-        <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>Telefon:</strong> ${formData.phone}</p>
-        <p><strong>Mesaj:</strong> ${formData.message}</p>
-      `,
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
     });
 
-    isSuccess.value = true;
-    form.reset();
-    setTimeout(() => {
-      isSuccess.value = false;
-    }, 10000);
+    const data = await response.json();
+
+    if (data.success) {
+      isSuccess.value = true;
+      form.reset();
+      setTimeout(() => {
+        isSuccess.value = false;
+      }, 5000);
+    } else {
+      throw new Error(data.message || 'Form gönderimi başarısız oldu.');
+    }
   } catch (error: any) {
-    console.error("Form gönderim hatası:", error);
-    alert(
-      error.message ||
-        "Form gönderimi sırasında bir hata oluştu. Lütfen daha sonra tekrar deneyin."
-    );
+    console.error('Form gönderim hatası:', error);
+    alert(error.message || 'Form gönderimi sırasında bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
   } finally {
     isLoading.value = false;
   }
 };
+
+setSeo({
+  title: "İletişim - YapHan İnşaat | Bize Ulaşın",
+  description: "YapHan İnşaat ile iletişime geçin. İstanbul'da inşaat, renovasyon ve tadilat projeleriniz için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.",
+  keywords: "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "YapHan İnşaat İletişim",
+    description: "YapHan İnşaat iletişim bilgileri ve formu. Projeleriniz için bizimle iletişime geçin.",
+    url: "https://yaphan.com.tr/bize-ulasin"
+  }
+});
 
 const offices = [
   {
