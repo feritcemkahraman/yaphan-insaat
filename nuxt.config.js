@@ -71,11 +71,11 @@ export default defineNuxtConfig({
       '/api/**': {
         cors: true,
         headers: {
-          'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+          'Access-Control-Allow-Methods': '*',
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization',
-          'Access-Control-Max-Age': '86400',
-          'Access-Control-Allow-Credentials': 'true'
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Credentials': 'true',
+          'Access-Control-Max-Age': '86400'
         }
       }
     }
@@ -83,7 +83,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     emailPassword: process.env.NUXT_EMAIL_PASSWORD || '',
     public: {
-      // public runtime config
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://yaphan.com.tr'
     }
   }
 });

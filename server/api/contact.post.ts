@@ -1,74 +1,43 @@
 import { createTransport } from 'nodemailer'
-import { defineEventHandler, readBody, getMethod, createError, setResponseHeaders } from 'h3'
+import { defineEventHandler, readBody } from 'h3'
 import { useRuntimeConfig } from '#imports'
 
-export default defineEventHandler(async (event) => {
-  // CORS headers for preflight
-  setResponseHeaders(event, {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization',
-    'Access-Control-Max-Age': '86400',
-    'Access-Control-Allow-Credentials': 'true'
-  })
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
 
-  // Handle OPTIONS request
-  if (getMethod(event) === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization',
-        'Access-Control-Max-Age': '86400',
-        'Access-Control-Allow-Credentials': 'true'
-      }
-    })
-  }
+interface ContactFormResponse {
+  success: boolean;
+  message?: string;
+  error?: string;
+}
 
-  // Only allow POST method
-  if (getMethod(event) !== 'POST') {
-    console.error(`Method ${getMethod(event)} not allowed`)
-    throw createError({
-      statusCode: 405,
-      statusMessage: 'Method Not Allowed',
-    })
-  }
-
+export default defineEventHandler(async (event): Promise<ContactFormResponse> => {
   try {
-    const config = useRuntimeConfig()
     console.log('Reading request body...')
-    const body = await readBody(event)
+    const body = await readBody<ContactFormData>(event)
     console.log('Request body:', body)
     
     // Check form fields
     if (!body?.name || !body?.email || !body?.phone || !body?.message) {
       console.error('Missing required fields:', body)
-      return new Response(JSON.stringify({
+      return {
         success: false,
         error: 'Lütfen tüm alanları doldurun.'
-      }), {
-        status: 400,
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
+      }
     }
 
     // Check email password
+    const config = useRuntimeConfig()
     if (!config.emailPassword) {
       console.error('Email password missing in config')
-      return new Response(JSON.stringify({
+      return {
         success: false,
         error: 'Email yapılandırması eksik.'
-      }), {
-        status: 500,
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
+      }
     }
 
     console.log('Creating transport...')
@@ -96,28 +65,16 @@ export default defineEventHandler(async (event) => {
     await transporter.sendMail(mailOptions)
     console.log('Email sent successfully')
 
-    return new Response(JSON.stringify({
+    return {
       success: true,
       message: 'Mesajınız başarıyla gönderildi.'
-    }), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
+    }
 
   } catch (error) {
     console.error('Error in contact form:', error)
-    return new Response(JSON.stringify({
+    return {
       success: false,
       error: 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.'
-    }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
+    }
   }
 })

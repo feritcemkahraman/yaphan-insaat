@@ -174,6 +174,19 @@
 </template>
 
 <script setup lang="ts">
+interface ContactFormResponse {
+  success: boolean;
+  message?: string;
+  error?: string;
+}
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+
 const { setSeo } = useSeo();
 const isSuccess = ref(false);
 
@@ -217,7 +230,7 @@ const handleSubmit = async (event: { target: any }) => {
 
   try {
     console.log("Form gönderiliyor...");
-    const formData = {
+    const formData: ContactFormData = {
       name: form.name.value,
       email: form.email.value,
       phone: form.phone.value,
@@ -225,33 +238,21 @@ const handleSubmit = async (event: { target: any }) => {
     };
     console.log("Form verisi:", formData);
 
-    const response = await fetch("/api/contact", {
+    const response = await $fetch<ContactFormResponse>("/api/contact", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(formData),
+      body: formData
     });
 
-    console.log("Sunucu yanıtı:", response.status, response.statusText);
+    console.log("Form yanıtı:", response);
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({ error: response.statusText }));
-      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log("Form yanıtı:", data);
-
-    if (data.success) {
+    if (response.success) {
       isSuccess.value = true;
       form.reset();
       setTimeout(() => {
         isSuccess.value = false;
       }, 10000);
     } else {
-      throw new Error(data.error || 'Beklenmeyen bir hata oluştu');
+      throw new Error(response.error || 'Beklenmeyen bir hata oluştu');
     }
   } catch (error: any) {
     console.error("Form gönderim hatası:", error);
