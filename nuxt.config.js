@@ -18,6 +18,18 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxt/image",
   ],
+  image: {
+    quality: 80,
+    format: ['webp', 'jpeg', 'jpg', 'png'],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+  },
   app: {
     head: {
       title: "YapHan İnşaat | Çorum'un Güvenilir İnşaat Firması",
