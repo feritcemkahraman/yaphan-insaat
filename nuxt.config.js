@@ -20,37 +20,27 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
+      title: "YapHan İnşaat | Çorum'un Güvenilir İnşaat Firması",
       htmlAttrs: {
         lang: "tr",
       },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "format-detection", content: "telephone=no" },
-        { name: "robots", content: "index, follow" },
         {
+          hid: "description",
           name: "description",
           content:
-            "YapHan İnşaat, İstanbul'da 10 yılı aşkın tecrübesiyle konut projeleri, ticari yapılar ve renovasyon işleri yapan güvenilirliği bilinen bir inşaat firmasıdır.",
+            "YapHan İnşaat, Çorum'da kaliteli ve güvenilir inşaat hizmetleri sunan bir firmadır. Konut projeleri, ticari yapılar ve renovasyon işleri için bize ulaşın.",
         },
-        {
-          name: "keywords",
-          content:
-            "yaphan inşaat, istanbul inşaat firması, güvenilir müteahhit, lüks konut projeleri, ticari yapılar, bina renovasyonu, istanbul, beykoz, inşaat, villa inşaatı, kat karşılığı, arsa satışı, arsa alımı, kat karşılığı inşaat",
-        },
-        { property: "og:site_name", content: "YapHan İnşaat" },
-        { property: "og:type", content: "website" },
-        { property: "og:locale", content: "tr_TR" },
-        { name: "twitter:card", content: "summary_large_image" },
       ],
       link: [
-        { rel: "canonical", href: "https://yaphan.com.tr" },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         {
           rel: "stylesheet",
           href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
         },
       ],
-      script: [],
     },
   },
   build: {},
@@ -68,15 +58,7 @@ export default defineNuxtConfig({
       routes: ["/", "/200.html", "/404.html"],
     },
     routeRules: {
-      '/api/**': {
-        cors: true,
-        headers: {
-          'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': '*',
-          'Access-Control-Allow-Credentials': 'true'
-        }
-      }
+      // API yapılandırmasını kaldırıyoruz
     }
   },
   runtimeConfig: {

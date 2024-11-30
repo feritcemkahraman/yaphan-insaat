@@ -174,6 +174,14 @@
 </template>
 
 <script setup lang="ts">
+import nodemailer from "nodemailer";
+import type { TransportOptions } from "nodemailer";
+import type SMTPTransport from "nodemailer/lib/smtp-transport";
+
+definePageMeta({
+  layout: "default",
+});
+
 interface ContactFormResponse {
   success: boolean;
   message?: string;
@@ -187,6 +195,7 @@ interface ContactFormData {
   message: string;
 }
 
+const config = useRuntimeConfig();
 const { setSeo } = useSeo();
 const isSuccess = ref(false);
 const isLoading = ref(false);
@@ -231,34 +240,45 @@ const handleSubmit = async (event: { target: any }) => {
   isLoading.value = true;
 
   try {
-    console.log("Form gönderiliyor...");
     const formData: ContactFormData = {
       name: form.name.value,
       email: form.email.value,
       phone: form.phone.value,
       message: form.message.value,
     };
-    console.log("Form verisi:", formData);
 
-    const response = await $fetch<ContactFormResponse>("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    // SMTP transporter oluşturma
+    const transportConfig: SMTPTransport.Options = {
+      host: config.emailHost,
+      port: parseInt(config.emailPort),
+      secure: false,
+      auth: {
+        user: config.emailUser,
+        pass: config.emailPassword,
       },
-      body: formData,
+    };
+
+    const transporter = nodemailer.createTransport(transportConfig);
+
+    // Email gönderme
+    await transporter.sendMail({
+      from: config.emailUser,
+      to: config.emailUser,
+      subject: "Yeni İletişim Formu Mesajı",
+      html: `
+        <h3>Yeni İletişim Formu Mesajı</h3>
+        <p><strong>İsim:</strong> ${formData.name}</p>
+        <p><strong>Email:</strong> ${formData.email}</p>
+        <p><strong>Telefon:</strong> ${formData.phone}</p>
+        <p><strong>Mesaj:</strong> ${formData.message}</p>
+      `,
     });
 
-    console.log("Form yanıtı:", response);
-
-    if (response.success) {
-      isSuccess.value = true;
-      form.reset();
-      setTimeout(() => {
-        isSuccess.value = false;
-      }, 10000);
-    } else {
-      throw new Error(response.error || "Beklenmeyen bir hata oluştu");
-    }
+    isSuccess.value = true;
+    form.reset();
+    setTimeout(() => {
+      isSuccess.value = false;
+    }, 10000);
   } catch (error: any) {
     console.error("Form gönderim hatası:", error);
     alert(
