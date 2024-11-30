@@ -211,18 +211,22 @@ Telefon: ${phone}
 Mesaj: ${message}
 Gönderim Zamanı: ${timestamp}
     `.trim();
+
+    // Türkçe metinleri Base64'e çeviriyoruz
+    const welcomeMessage = btoa(unescape(encodeURIComponent('YapHan İletişim Formu\n\n Web sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:')));
     
     // Web3Forms için gerekli alanları ekle
     formData.set('message', formattedMessage);
     formData.append('access_key', '7b591374-bc17-48b4-aad3-e4af50415e5e');
     formData.append('to_email', 'info@yaphan.com.tr');
-    formData.append('from_name', 'YapHan İletişim Formu\n\nWeb sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:');
+    formData.append('from_name', welcomeMessage);
     formData.append('subject', `YapHan İletişim Formu - ${timestamp}`);
 
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Content-Transfer-Encoding': 'base64'
       },
       body: formData
     });
