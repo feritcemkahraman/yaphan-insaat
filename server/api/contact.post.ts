@@ -1,28 +1,21 @@
 import { createTransport } from 'nodemailer'
-import { defineEventHandler, readBody, setResponseHeaders, getMethod, createError, send } from 'h3'
+import { defineEventHandler, readBody, getMethod, createError } from 'h3'
 import { useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event) => {
   // CORS başlıkları
-  setResponseHeaders(event, {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    'Access-Control-Allow-Headers': '*',
-    'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Max-Age': '86400'
-  })
+  // setResponseHeaders(event, {
+  //   'Access-Control-Allow-Origin': '*',
+  //   'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  //   'Access-Control-Allow-Headers': '*',
+  //   'Access-Control-Allow-Credentials': 'true',
+  //   'Access-Control-Max-Age': '86400'
+  // })
 
   // OPTIONS request'i için erken dönüş
   if (getMethod(event) === 'OPTIONS') {
     return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-        'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Max-Age': '86400'
-      }
+      status: 204
     })
   }
 
@@ -39,19 +32,29 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event)
     
     // Form alanlarını kontrol et
-    if (!body.name || !body.email || !body.phone || !body.message) {
-      throw createError({
-        statusCode: 400,
-        statusMessage: 'Lütfen tüm alanları doldurun.'
+    if (!body?.name || !body?.email || !body?.phone || !body?.message) {
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'Lütfen tüm alanları doldurun.'
+      }), {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
     }
 
     // Email şifresini kontrol et
     if (!config.emailPassword) {
       console.error('Email configuration missing')
-      throw createError({
-        statusCode: 500,
-        statusMessage: 'Email yapılandırması eksik.'
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'Email yapılandırması eksik.'
+      }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
     }
 
@@ -84,14 +87,13 @@ export default defineEventHandler(async (event) => {
       replyTo: body.email
     })
 
-    return new Response(JSON.stringify({ 
-      success: true, 
-      message: 'Mail başarıyla gönderildi' 
+    return new Response(JSON.stringify({
+      success: true,
+      message: 'Mail başarıyla gönderildi'
     }), {
       status: 200,
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Content-Type': 'application/json'
       }
     })
   } catch (error: unknown) {
@@ -106,8 +108,7 @@ export default defineEventHandler(async (event) => {
       }), {
         status: h3Error.statusCode,
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Content-Type': 'application/json'
         }
       })
     }
@@ -119,8 +120,7 @@ export default defineEventHandler(async (event) => {
     }), {
       status: 500,
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Content-Type': 'application/json'
       }
     })
   }
