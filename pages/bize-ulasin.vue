@@ -200,29 +200,45 @@ const handleSubmit = async (event: Event) => {
 
   try {
     const formData = new FormData(form);
-    formData.append('to_email', 'info@yaphan.com.tr');
-    formData.append('from_name', 'Yaphan İletişim Formu\n\nWeb sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:');
     
-    // Benzersiz bir konu oluştur
-    const timestamp = new Date().toLocaleString('tr-TR');
-    const subject = `Yaphan İletişim Formu - ${timestamp}`;
-    formData.append('subject', subject);
-
+    // Form alanlarının etiketlerini Türkçeleştir
+    const originalName = formData.get('name');
+    const originalEmail = formData.get('email');
+    const originalPhone = formData.get('phone');
+    const originalMessage = formData.get('message');
+    
+    // Eski form verilerini sil
+    formData.delete('name');
+    formData.delete('email');
+    formData.delete('phone');
+    formData.delete('message');
+    
+    // Türkçe etiketlerle yeni form verilerini ekle
+    formData.append('İsim', originalName as string);
+    formData.append('E-posta', originalEmail as string);
+    formData.append('Telefon', originalPhone as string);
+    
     // Mesaj formatını düzenle
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
+    const timestamp = new Date().toLocaleString('tr-TR');
     const formattedMessage = `
-Ad Soyad: ${name}
-E-posta: ${email}
-Mesaj: ${message}
+Ad Soyad: ${originalName}
+E-posta: ${originalEmail}
+Telefon: ${originalPhone}
+Mesaj: ${originalMessage}
 Gönderim Zamanı: ${timestamp}
     `.trim();
     
-    formData.set('message', formattedMessage);
+    formData.append('Mesaj', formattedMessage);
+    formData.append('to_email', 'info@yaphan.com.tr');
+    formData.append('from_name', 'YapHan İletişim Formu\n\nWeb sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:');
+    formData.append('subject', `YapHan İletişim Formu - ${timestamp}`);
 
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
       body: formData
     });
 
