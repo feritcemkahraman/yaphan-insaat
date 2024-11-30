@@ -214,7 +214,7 @@ Gönderim Zamanı: ${timestamp}
     
     // Web3Forms için gerekli alanları ekle
     formData.set('message', formattedMessage);
-    formData.append('access_key', '7f860f79-22c7-4f9c-9f6a-f5e9161c5fb1');
+    formData.append('access_key', '7b591374-bc17-48b4-aad3-e4af50415e5e');
     formData.append('to_email', 'info@yaphan.com.tr');
     formData.append('from_name', 'YapHan İletişim Formu\n\nWeb sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:');
     formData.append('subject', `YapHan İletişim Formu - ${timestamp}`);
