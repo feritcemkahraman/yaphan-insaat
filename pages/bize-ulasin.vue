@@ -216,23 +216,29 @@ const handleSubmit = async (event: { target: any }) => {
   const form = event.target;
 
   try {
+    console.log("Form gönderiliyor...");
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      message: form.message.value,
+    };
+    console.log("Form verisi:", formData);
+
     const response = await fetch("/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({
-        name: form.name.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        message: form.message.value,
-      }),
+      body: JSON.stringify(formData),
     });
 
+    console.log("Sunucu yanıtı:", response.status, response.statusText);
+
     if (!response.ok) {
-      const errorData = await response.json().catch(() => null);
-      throw new Error(errorData?.statusMessage || 'Form gönderimi başarısız oldu');
+      const errorData = await response.json().catch(() => ({ error: response.statusText }));
+      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
@@ -247,9 +253,9 @@ const handleSubmit = async (event: { target: any }) => {
     } else {
       throw new Error(data.error || 'Beklenmeyen bir hata oluştu');
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Form gönderim hatası:", error);
-    alert(error instanceof Error ? error.message : "Form gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
+    alert(error.message || 'Form gönderimi sırasında bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
   }
 };
 
