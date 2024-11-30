@@ -199,15 +199,9 @@ const handleSubmit = async (event: Event) => {
 
     // Mesaj formatını düzenle
     const timestamp = new Date().toLocaleString("tr-TR");
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const phone = formData.get("phone");
     const message = formData.get("message");
 
     const formattedMessage = `
-Ad Soyad: ${name}
-E-posta: ${email}
-Telefon: ${phone}
 Mesaj: ${message}
 Gönderim Zamanı: ${timestamp}
     `.trim();
