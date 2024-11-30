@@ -197,44 +197,32 @@ const handleSubmit = async (event: Event) => {
   try {
     const formData = new FormData(form);
     
-    // Form alanlarının etiketlerini Türkçeleştir
-    const originalName = formData.get('name');
-    const originalEmail = formData.get('email');
-    const originalPhone = formData.get('phone');
-    const originalMessage = formData.get('message');
-    
-    // Eski form verilerini sil
-    formData.delete('name');
-    formData.delete('email');
-    formData.delete('phone');
-    formData.delete('message');
-    
-    // Türkçe etiketlerle yeni form verilerini ekle
-    formData.append('İsim', originalName as string);
-    formData.append('E-posta', originalEmail as string);
-    formData.append('Telefon', originalPhone as string);
-    
     // Mesaj formatını düzenle
     const timestamp = new Date().toLocaleString('tr-TR');
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phone');
+    const message = formData.get('message');
+    
     const formattedMessage = `
-Ad Soyad: ${originalName}
-E-posta: ${originalEmail}
-Telefon: ${originalPhone}
-Mesaj: ${originalMessage}
+Ad Soyad: ${name}
+E-posta: ${email}
+Telefon: ${phone}
+Mesaj: ${message}
 Gönderim Zamanı: ${timestamp}
     `.trim();
     
-    formData.append('Mesaj', formattedMessage);
+    // Web3Forms için gerekli alanları ekle
+    formData.set('message', formattedMessage);
+    formData.append('access_key', '7f860f79-22c7-4f9c-9f6a-f5e9161c5fb1');
     formData.append('to_email', 'info@yaphan.com.tr');
     formData.append('from_name', 'YapHan İletişim Formu\n\nWeb sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:');
     formData.append('subject', `YapHan İletişim Formu - ${timestamp}`);
-    formData.append('access_key', '7f860f79-22c7-4f9c-9f6a-f5e9161c5fb1');
 
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        'Accept': 'application/json'
       },
       body: formData
     });
