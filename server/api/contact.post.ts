@@ -51,21 +51,25 @@ export default defineEventHandler(async (event): Promise<ContactFormResponse> =>
 
     console.log('Creating transport...')
     const transporter = createTransport({
-      host: emailHost,
-      port: emailPort,
-      secure: false, // TLS için false
+      host: emailHost || 'smtp.gmail.com',
+      port: Number(emailPort) || 587,
+      secure: false,
+      requireTLS: true,
       auth: {
         user: emailUser,
         pass: emailPassword
       },
       tls: {
-        rejectUnauthorized: false // Self-signed sertifikaları kabul et
-      }
+        ciphers: 'SSLv3',
+        rejectUnauthorized: false
+      },
+      debug: true,
+      logger: true
     })
 
     const mailOptions = {
       from: {
-        name: 'YapHan İnşaat İletişim Formu',
+        name: body.name,
         address: emailUser
       },
       to: emailUser,

@@ -82,8 +82,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     emailHost: process.env.NUXT_EMAIL_HOST || 'smtp.gmail.com',
-    emailPort: process.env.NUXT_EMAIL_PORT || 587,
-    emailUser: process.env.NUXT_EMAIL_USER || 'info@yaphan.com.tr',
+    emailPort: process.env.NUXT_EMAIL_PORT || '587',
+    emailUser: process.env.NUXT_EMAIL_USER,
     emailPassword: process.env.NUXT_EMAIL_PASSWORD,
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://yaphan.com.tr'
