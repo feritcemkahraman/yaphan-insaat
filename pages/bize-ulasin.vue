@@ -220,6 +220,7 @@ const handleSubmit = async (event: { target: any }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json"
       },
       body: JSON.stringify({
         name: form.name.value,
@@ -228,6 +229,11 @@ const handleSubmit = async (event: { target: any }) => {
         message: form.message.value,
       }),
     });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      throw new Error(errorData?.statusMessage || 'Form gönderimi başarısız oldu');
+    }
 
     const data = await response.json();
     console.log("Form yanıtı:", data);
@@ -239,12 +245,11 @@ const handleSubmit = async (event: { target: any }) => {
         isSuccess.value = false;
       }, 10000);
     } else {
-      console.error("Form gönderim hatası:", data.error);
-      alert("Form gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
+      throw new Error(data.error || 'Beklenmeyen bir hata oluştu');
     }
   } catch (error) {
     console.error("Form gönderim hatası:", error);
-    alert("Form gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
+    alert(error instanceof Error ? error.message : "Form gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
   }
 };
 

@@ -1,5 +1,5 @@
 import { createTransport } from 'nodemailer'
-import { defineEventHandler, readBody, setResponseHeaders } from 'h3'
+import { defineEventHandler, readBody, setResponseHeaders, getMethod, createError, send } from 'h3'
 import { useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event) => {
@@ -7,36 +7,45 @@ export default defineEventHandler(async (event) => {
   setResponseHeaders(event, {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type'
+    'Access-Control-Allow-Headers': 'Content-Type, Accept',
+    'Access-Control-Max-Age': '86400'
   })
 
-  if (event.method === 'OPTIONS') {
-    return { success: true }
+  // OPTIONS request'i için erken dönüş
+  const method = getMethod(event)
+  if (method === 'OPTIONS') {
+    return send(event, { status: 'ok' })
+  }
+
+  // Sadece POST isteklerine izin ver
+  if (method !== 'POST') {
+    throw createError({
+      statusCode: 405,
+      statusMessage: 'Method Not Allowed'
+    })
   }
 
   try {
     const config = useRuntimeConfig()
-    console.log('Environment check:', {
-      hasEmailPassword: !!config.emailPassword,
-      emailPasswordLength: config.emailPassword?.length || 0
-    })
     const body = await readBody(event)
     
     // Form alanlarını kontrol et
     if (!body.name || !body.email || !body.phone || !body.message) {
-      console.error('Form validation failed:', body)
-      throw new Error('Lütfen tüm alanları doldurun.')
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Lütfen tüm alanları doldurun.'
+      })
     }
 
     // Email şifresini kontrol et
-    const emailPassword = config.emailPassword
-    if (!emailPassword) {
-      console.error('EMAIL_PASSWORD environment variable is missing')
-      throw new Error('Email yapılandırması eksik. Lütfen site yöneticisi ile iletişime geçin.')
+    if (!config.emailPassword) {
+      console.error('Email configuration missing')
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Email yapılandırması eksik.'
+      })
     }
 
-    console.log('SMTP Bağlantısı kuruluyor...')
-    
     // SMTP ayarları
     const transporter = createTransport({
       host: 'limos.alastyr.com',
@@ -44,19 +53,12 @@ export default defineEventHandler(async (event) => {
       secure: true,
       auth: {
         user: 'info@yaphan.com.tr',
-        pass: emailPassword
+        pass: config.emailPassword
       },
       tls: {
         rejectUnauthorized: false
       }
     })
-
-    console.log('SMTP Bağlantısı test ediliyor...')
-    
-    // Bağlantıyı test et
-    await transporter.verify()
-    
-    console.log('SMTP Bağlantısı başarılı, mail gönderiliyor...')
 
     // E-posta gönderimi
     await transporter.sendMail({
@@ -73,13 +75,19 @@ export default defineEventHandler(async (event) => {
       replyTo: body.email
     })
 
-    console.log('Mail başarıyla gönderildi')
-    return { success: true }
-  } catch (error) {
+    return { success: true, message: 'Mail başarıyla gönderildi' }
+  } catch (error: unknown) {
     console.error('E-posta gönderimi hatası:', error)
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Beklenmeyen bir hata oluştu'
+    
+    // H3 error objesi kontrolü
+    if (error && typeof error === 'object' && 'statusCode' in error) {
+      throw error
     }
+    
+    // Diğer hatalar için
+    throw createError({
+      statusCode: 500,
+      statusMessage: error instanceof Error ? error.message : 'Beklenmeyen bir hata oluştu'
+    })
   }
 })
