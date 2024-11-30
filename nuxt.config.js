@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxt/icon",
     "@nuxt/image",
-    ],
+  ],
   app: {
     head: {
       htmlAttrs: {
@@ -77,4 +77,7 @@ export default defineNuxtConfig({
       }
     }
   },
+  runtimeConfig: {
+    emailPassword: process.env.EMAIL_PASSWORD
+  }
 });

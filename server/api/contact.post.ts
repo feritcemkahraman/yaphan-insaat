@@ -2,14 +2,13 @@ import { createTransport } from 'nodemailer'
 import { defineEventHandler, readBody, setResponseHeaders } from 'h3'
 
 export default defineEventHandler(async (event) => {
-  // Add CORS headers
+  // CORS başlıkları
   setResponseHeaders(event, {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type'
   })
 
-  // Handle preflight requests
   if (event.method === 'OPTIONS') {
     return { success: true }
   }
@@ -17,21 +16,35 @@ export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event)
     
-    // Validate required fields
+    // Form alanlarını kontrol et
     if (!body.name || !body.email || !body.phone || !body.message) {
-      throw new Error('Tüm alanların doldurulması zorunludur.')
+      console.error('Form validation failed:', body)
+      throw new Error('Lütfen tüm alanları doldurun.')
     }
-    
-    // Alastyr SMTP ayarları
+
+    // Email şifresini kontrol et
+    const emailPassword = process.env.EMAIL_PASSWORD
+    if (!emailPassword) {
+      console.error('EMAIL_PASSWORD environment variable is missing')
+      throw new Error('Email yapılandırması eksik. Lütfen site yöneticisi ile iletişime geçin.')
+    }
+
+    // SMTP ayarları
     const transporter = createTransport({
       host: 'limos.alastyr.com',
       port: 465,
       secure: true,
       auth: {
         user: 'info@yaphan.com.tr',
-        pass: process.env.EMAIL_PASSWORD
+        pass: emailPassword
+      },
+      tls: {
+        rejectUnauthorized: false
       }
     })
+
+    // Bağlantıyı test et
+    await transporter.verify()
 
     // E-posta gönderimi
     await transporter.sendMail({
@@ -50,10 +63,10 @@ export default defineEventHandler(async (event) => {
 
     return { success: true }
   } catch (error) {
-    console.error('E-posta gönderimi başarısız:', error)
+    console.error('E-posta gönderimi hatası:', error)
     return { 
       success: false, 
-      error: error instanceof Error ? error.message : 'E-posta gönderilemedi'
+      error: error instanceof Error ? error.message : 'Beklenmeyen bir hata oluştu'
     }
   }
 })
