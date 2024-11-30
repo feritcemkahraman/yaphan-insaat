@@ -71,7 +71,7 @@ export default defineNuxtConfig({
       '/api/**': {
         cors: true,
         headers: {
-          'Access-Control-Allow-Methods': '*',
+          'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': '*',
           'Access-Control-Allow-Credentials': 'true',
