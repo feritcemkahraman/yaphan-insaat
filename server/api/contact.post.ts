@@ -1,9 +1,26 @@
 import { createTransport } from 'nodemailer'
-import { defineEventHandler, readBody } from 'h3'
+import { defineEventHandler, readBody, setResponseHeaders } from 'h3'
 
 export default defineEventHandler(async (event) => {
+  // Add CORS headers
+  setResponseHeaders(event, {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  })
+
+  // Handle preflight requests
+  if (event.method === 'OPTIONS') {
+    return { success: true }
+  }
+
   try {
     const body = await readBody(event)
+    
+    // Validate required fields
+    if (!body.name || !body.email || !body.phone || !body.message) {
+      throw new Error('Tüm alanların doldurulması zorunludur.')
+    }
     
     // Alastyr SMTP ayarları
     const transporter = createTransport({
@@ -36,7 +53,7 @@ export default defineEventHandler(async (event) => {
     console.error('E-posta gönderimi başarısız:', error)
     return { 
       success: false, 
-      error: 'E-posta gönderilemedi'
+      error: error instanceof Error ? error.message : 'E-posta gönderilemedi'
     }
   }
 })

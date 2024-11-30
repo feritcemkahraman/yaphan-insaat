@@ -66,5 +66,15 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ["/", "/200.html", "/404.html"],
     },
+    routeRules: {
+      '/api/**': {
+        cors: true,
+        headers: {
+          'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        }
+      }
+    }
   },
 });
