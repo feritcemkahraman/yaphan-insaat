@@ -16,6 +16,10 @@ export default defineEventHandler(async (event) => {
 
   try {
     const config = useRuntimeConfig()
+    console.log('Environment check:', {
+      hasEmailPassword: !!config.emailPassword,
+      emailPasswordLength: config.emailPassword?.length || 0
+    })
     const body = await readBody(event)
     
     // Form alanlarını kontrol et
