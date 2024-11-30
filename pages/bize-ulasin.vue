@@ -76,8 +76,6 @@
               </p>
             </div>
 
-            <input type="hidden" name="access_key" value="7f860f79-22c7-4f9c-9f6a-f5e9161c5fb1">
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="relative">
                 <input
@@ -230,6 +228,7 @@ Gönderim Zamanı: ${timestamp}
     formData.append('to_email', 'info@yaphan.com.tr');
     formData.append('from_name', 'YapHan İletişim Formu\n\nWeb sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:');
     formData.append('subject', `YapHan İletişim Formu - ${timestamp}`);
+    formData.append('access_key', '7f860f79-22c7-4f9c-9f6a-f5e9161c5fb1');
 
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
