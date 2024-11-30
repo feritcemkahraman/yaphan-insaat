@@ -114,8 +114,8 @@
                 required
               ></textarea>
             </div>
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               class="w-full py-4 px-6 relative mt-auto"
               :disabled="isLoading"
             >
@@ -123,7 +123,7 @@
                 class="absolute inset-0 bg-nice hover:bg-nice/80 transition duration-200 ease-in-out"
               ></div>
               <span class="relative z-10 text-white text-xl font-semibold">
-                {{ isLoading ? 'Gönderiliyor...' : 'Mesajı Gönder' }}
+                {{ isLoading ? "Gönderiliyor..." : "Mesajı Gönder" }}
               </span>
             </button>
           </form>
@@ -178,11 +178,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useSeo } from '~/composables/useSeo';
+import { ref } from "vue";
+import { useSeo } from "~/composables/useSeo";
 
 definePageMeta({
-  layout: 'default'
+  layout: "default",
 });
 
 const { setSeo } = useSeo();
@@ -196,14 +196,14 @@ const handleSubmit = async (event: Event) => {
 
   try {
     const formData = new FormData(form);
-    
+
     // Mesaj formatını düzenle
-    const timestamp = new Date().toLocaleString('tr-TR');
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const phone = formData.get('phone');
-    const message = formData.get('message');
-    
+    const timestamp = new Date().toLocaleString("tr-TR");
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
+    const message = formData.get("message");
+
     const formattedMessage = `
 Ad Soyad: ${name}
 E-posta: ${email}
@@ -212,23 +212,22 @@ Mesaj: ${message}
 Gönderim Zamanı: ${timestamp}
     `.trim();
 
-    // Türkçe metinleri Base64'e çeviriyoruz
-    const welcomeMessage = btoa(unescape(encodeURIComponent('YapHan İletişim Formu\n\n Web sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:')));
-    
     // Web3Forms için gerekli alanları ekle
-    formData.set('message', formattedMessage);
-    formData.append('access_key', '7b591374-bc17-48b4-aad3-e4af50415e5e');
-    formData.append('to_email', 'info@yaphan.com.tr');
-    formData.append('from_name', welcomeMessage);
-    formData.append('subject', `YapHan İletişim Formu - ${timestamp}`);
+    formData.set("message", formattedMessage);
+    formData.append("access_key", "7b591374-bc17-48b4-aad3-e4af50415e5e");
+    formData.append("to_email", "info@yaphan.com.tr");
+    formData.append(
+      "from_name",
+      "YapHan İletişim Formu\n\n Web sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:"
+    );
+    formData.append("subject", `YapHan İletişim Formu - ${timestamp}`);
 
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Transfer-Encoding': 'base64'
+        Accept: "application/json",
       },
-      body: formData
+      body: formData,
     });
 
     const data = await response.json();
@@ -240,11 +239,14 @@ Gönderim Zamanı: ${timestamp}
         isSuccess.value = false;
       }, 5000);
     } else {
-      throw new Error(data.message || 'Form gönderimi başarısız oldu.');
+      throw new Error(data.message || "Form gönderimi başarısız oldu.");
     }
   } catch (error: any) {
-    console.error('Form gönderim hatası:', error);
-    alert(error.message || 'Form gönderimi sırasında bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+    console.error("Form gönderim hatası:", error);
+    alert(
+      error.message ||
+        "Form gönderimi sırasında bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+    );
   } finally {
     isLoading.value = false;
   }
@@ -252,15 +254,18 @@ Gönderim Zamanı: ${timestamp}
 
 setSeo({
   title: "İletişim - YapHan İnşaat | Bize Ulaşın",
-  description: "YapHan İnşaat ile iletişime geçin. İstanbul'da inşaat, renovasyon ve tadilat projeleriniz için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.",
-  keywords: "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres",
+  description:
+    "YapHan İnşaat ile iletişime geçin. İstanbul'da inşaat, renovasyon ve tadilat projeleriniz için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.",
+  keywords:
+    "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres",
   schema: {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "YapHan İnşaat İletişim",
-    description: "YapHan İnşaat iletişim bilgileri ve formu. Projeleriniz için bizimle iletişime geçin.",
-    url: "https://yaphan.com.tr/bize-ulasin"
-  }
+    description:
+      "YapHan İnşaat iletişim bilgileri ve formu. Projeleriniz için bizimle iletişime geçin.",
+    url: "https://yaphan.com.tr/bize-ulasin",
+  },
 });
 
 const offices = [
