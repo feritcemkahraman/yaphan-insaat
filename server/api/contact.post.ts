@@ -34,6 +34,13 @@ export default defineEventHandler(async (event): Promise<ContactFormResponse> =>
     const config = useRuntimeConfig()
     const { emailHost, emailPort, emailUser, emailPassword } = config
 
+    console.log('Email configuration:', {
+      host: emailHost,
+      port: emailPort,
+      user: emailUser,
+      hasPassword: !!emailPassword
+    })
+
     if (!emailPassword) {
       console.error('Email password missing in config')
       return {
@@ -46,10 +53,13 @@ export default defineEventHandler(async (event): Promise<ContactFormResponse> =>
     const transporter = createTransport({
       host: emailHost,
       port: emailPort,
-      secure: emailPort === 465,
+      secure: false, // TLS için false
       auth: {
         user: emailUser,
         pass: emailPassword
+      },
+      tls: {
+        rejectUnauthorized: false // Self-signed sertifikaları kabul et
       }
     })
 
