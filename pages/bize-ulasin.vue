@@ -201,6 +201,25 @@ const handleSubmit = async (event: Event) => {
   try {
     const formData = new FormData(form);
     formData.append('to_email', 'info@yaphan.com.tr');
+    formData.append('from_name', 'Yaphan İletişim Formu\n\nWeb sitemizden yeni bir form gönderildi. Detaylar aşağıdadır:');
+    
+    // Benzersiz bir konu oluştur
+    const timestamp = new Date().toLocaleString('tr-TR');
+    const subject = `Yaphan İletişim Formu - ${timestamp}`;
+    formData.append('subject', subject);
+
+    // Mesaj formatını düzenle
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    const formattedMessage = `
+Ad Soyad: ${name}
+E-posta: ${email}
+Mesaj: ${message}
+Gönderim Zamanı: ${timestamp}
+    `.trim();
+    
+    formData.set('message', formattedMessage);
 
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
