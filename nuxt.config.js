@@ -60,6 +60,12 @@ export default defineNuxtConfig({
     },
   },
   css: ["flowbite/dist/flowbite.css"],
+  runtimeConfig: {
+    emailPassword: process.env.NUXT_EMAIL_PASSWORD || '',
+    public: {
+      // public runtime config
+    }
+  },
   nitro: {
     serveStatic: true,
     prerender: {
@@ -76,8 +82,5 @@ export default defineNuxtConfig({
         }
       }
     }
-  },
-  runtimeConfig: {
-    emailPassword: process.env.EMAIL_PASSWORD
   }
 });

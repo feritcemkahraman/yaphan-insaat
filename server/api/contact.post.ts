@@ -1,5 +1,6 @@
 import { createTransport } from 'nodemailer'
 import { defineEventHandler, readBody, setResponseHeaders } from 'h3'
+import { useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event) => {
   // CORS başlıkları
@@ -14,6 +15,7 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
+    const config = useRuntimeConfig()
     const body = await readBody(event)
     
     // Form alanlarını kontrol et
@@ -23,12 +25,14 @@ export default defineEventHandler(async (event) => {
     }
 
     // Email şifresini kontrol et
-    const emailPassword = process.env.EMAIL_PASSWORD
+    const emailPassword = config.emailPassword
     if (!emailPassword) {
       console.error('EMAIL_PASSWORD environment variable is missing')
       throw new Error('Email yapılandırması eksik. Lütfen site yöneticisi ile iletişime geçin.')
     }
 
+    console.log('SMTP Bağlantısı kuruluyor...')
+    
     // SMTP ayarları
     const transporter = createTransport({
       host: 'limos.alastyr.com',
@@ -43,8 +47,12 @@ export default defineEventHandler(async (event) => {
       }
     })
 
+    console.log('SMTP Bağlantısı test ediliyor...')
+    
     // Bağlantıyı test et
     await transporter.verify()
+    
+    console.log('SMTP Bağlantısı başarılı, mail gönderiliyor...')
 
     // E-posta gönderimi
     await transporter.sendMail({
@@ -61,6 +69,7 @@ export default defineEventHandler(async (event) => {
       replyTo: body.email
     })
 
+    console.log('Mail başarıyla gönderildi')
     return { success: true }
   } catch (error) {
     console.error('E-posta gönderimi hatası:', error)
