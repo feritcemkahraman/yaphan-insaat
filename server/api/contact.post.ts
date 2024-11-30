@@ -30,9 +30,11 @@ export default defineEventHandler(async (event): Promise<ContactFormResponse> =>
       }
     }
 
-    // Check email password
+    // Get email config
     const config = useRuntimeConfig()
-    if (!config.emailPassword) {
+    const { emailHost, emailPort, emailUser, emailPassword } = config
+
+    if (!emailPassword) {
       console.error('Email password missing in config')
       return {
         success: false,
@@ -42,22 +44,35 @@ export default defineEventHandler(async (event): Promise<ContactFormResponse> =>
 
     console.log('Creating transport...')
     const transporter = createTransport({
-      service: 'gmail',
+      host: emailHost,
+      port: emailPort,
+      secure: emailPort === 465,
       auth: {
-        user: 'yapayzeka.haber@gmail.com',
-        pass: config.emailPassword
+        user: emailUser,
+        pass: emailPassword
       }
     })
 
     const mailOptions = {
-      from: 'yapayzeka.haber@gmail.com',
-      to: 'yapayzeka.haber@gmail.com',
+      from: {
+        name: 'YapHan İnşaat İletişim Formu',
+        address: emailUser
+      },
+      to: emailUser,
+      replyTo: body.email,
       subject: 'Yeni İletişim Formu Mesajı',
       text: `
         İsim: ${body.name}
         E-posta: ${body.email}
         Telefon: ${body.phone}
         Mesaj: ${body.message}
+      `,
+      html: `
+        <h2>Yeni İletişim Formu Mesajı</h2>
+        <p><strong>İsim:</strong> ${body.name}</p>
+        <p><strong>E-posta:</strong> ${body.email}</p>
+        <p><strong>Telefon:</strong> ${body.phone}</p>
+        <p><strong>Mesaj:</strong><br>${body.message.replace(/\n/g, '<br>')}</p>
       `
     }
 
