@@ -32,11 +32,14 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "YapHan İnşaat | Çorum'un Güvenilir İnşaat Firması",
+      title: "YapHan İnşaat",
       htmlAttrs: {
         lang: "tr",
       },
       meta: [
+        { hid: 'og:title', name: 'og:title', property: 'og:title', content: 'YapHan İnşaat' },
+      { hid: 'og:site_name', name: 'og:site_name', property: 'og:site_name', content: 'YapHan İnşaat' },
+      { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'YapHan İnşaat' },
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
