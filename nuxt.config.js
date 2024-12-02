@@ -17,6 +17,8 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxt/icon",
     "@nuxt/image",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/seo",
   ],
   image: {
     quality: 80,
@@ -42,6 +44,7 @@ export default defineNuxtConfig({
         { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'YapHan İnşaat' },
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "robots", content: "index, follow" },
         {
           hid: "description",
           name: "description",
@@ -65,6 +68,13 @@ export default defineNuxtConfig({
     },
   },
   css: ["flowbite/dist/flowbite.css"],
+  sitemap: {
+    hostname: process.env.NUXT_PUBLIC_SITE_URL || "https://yaphan.com.tr",
+    gzip: true,
+    exclude: [
+      '/404'
+    ]
+  },
   nitro: {
     preset: "cloudflare-pages",
     serveStatic: true,

@@ -1,4 +1,6 @@
 import { useHead } from "nuxt/app";
+import { useRuntimeConfig } from "nuxt/app";
+import { useRoute } from "nuxt/app";
 
 interface SchemaOrg {
   "@context": string;
@@ -6,6 +8,14 @@ interface SchemaOrg {
   name: string;
   description: string;
   url: string;
+  logo?: string;
+  potentialAction?: {
+    "@type": string;
+    target: {
+      "@type": string;
+      urlTemplate: string;
+    }[];
+  };
   mainEntity?: {
     "@type": string;
     name: string;
@@ -19,21 +29,29 @@ interface SchemaOrg {
       areaServed?: string;
       availableLanguage?: string[];
     };
-    address?: {
-      "@type": string;
-      addressLocality: string;
-      addressCountry: string;
-    };
   };
-  address?: {
+  isPartOf?: {
     "@type": string;
-    addressLocality: string;
-    addressCountry: string;
+    name: string;
+    url: string;
+  };
+  sameAs?: string[];
+  hasOfferCatalog?: {
+    "@type": string;
+    name: string;
+    itemListElement: {
+      "@type": string;
+      name: string;
+      url: string;
+      description: string;
+    }[];
   };
   contactPoint?: {
     "@type": string;
     telephone: string;
     contactType: string;
+    areaServed?: string;
+    availableLanguage?: string[];
   };
 }
 
@@ -46,8 +64,44 @@ interface SeoConfig {
   schema?: SchemaOrg;
 }
 
-export const useSeo = () => {
-  const setSeo = (config: SeoConfig) => {
+export function useSeo(config: SeoConfig) {
+  const runtimeConfig = useRuntimeConfig();
+  const route = useRoute();
+
+  const defaultSchema: SchemaOrg = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: config.title || "YapHan İnşaat",
+    description: config.description,
+    url: `${runtimeConfig.public.siteUrl}${route.path}`,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: [{
+        "@type": "EntryPoint",
+        urlTemplate: `${runtimeConfig.public.siteUrl}/search?q={search_term_string}`
+      }]
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "YapHan İnşaat Hizmetleri",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          name: "Hakkımızda",
+          url: `${runtimeConfig.public.siteUrl}/hakkimizda`,
+          description: "YapHan İnşaat hakkında detaylı bilgi"
+        },
+        {
+          "@type": "Offer",
+          name: "Bize Ulaşın",
+          url: `${runtimeConfig.public.siteUrl}/bize-ulasin`,
+          description: "YapHan İnşaat iletişim bilgileri"
+        }
+      ]
+    }
+  };
+
+  const setSeo = () => {
     useHead({
       title: config.title,
       meta: [
@@ -76,11 +130,11 @@ export const useSeo = () => {
           content: config.type || "website",
         },
       ].filter((meta) => meta.content !== undefined),
-      script: config.schema
+      script: config.schema || defaultSchema
         ? [
             {
               type: "application/ld+json",
-              children: JSON.stringify(config.schema),
+              children: JSON.stringify(config.schema || defaultSchema),
             },
           ]
         : [],
@@ -90,4 +144,4 @@ export const useSeo = () => {
   return {
     setSeo,
   };
-};
+}

@@ -185,7 +185,31 @@ definePageMeta({
   layout: "default",
 });
 
-const { setSeo } = useSeo();
+const { setSeo } = useSeo({
+  title: "İletişim - YapHan İnşaat | Bize Ulaşın",
+  description: "YapHan İnşaat ile iletişime geçin. Lüks villa projeleri, inşaat, renovasyon, ticari yapılar ve lüks konut projeleriniz için bizimle iletişime geçebilirsiniz.",
+  keywords: "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "YapHan İnşaat İletişim",
+    description: "YapHan İnşaat iletişim bilgileri ve formu",
+    url: "https://yaphan.com.tr/bize-ulasin",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "YapHan İnşaat",
+      url: "https://yaphan.com.tr"
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+90-XXX-XXX-XXXX",
+      contactType: "customer service",
+      areaServed: "TR",
+      availableLanguage: ["Turkish"]
+    }
+  }
+});
+
 const isSuccess = ref(false);
 const isLoading = ref(false);
 
@@ -246,21 +270,7 @@ Gönderim Zamanı: ${timestamp}
   }
 };
 
-setSeo({
-  title: "İletişim - YapHan İnşaat | Bize Ulaşın",
-  description:
-    "YapHan İnşaat ile iletişime geçin. İstanbul'da inşaat, renovasyon, lüks villa projeleri, ticari yapılar ve lüks konut projeleriniz için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.",
-  keywords:
-    "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres",
-  schema: {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: "YapHan İnşaat İletişim",
-    description:
-      "YapHan İnşaat iletişim bilgileri ve formu. Projeleriniz için bizimle iletişime geçin.",
-    url: "https://yaphan.com.tr/bize-ulasin",
-  },
-});
+setSeo();
 
 const offices = [
   {

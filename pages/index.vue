@@ -136,7 +136,7 @@
   <div class="relative">
     <!-- Arka plan görseli - height ayarlandı -->
     <div
-      class="absolute top-0 left-0 w-full h-[38vh] bg-cover bg-center z-0"
+      class="absolute top-0 left-0 w-full h-[380px] bg-cover bg-center z-0"
       :style="{
         backgroundImage: `url('/services.webp')`,
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
@@ -345,7 +345,7 @@
   <section class="relative py-16 px-4 w-full">
     <!-- Arka plan görseli -->
     <div
-      class="absolute top-0 left-0 w-full h-[40vh] bg-cover bg-center z-0"
+      class="absolute top-0 left-0 w-full h-[400px] bg-cover bg-center z-0"
       style="
         background-image: url('/yapihancozumortaklari.jpg');
         background-color: rgba(0, 0, 0, 0.6);
@@ -402,35 +402,71 @@
 </template>
 
 <script setup lang="ts">
-const { setSeo } = useSeo();
-
-setSeo({
-  title:
-    "YapHan İnşaat - Güven ve Kalite İnşa Ediyoruz | İstanbul'da Lüx Villa Projeleri ve Lüks Konut Projeleri",
-  description:
-    "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. İstanbul'da 10 yılı aşkın tecrübemizle, modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
-  keywords:
-    "yaphan inşaat, istanbul lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması istanbul",
+const seoConfig = {
+  title: "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz | Lüks Villa ve Konut Projeleri",
+  description: "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. Modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
+  keywords: "yaphan inşaat, istanbul lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması istanbul",
   image: "/banner.webp",
   schema: {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "YapHan İnşaat",
-    description:
-      "İstanbul'da 10 yılı aşkın tecrübesiyle lüks villa projeleri ve lüks konut projeleri ve ticari yapılar inşa eden güvenilir inşaat firması",
     url: "https://yaphan.com.tr",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "İstanbul",
-      addressCountry: "TR",
+    logo: "https://yaphan.com.tr/logo.webp",
+    description: "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. Modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
+    sameAs: [
+      "https://www.instagram.com/yaphaninsaat",
+      "https://www.facebook.com/yaphaninsaat"
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "YapHan İnşaat Hizmetleri",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          name: "Hakkımızda",
+          url: "https://yaphan.com.tr/hakkimizda",
+          description: "YapHan İnşaat kurumsal bilgileri ve vizyonu"
+        },
+        {
+          "@type": "Offer",
+          name: "Bize Ulaşın",
+          url: "https://yaphan.com.tr/bize-ulasin",
+          description: "YapHan İnşaat iletişim bilgileri ve formu"
+        }
+      ]
     },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+90-XXX-XXX-XXXX",
-      contactType: "yapihan insaat bilgi",
+      contactType: "yapihan insaat iletisim",
+      areaServed: "TR",
+      availableLanguage: ["Turkish", "English"]
     },
-  },
-});
+    mainEntity: {
+      "@type": "Organization",
+      name: "YapHan İnşaat",
+      description: "Modern ve lüks konut projeleri, ticari yapılar inşa eden güvenilir inşaat firması",
+      url: "https://yaphan.com.tr",
+      foundingDate: "2010",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+90-XXX-XXX-XXXX",
+        contactType: "customer service",
+        areaServed: "TR",
+        availableLanguage: ["Turkish", "English"]
+      }
+    },
+    isPartOf: {
+      "@type": "WebSite",
+      name: "YapHan İnşaat",
+      url: "https://yaphan.com.tr"
+    }
+  }
+};
+
+const { setSeo } = useSeo(seoConfig);
+setSeo();
 
 const counter = ref(0);
 const counterRef = ref(null);

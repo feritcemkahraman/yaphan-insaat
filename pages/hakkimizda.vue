@@ -176,36 +176,32 @@
 </style>
 
 <script setup lang="ts">
-const { setSeo } = useSeo();
-
-setSeo({
-  title: "Hakkımızda - YapHan İnşaat | İstanbul'un Güvenilir İnşaat Şirketi",
-  description:
-    "10 yılı aşkın tecrübesiyle YapHan İnşaat, modern mimari ve kaliteli işçiliği birleştirerek İstanbul'da lüks konut projeleri inşa ediyor. Misyonumuz, vizyonumuz ve değerlerimiz hakkında bilgi edinin.",
-  keywords:
-    "yaphan inşaat hakkında, yaphan inşaat misyon, yaphan inşaat vizyon, istanbul inşaat firması, güvenilir müteahhit",
-  image: "/misyon.jpg",
+const { setSeo } = useSeo({
+  title: "Hakkımızda - YapHan İnşaat | Kurumsal",
+  description: "YapHan İnşaat, 10 yılı aşkın tecrübesiyle modern ve lüks konut projeleri, ticari yapılar inşa eden güvenilir bir inşaat firmasıdır.",
+  keywords: "yaphan inşaat hakkında, inşaat firması, yaphan kurumsal, yaphan vizyon, yaphan misyon",
   schema: {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: "YapHan İnşaat Hakkımızda",
-    description: "YapHan İnşaat kurumsal bilgileri, misyon ve vizyonu",
+    name: "YapHan İnşaat Hakkında",
+    description: "YapHan İnşaat kurumsal bilgileri ve vizyonu",
     url: "https://yaphan.com.tr/hakkimizda",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "YapHan İnşaat",
+      url: "https://yaphan.com.tr"
+    },
     mainEntity: {
       "@type": "Organization",
       name: "YapHan İnşaat",
-      description:
-        "İstanbul'da 20 yılı aşkın tecrübesiyle modern ve lüks konut projeleri inşa eden güvenilir inşaat firması",
-      url: "https://yaphan.com.tr/hakkimizda",
-      foundingDate: "2003",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "İstanbul",
-        addressCountry: "TR",
-      },
-    },
-  },
+      description: "Modern ve lüks konut projeleri, ticari yapılar inşa eden güvenilir bir inşaat firması",
+      foundingDate: "2013",
+      url: "https://yaphan.com.tr"
+    }
+  }
 });
+
+setSeo();
 
 const handleParallax = () => {
   const parallaxBg = document.querySelector(".parallax-bg") as HTMLElement;
