@@ -107,10 +107,15 @@ export default defineNuxtConfig({
         priority: 0.8,
       },
       {
-        url: "/projelerin-tamami/serenity",
+        url: "/projeler/devameden",
         changefreq: "weekly",
         priority: 0.8,
       },
+      {
+        url: "/projeler/tamamlanan",
+        changefreq: "weekly",
+        priority: 0.8,
+      }
     ],
   },
   runtimeConfig: {
