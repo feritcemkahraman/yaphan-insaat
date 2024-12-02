@@ -18,7 +18,6 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxt/image",
     "@nuxtjs/sitemap",
-    "@nuxtjs/seo",
   ],
   image: {
     quality: 80,
@@ -73,6 +72,28 @@ export default defineNuxtConfig({
     gzip: true,
     exclude: [
       '/404'
+    ],
+    defaults: {
+      changefreq: 'daily',
+      priority: 0.8,
+      lastmod: new Date().toISOString()
+    },
+    routes: [
+      {
+        url: '/',
+        changefreq: 'daily',
+        priority: 1.0
+      },
+      {
+        url: '/hakkimizda',
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        url: '/bize-ulasin',
+        changefreq: 'weekly',
+        priority: 0.8
+      }
     ]
   },
   nitro: {
