@@ -134,6 +134,7 @@
     <!-- Map Section -->
     <div class="w-full h-[450px] mt-16 mb-[90px]">
       <iframe
+        title="YapHan İnşaat Çorum Merkez Ofisi - Google Haritalar"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.2626248658207!2d34.96412060000001!3d40.5799581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4086d58d9d1e55a5%3A0x601a6c6d76414539!2sYeksun%20M%C3%BChendislik!5e0!3m2!1str!2str!4v1732711220636!5m2!1str!2str"
         width="100%"
         height="100%"
@@ -141,7 +142,6 @@
         allowfullscreen
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="Yeksun Mühendislik Google Maps"
       ></iframe>
     </div>
   </div>
@@ -181,33 +181,87 @@
 import { ref } from "vue";
 import { useSeo } from "~/composables/useSeo";
 
+// TypeScript tip tanımlaması
+interface ExtendedSchema extends Record<string, any> {
+  "@context": string;
+  "@type": string;
+  name: string;
+  description: string;
+  url: string;
+  mainEntity?: {
+    "@type": string;
+    name: string;
+    address?: {
+      "@type": string;
+      streetAddress: string;
+      addressLocality: string;
+      addressRegion: string;
+      postalCode: string;
+      addressCountry: string;
+    };
+    contactPoint?: {
+      "@type": string;
+      telephone: string;
+      contactType: string;
+      areaServed: string;
+      availableLanguage: string[];
+    };
+  };
+  isPartOf?: {
+    "@type": string;
+    name: string;
+    url: string;
+  };
+}
+
 definePageMeta({
   layout: "default",
 });
 
 const { setSeo } = useSeo({
-  title: "İletişim - YapHan İnşaat | Bize Ulaşın",
-  description: "YapHan İnşaat ile iletişime geçin. Lüks villa projeleri, inşaat, renovasyon, ticari yapılar ve lüks konut projeleriniz için bizimle iletişime geçebilirsiniz.",
-  keywords: "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres",
+  title: "Bize Ulaşın - YapHan İnşaat | İletişim Bilgileri ve Adres",
+  description:
+    "YapHan İnşaat ile iletişime geçin. Lüks villa projeleri, inşaat, renovasyon, ticari yapılar ve lüks konut projeleriniz için bizimle iletişime geçebilirsiniz.",
+  keywords:
+    "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres",
   schema: {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "YapHan İnşaat İletişim",
     description: "YapHan İnşaat iletişim bilgileri ve formu",
     url: "https://yaphan.com.tr/bize-ulasin",
+    mainEntity: {
+      "@type": "Organization",
+      name: "YapHan İnşaat",
+      description:
+        "10 yılı aşkın süredir Çorum'da lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
+      url: "https://yaphan.com.tr",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+90-XXX-XXX-XXXX",
+        contactType: "customer service",
+        areaServed: "TR",
+        availableLanguage: ["Turkish", "English"],
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Üçtutlar Mahallesi Dr. İlhan Gürel Caddesi 68-14",
+          addressLocality: "Merkez",
+          addressRegion: "Çorum",
+          postalCode: "19000",
+          addressCountry: "TR",
+        },
+      },
+    },
     isPartOf: {
       "@type": "WebSite",
       name: "YapHan İnşaat",
-      url: "https://yaphan.com.tr"
+      url: "https://yaphan.com.tr",
     },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+90-XXX-XXX-XXXX",
-      contactType: "customer service",
-      areaServed: "TR",
-      availableLanguage: ["Turkish"]
-    }
-  }
+    sameAs: [
+      "https://www.facebook.com/yaphaninsaat",
+      "https://www.instagram.com/yaphaninsaat",
+    ],
+  },
 });
 
 const isSuccess = ref(false);

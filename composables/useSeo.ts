@@ -28,6 +28,14 @@ interface SchemaOrg {
       contactType: string;
       areaServed?: string;
       availableLanguage?: string[];
+      address?: {
+        "@type": string;
+        streetAddress: string;
+        addressLocality: string;
+        addressRegion: string;
+        postalCode: string;
+        addressCountry: string;
+      };
     };
   };
   isPartOf?: {
@@ -52,6 +60,14 @@ interface SchemaOrg {
     contactType: string;
     areaServed?: string;
     availableLanguage?: string[];
+    address?: {
+      "@type": string;
+      streetAddress: string;
+      addressLocality: string;
+      addressRegion: string;
+      postalCode: string;
+      addressCountry: string;
+    };
   };
 }
 

@@ -16,7 +16,7 @@
       <div>
         <img
           src="/misyon.jpg"
-          alt="Modern House"
+          alt="YapHan İnşaat Misyon ve Vizyon - Lüks ve Modern İnşaat Projeleri"
           class="w-full md:w-4/5 h-auto shadow-lg mx-auto"
         />
       </div>
@@ -130,7 +130,7 @@
       <div class="order-1 md:order-2">
         <img
           src="/vizyonumuz.webp"
-          alt="Modern House"
+          alt="YapHan İnşaat Misyon ve Vizyon - Lüks ve Modern İnşaat Projeleri"
           class="w-full md:w-4/5 h-auto shadow-lg mx-auto"
         />
       </div>
@@ -178,27 +178,49 @@
 <script setup lang="ts">
 const { setSeo } = useSeo({
   title: "Hakkımızda - YapHan İnşaat | Kurumsal",
-  description: "YapHan İnşaat, 10 yılı aşkın tecrübesiyle modern ve lüks konut projeleri, ticari yapılar inşa eden güvenilir bir inşaat firmasıdır.",
-  keywords: "yaphan inşaat hakkında, inşaat firması, yaphan kurumsal, yaphan vizyon, yaphan misyon",
+  description:
+    "YapHan İnşaat, 10 yılı aşkın tecrübesiyle modern ve lüks konut projeleri, ticari yapılar inşa eden güvenilir bir inşaat firmasıdır.",
+  keywords:
+    "yaphan inşaat hakkında, inşaat firması, yaphan kurumsal, yaphan vizyon, yaphan misyon",
   schema: {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     name: "YapHan İnşaat Hakkında",
-    description: "YapHan İnşaat kurumsal bilgileri ve vizyonu",
+    description: "YapHan İnşaat kurumsal bilgileri, misyon ve vizyonu",
     url: "https://yaphan.com.tr/hakkimizda",
-    isPartOf: {
-      "@type": "WebSite",
-      name: "YapHan İnşaat",
-      url: "https://yaphan.com.tr"
-    },
     mainEntity: {
       "@type": "Organization",
       name: "YapHan İnşaat",
-      description: "Modern ve lüks konut projeleri, ticari yapılar inşa eden güvenilir bir inşaat firması",
-      foundingDate: "2013",
-      url: "https://yaphan.com.tr"
-    }
-  }
+      description:
+        "10 yılı aşkın süredir Çorum'da lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
+      url: "https://yaphan.com.tr",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+90-XXX-XXX-XXXX",
+        contactType: "customer service",
+        areaServed: "TR",
+        availableLanguage: ["Turkish", "English"],
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Üçtutlar Mahallesi Dr. İlhan Gürel Caddesi 68-14",
+          addressLocality: "Merkez",
+          addressRegion: "Çorum",
+          postalCode: "19000",
+          addressCountry: "TR",
+        },
+      },
+    },
+    isPartOf: {
+      "@type": "WebSite",
+      name: "YapHan İnşaat",
+      url: "https://yaphan.com.tr",
+    },
+    sameAs: [
+      "https://www.facebook.com/yaphaninsaat",
+      "https://www.instagram.com/yaphaninsaat",
+      "https://www.linkedin.com/company/yaphaninsaat",
+    ],
+  },
 });
 
 setSeo();
