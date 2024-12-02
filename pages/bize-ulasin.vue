@@ -249,7 +249,7 @@ Gönderim Zamanı: ${timestamp}
 setSeo({
   title: "İletişim - YapHan İnşaat | Bize Ulaşın",
   description:
-    "YapHan İnşaat ile iletişime geçin. İstanbul'da inşaat, renovasyon ve tadilat projeleriniz için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.",
+    "YapHan İnşaat ile iletişime geçin. İstanbul'da inşaat, renovasyon, lüks villa projeleri, ticari yapılar ve lüks konut projeleriniz için bizimle iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.",
   keywords:
     "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres",
   schema: {

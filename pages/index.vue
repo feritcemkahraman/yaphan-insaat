@@ -408,7 +408,7 @@ setSeo({
   title:
     "YapHan İnşaat - Güven ve Kalite İnşa Ediyoruz | İstanbul'da Lüx Villa Projeleri ve Lüks Konut Projeleri",
   description:
-    "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. İstanbul'da 20 yılı aşkın tecrübemizle, modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
+    "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. İstanbul'da 10 yılı aşkın tecrübemizle, modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
   keywords:
     "yaphan inşaat, istanbul lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması istanbul",
   image: "/banner.webp",

@@ -32,21 +32,21 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "YapHan İnşaat",
+      title: "YapHan İnşaat | Geleceği Güvenle İnşa Ediyoruz",
       htmlAttrs: {
         lang: "tr",
       },
       meta: [
         { hid: 'og:title', name: 'og:title', property: 'og:title', content: 'YapHan İnşaat' },
-      { hid: 'og:site_name', name: 'og:site_name', property: 'og:site_name', content: 'YapHan İnşaat' },
-      { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'YapHan İnşaat' },
+        { hid: 'og:site_name', name: 'og:site_name', property: 'og:site_name', content: 'YapHan İnşaat' },
+        { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'YapHan İnşaat' },
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           hid: "description",
           name: "description",
           content:
-            "YapHan İnşaat, Çorum'da kaliteli ve güvenilir inşaat hizmetleri sunan bir firmadır. Konut projeleri, ticari yapılar ve renovasyon işleri için bize ulaşın.",
+            "YapHan İnşaat, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşın.",
         },
       ],
       link: [
@@ -79,6 +79,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://yaphan.com.tr",
+      siteName: "YapHan İnşaat",
     },
   },
 });
