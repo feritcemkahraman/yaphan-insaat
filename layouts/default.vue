@@ -22,41 +22,25 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 
 const loading = ref(false);
 const router = useRouter();
 const route = useRoute();
-const isInitialLoad = ref(true);
-
-// İlk yükleme için preloader'ı göster
-onMounted(() => {
-  if (isInitialLoad.value) {
-    loading.value = true;
-    setTimeout(() => {
-      loading.value = false;
-      isInitialLoad.value = false;
-    }, 3000);
-  }
-});
 
 // Sayfa geçişlerini dinlemek için router kullanımı
 router.beforeEach((to, from, next) => {
-  // İlk yükleme değilse preloader'ı göster
-  if (!isInitialLoad.value) {
-    loading.value = true;
-  }
+  // Sayfa değişimi başlarken preloader'ı aktif et
+  loading.value = true;
   next();
 });
 
 router.afterEach(() => {
-  // İlk yükleme değilse preloader'ı kaldır
-  if (!isInitialLoad.value) {
-    setTimeout(() => {
-      loading.value = false;
-    }, 3000);
-  }
+  // Sayfa değişimi tamamlandığında belirli bir süre sonra preloader'ı kaldır
+  setTimeout(() => {
+    loading.value = false;
+  }, 3000); // 3 saniyelik preloader süresi
 });
 
 // Sadece serenity sayfasında footer'ı gizlemek için computed property
