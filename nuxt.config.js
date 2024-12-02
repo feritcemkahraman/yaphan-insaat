@@ -1,23 +1,25 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
-  compatibilityDate: "2024-04-03",
-  future: {
-    compatibilityVersion: 4,
-  },
-  experimental: {
-    payloadExtraction: false,
-  },
-  devtools: { enabled: true },
-  alias: {
-    "@": "/<rootDir>",
+  nitro: {
+    preset: 'cloudflare-pages',
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+        '/hakkimizda',
+        '/bize-ulasin',
+        '/200.html',
+        '/404.html'
+      ]
+    }
   },
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "@nuxt/icon",
     "@nuxt/image",
-    "@nuxtjs/sitemap",
+    "@nuxtjs/sitemap"
   ],
   image: {
     quality: 80,
@@ -47,8 +49,7 @@ export default defineNuxtConfig({
         {
           hid: "description",
           name: "description",
-          content:
-            "YapHan İnşaat, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşın.",
+          content: "YapHan İnşaat, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşın.",
         },
       ],
       link: [
@@ -60,7 +61,6 @@ export default defineNuxtConfig({
       ],
     },
   },
-  build: {},
   googleFonts: {
     families: {
       Montserrat: true,
@@ -95,23 +95,6 @@ export default defineNuxtConfig({
         priority: 0.8
       }
     ]
-  },
-  nitro: {
-    preset: 'cloudflare-pages',
-    serveStatic: true,
-    prerender: {
-      crawlLinks: true,
-      routes: [
-        '/',
-        '/hakkimizda',
-        '/bize-ulasin',
-        '/200.html',
-        '/404.html'
-      ]
-    },
-    routeRules: {
-      // API yapılandırmasını kaldırıyoruz
-    },
   },
   runtimeConfig: {
     public: {
