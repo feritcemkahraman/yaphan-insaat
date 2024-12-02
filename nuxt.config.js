@@ -63,9 +63,30 @@ export default defineNuxtConfig({
           content:
             "YapHan İnşaat, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşın.",
         },
+        { name: "msapplication-TileColor", content: "#da532c" },
+        { name: "theme-color", content: "#ffffff" },
       ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "32x32",
+          href: "/favicon-32x32.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "16x16",
+          href: "/favicon-16x16.png",
+        },
+        {
+          rel: "apple-touch-icon",
+          sizes: "180x180",
+          href: "/apple-touch-icon.png",
+        },
+        { rel: "manifest", href: "/site.webmanifest" },
+        { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#5bbad5" },
         {
           rel: "stylesheet",
           href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
@@ -115,7 +136,7 @@ export default defineNuxtConfig({
         url: "/projeler/tamamlanan",
         changefreq: "weekly",
         priority: 0.8,
-      }
+      },
     ],
   },
   runtimeConfig: {
