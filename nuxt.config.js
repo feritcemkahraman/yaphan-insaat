@@ -2,28 +2,22 @@
 export default defineNuxtConfig({
   ssr: true,
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: "cloudflare-pages",
     prerender: {
       crawlLinks: true,
-      routes: [
-        '/',
-        '/hakkimizda',
-        '/bize-ulasin',
-        '/200.html',
-        '/404.html'
-      ]
-    }
+      routes: ["/", "/hakkimizda", "/bize-ulasin", "/200.html", "/404.html"],
+    },
   },
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "@nuxt/icon",
     "@nuxt/image",
-    "@nuxtjs/sitemap"
+    "@nuxtjs/sitemap",
   ],
   image: {
     quality: 80,
-    format: ['webp', 'jpeg', 'jpg', 'png'],
+    format: ["webp", "jpeg", "jpg", "png"],
     screens: {
       xs: 320,
       sm: 640,
@@ -40,16 +34,31 @@ export default defineNuxtConfig({
         lang: "tr",
       },
       meta: [
-        { hid: 'og:title', name: 'og:title', property: 'og:title', content: 'YapHan İnşaat' },
-        { hid: 'og:site_name', name: 'og:site_name', property: 'og:site_name', content: 'YapHan İnşaat' },
-        { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'YapHan İnşaat' },
+        {
+          hid: "og:title",
+          name: "og:title",
+          property: "og:title",
+          content: "YapHan İnşaat",
+        },
+        {
+          hid: "og:site_name",
+          name: "og:site_name",
+          property: "og:site_name",
+          content: "YapHan İnşaat",
+        },
+        {
+          hid: "apple-mobile-web-app-title",
+          name: "apple-mobile-web-app-title",
+          content: "YapHan İnşaat",
+        },
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "robots", content: "index, follow" },
         {
           hid: "description",
           name: "description",
-          content: "YapHan İnşaat, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşın.",
+          content:
+            "YapHan İnşaat, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşın.",
         },
       ],
       link: [
@@ -68,37 +77,35 @@ export default defineNuxtConfig({
   },
   css: ["flowbite/dist/flowbite.css"],
   sitemap: {
-    hostname: process.env.NUXT_PUBLIC_SITE_URL || "https://yaphan.com.tr",
+    hostname: "https://yaphan.com.tr",
     gzip: true,
-    exclude: [
-      '/404'
-    ],
+    exclude: ["/404"],
     defaults: {
-      changefreq: 'daily',
+      changefreq: "daily",
       priority: 0.8,
-      lastmod: new Date().toISOString()
+      lastmod: new Date().toISOString(),
     },
     routes: [
       {
-        url: '/',
-        changefreq: 'daily',
-        priority: 1.0
+        url: "/",
+        changefreq: "daily",
+        priority: 1.0,
       },
       {
-        url: '/hakkimizda',
-        changefreq: 'weekly',
-        priority: 0.8
+        url: "/hakkimizda",
+        changefreq: "weekly",
+        priority: 0.8,
       },
       {
-        url: '/bize-ulasin',
-        changefreq: 'weekly',
-        priority: 0.8
-      }
-    ]
+        url: "/bize-ulasin",
+        changefreq: "weekly",
+        priority: 0.8,
+      },
+    ],
   },
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://yaphan.com.tr",
+      siteUrl: "https://yaphan.com.tr",
       siteName: "YapHan İnşaat",
     },
   },
