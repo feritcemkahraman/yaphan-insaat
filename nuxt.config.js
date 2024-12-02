@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
+  site: {
+    url: "https://yaphan.com.tr",
+  },
   nitro: {
     preset: "cloudflare-pages",
     prerender: {
@@ -85,6 +88,8 @@ export default defineNuxtConfig({
       priority: 0.8,
       lastmod: new Date().toISOString(),
     },
+    siteUrl: "https://yaphan.com.tr",
+    trailingSlash: false,
     routes: [
       {
         url: "/",
@@ -98,6 +103,11 @@ export default defineNuxtConfig({
       },
       {
         url: "/bize-ulasin",
+        changefreq: "weekly",
+        priority: 0.8,
+      },
+      {
+        url: "/projelerin-tamami/serenity",
         changefreq: "weekly",
         priority: 0.8,
       },
