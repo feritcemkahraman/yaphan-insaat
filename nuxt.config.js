@@ -97,11 +97,17 @@ export default defineNuxtConfig({
     ]
   },
   nitro: {
-    preset: "cloudflare-pages",
+    preset: 'cloudflare-pages',
     serveStatic: true,
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/200.html", "/404.html"],
+      routes: [
+        '/',
+        '/hakkimizda',
+        '/bize-ulasin',
+        '/200.html',
+        '/404.html'
+      ]
     },
     routeRules: {
       // API yapılandırmasını kaldırıyoruz
