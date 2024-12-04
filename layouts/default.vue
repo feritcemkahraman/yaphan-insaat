@@ -49,7 +49,8 @@ const isProjelerPage = computed(
     route.path.includes("serenity") ||
     route.path.includes("mavi-ufuklar") ||
     route.path.includes("gecenin-isigi") ||
-    route.path.includes("sultan-kosku")
+    route.path.includes("sultan-kosku") ||
+    route.path.includes("panorama")
 );
 </script>
 

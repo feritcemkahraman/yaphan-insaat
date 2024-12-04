@@ -162,7 +162,7 @@ export default {
       images: [
         "/projeler/tamamlanan/img/yaphan-panorama-kapak.webp",
         "/projeler/tamamlanan/img/yaphan-panorama-n.webp",
-        "/projeler/tamamlanan/img/yaphan-panorama-1.jpg",
+        "/projeler/tamamlanan/img/yaphan-panorama.jpg",
         "/projeler/tamamlanan/img/yaphan-panorama-2.jpg",
         "/projeler/tamamlanan/img/yaphan-panorama-3.jpg",
         "/projeler/tamamlanan/img/yaphan-panorama-4.jpg",
