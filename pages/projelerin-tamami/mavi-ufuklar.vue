@@ -97,18 +97,22 @@
           <div
             class="thumbnail-slider overflow-x-auto overflow-y-hidden hide-scrollbar snap-x snap-mandatory"
             :style="{
+              width: isMobile
+                ? 'calc(100vw - 100px)'
+                : `${visibleThumbnails * 160}px`,
               scrollBehavior: 'smooth',
               '-webkit-overflow-scrolling': 'touch',
             }"
+            @scroll="updateActiveThumbnail"
             ref="thumbnailSlider"
           >
             <div class="flex">
               <div
-                v-for="(image, index) in images"
+                v-for="(image, index) in displayedImages"
                 :key="index"
-                class="relative cursor-pointer transition-all duration-300 flex-shrink-0 snap-center thumbnail-item"
+                class="relative cursor-pointer transition-all duration-300 flex-shrink-0 snap-center"
                 :class="[
-                  currentIndex === index
+                  currentIndex === index % images.length
                     ? 'opacity-100'
                     : 'opacity-50',
                   'hover:opacity-80',
@@ -127,7 +131,7 @@
                   :style="{ height: isMobile ? '35vw' : '96px' }"
                 />
                 <div
-                  v-if="currentIndex === index"
+                  v-if="currentIndex === index % images.length"
                   class="absolute inset-0 border-2 border-white"
                 ></div>
               </div>
@@ -168,6 +172,8 @@ export default {
       currentIndex: 0,
       isMobile: false,
       windowWidth: 0,
+      isScrolling: false,
+      scrollTimeout: null,
     };
   },
 
@@ -176,7 +182,7 @@ export default {
       return this.images[this.currentIndex];
     },
     visibleThumbnails() {
-      return this.isMobile ? 2 : 5;
+      return this.isMobile ? 2 : Math.min(5, this.images.length);
     },
     thumbnailWidth() {
       if (this.isMobile) {
@@ -184,83 +190,156 @@ export default {
       }
       return 144;
     },
-    thumbnailSliderWidth() {
-      // Görsel sayısına göre dinamik genişlik hesapla
-      const itemWidth = this.thumbnailWidth;
-      const itemMargin = 16; // margin-right
-      return `${this.images.length * (itemWidth + itemMargin)}px`;
+    displayedImages() {
+      return this.images;
     },
   },
 
   methods: {
-    previousThumbnail() {
-      this.previousImage();
+    initializeSlider() {
+      if (!this.$refs.thumbnailSlider) return;
+
+      const slider = this.$refs.thumbnailSlider;
+      slider.addEventListener("scroll", this.updateActiveThumbnail);
+
+      // Başlangıç pozisyonunu ayarla
+      this.currentIndex = 0; // İlk görseli ayarla
+      slider.scrollLeft = this.currentIndex * (this.thumbnailWidth + 16);
     },
 
-    nextThumbnail() {
-      this.nextImage();
-    },
+    updateActiveThumbnail() {
+      if (!this.$refs.thumbnailSlider || this.isScrolling) return;
 
-    previousImage() {
-      this.currentIndex = 
-        this.currentIndex === 0 
-          ? this.images.length - 1 
-          : this.currentIndex - 1;
-      this.scrollToCurrentThumbnail();
-    },
+      const slider = this.$refs.thumbnailSlider;
+      const scrollLeft = slider.scrollLeft;
+      const itemWidth = this.thumbnailWidth + 16;
+      const index = Math.round(scrollLeft / itemWidth);
 
-    nextImage() {
-      this.currentIndex = 
-        this.currentIndex === this.images.length - 1 
-          ? 0 
-          : this.currentIndex + 1;
-      this.scrollToCurrentThumbnail();
-    },
-
-    scrollToCurrentThumbnail() {
-      this.$nextTick(() => {
-        if (this.$refs.thumbnailSlider) {
-          const slider = this.$refs.thumbnailSlider;
-          const thumbnails = slider.querySelectorAll('.thumbnail-item');
-          
-          if (thumbnails[this.currentIndex]) {
-            thumbnails[this.currentIndex].scrollIntoView({
-              behavior: 'smooth',
-              block: 'nearest',
-              inline: 'center'
-            });
-          }
-        }
-      });
+      if (index >= 0 && index < this.images.length) {
+        this.currentIndex = index;
+      }
     },
 
     selectImage(index) {
-      this.currentIndex = index;
-      this.scrollToCurrentThumbnail();
+      const normalizedIndex = ((index % this.images.length) + this.images.length) % this.images.length;
+      this.currentIndex = normalizedIndex;
+
+      if (this.$refs.thumbnailSlider) {
+        const itemWidth = this.thumbnailWidth + 16;
+        const slider = this.$refs.thumbnailSlider;
+        
+        if (this.isMobile) {
+          const maxScroll = slider.scrollWidth - slider.clientWidth;
+          const targetScroll = normalizedIndex * itemWidth;
+          const finalScroll = Math.min(targetScroll, maxScroll);
+          
+          this.isScrolling = true;
+          requestAnimationFrame(() => {
+            slider.scrollTo({
+              left: finalScroll,
+              behavior: "smooth",
+            });
+            setTimeout(() => {
+              this.isScrolling = false;
+            }, 300);
+          });
+        } else {
+          requestAnimationFrame(() => {
+            slider.scrollTo({
+              left: normalizedIndex * itemWidth,
+              behavior: "smooth",
+            });
+          });
+        }
+      }
+    },
+
+    nextThumbnail() {
+      if (!this.$refs.thumbnailSlider) return;
+      const slider = this.$refs.thumbnailSlider;
+      const currentScroll = slider.scrollLeft;
+      const itemWidth = this.thumbnailWidth + 16;
+      const nextIndex = (this.currentIndex + 1) % this.images.length;
+
+      // Bir sonraki görsele geç
+      this.selectImage(nextIndex);
+    },
+
+    previousThumbnail() {
+      if (!this.$refs.thumbnailSlider) return;
+      const slider = this.$refs.thumbnailSlider;
+      const currentScroll = slider.scrollLeft;
+      const itemWidth = this.thumbnailWidth + 16;
+      const prevIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+
+      // Bir önceki görsele geç
+      this.selectImage(prevIndex);
+    },
+
+    handleScroll() {
+      if (!this.$refs.thumbnailSlider || this.isMobile) return;
+
+      const slider = this.$refs.thumbnailSlider;
+      const scrollLeft = slider.scrollLeft;
+      const itemWidth = this.thumbnailWidth + 16;
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+      if (this.isScrolling) {
+        clearTimeout(this.scrollTimeout);
+      }
+
+      this.isScrolling = true;
+      this.scrollTimeout = setTimeout(() => {
+        this.isScrolling = false;
+      }, 150);
+    },
+
+    checkMobile() {
+      if (process.client) {
+        this.isMobile = window.innerWidth <= 768;
+        this.windowWidth = window.innerWidth;
+      }
+    },
+
+    initializeClientSide() {
+      if (process.client) {
+        this.checkMobile();
+        window.addEventListener("resize", this.checkMobile);
+      }
+    },
+
+    previousImage() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.images.length) % this.images.length;
+      this.selectImage(this.currentIndex);
+    },
+
+    nextImage() {
+      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      this.selectImage(this.currentIndex);
+    },
+
+    handleKeyPress(e) {
+      if (e.key === "ArrowLeft") {
+        this.previousImage();
+      } else if (e.key === "ArrowRight") {
+        this.nextImage();
+      }
     },
   },
 
   mounted() {
+    this.initializeClientSide();
+    this.initializeSlider();
     if (process.client) {
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          this.previousImage();
-        } else if (e.key === "ArrowRight") {
-          this.nextImage();
-        }
-      });
+      window.addEventListener("keydown", this.handleKeyPress);
     }
   },
 
   beforeDestroy() {
     if (process.client) {
-      window.removeEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          this.previousImage();
-        } else if (e.key === "ArrowRight") {
-          this.nextImage();
-        }
-      });
+      window.removeEventListener("resize", this.checkMobile);
+      window.removeEventListener("keydown", this.handleKeyPress);
     }
   },
 };
@@ -333,19 +412,13 @@ export default {
 
 .thumbnail-slider {
   display: flex;
+  gap: 1rem;
   overflow-x: auto;
-  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-snap-type: x mandatory;
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .thumbnail-slider {
-    width: auto;
-  }
 }
 
 .thumbnail-slider::-webkit-scrollbar {
