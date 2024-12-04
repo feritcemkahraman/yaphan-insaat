@@ -5,20 +5,18 @@
       <!-- Sol taraf - Başlık ve Açıklama -->
       <div class="text-section">
         <h2 class="text-5xl font-light mb-6">
-          Mavi Ufuklar Villası – Konfora Açılan Bir Yaşam Alanı
+          Gecenin Işığı Konağı – Işığın Büyüsüyle Aydınlanan Bir Yaşam
         </h2>
         <p class="text-lg leading-relaxed opacity-90 mb-12 mt-6">
-          Mavi Ufuklar Villası, adından aldığı ilhamla gökyüzü ve denizle
-          bütünleşen bir huzur vahanız olacak. Doğayla iç içe, engin ufuklara
-          açılan bu özel villa, sakinliğin ve lüksün eşsiz bir uyumla bir araya
-          geldiği bir yaşam deneyimi sunar. Villanın geniş ve ferah odaları,
-          doğal ışığın bolca içeri girmesine olanak tanırken, modern tasarım
-          çizgileriyle göz doldurur. Mavi tonlarının hakim olduğu ince detaylar,
-          mekâna dingin bir atmosfer kazandırır. Villanın geniş terası, gün
-          batımının keyfini çıkarabileceğiniz, unutulmaz manzaralar sunan bir
-          seyir alanıdır. Mavi Ufuklar Villası, şehirden uzaklaşarak doğanın
-          kollarında konfor ve zarafeti en yüksek düzeyde deneyimlemenizi
-          sağlıyor.
+          Gecenin Işığı Konağı, geceyi aydınlatan ışığın zarafetini ve modern
+          mimarinin ihtişamını bir araya getiriyor. Bu özel villa, karanlıkta
+          bile parlayan sofistike detaylarıyla, her anında lüks ve konforu en
+          üst düzeyde yaşamanız için tasarlandı. Geniş ve aydınlık iç mekânları,
+          zarif dekorasyonu ile dikkat çeken Gecenin Işığı Konağı, her köşesinde
+          sıcak ve davetkâr bir atmosfer yaratır. Göz alıcı dış mimarisi ve
+          özenle tasarlanmış peyzaj alanları, villaya hem gece hem de gündüz
+          ayrı bir karakter katıyor. Bu villa, ışığın büyüsüyle çevrelenmiş,
+          zarafet dolu bir yaşam sunuyor.
         </p>
       </div>
 
@@ -97,18 +95,22 @@
           <div
             class="thumbnail-slider overflow-x-auto overflow-y-hidden hide-scrollbar snap-x snap-mandatory"
             :style="{
+              width: isMobile
+                ? 'calc(100vw - 100px)'
+                : `${visibleThumbnails * 160}px`,
               scrollBehavior: 'smooth',
               '-webkit-overflow-scrolling': 'touch',
             }"
+            @scroll="updateActiveThumbnail"
             ref="thumbnailSlider"
           >
             <div class="flex">
               <div
-                v-for="(image, index) in images"
+                v-for="(image, index) in displayedImages"
                 :key="index"
-                class="relative cursor-pointer transition-all duration-300 flex-shrink-0 snap-center thumbnail-item"
+                class="relative cursor-pointer transition-all duration-300 flex-shrink-0 snap-center"
                 :class="[
-                  currentIndex === index
+                  currentIndex === index % images.length
                     ? 'opacity-100'
                     : 'opacity-50',
                   'hover:opacity-80',
@@ -127,7 +129,7 @@
                   :style="{ height: isMobile ? '35vw' : '96px' }"
                 />
                 <div
-                  v-if="currentIndex === index"
+                  v-if="currentIndex === index % images.length"
                   class="absolute inset-0 border-2 border-white"
                 ></div>
               </div>
@@ -162,12 +164,20 @@ export default {
   data() {
     return {
       images: [
-        "/projeler/tamamlanan/img/yaphan-mavi-ufuklar-villa.webp",
-        "/projeler/tamamlanan/img/yaphan-mavi-ufuklar-villa-2.webp",
+        "/projeler/tamamlanan/img/yaphan-gecenin.webp",
+        "/projeler/tamamlanan/img/yaphan-gecenin-2.webp",
+        "/projeler/tamamlanan/img/yaphan-gecenin-3.webp",
+        "/projeler/tamamlanan/img/yaphan-gecenin-4.webp",
+        "/projeler/tamamlanan/img/yaphan-gecenin-5.webp",
+        "/projeler/tamamlanan/img/yaphan-gecenin-6.webp",
+        "/projeler/tamamlanan/img/yaphan-gecenin-7.webp",
+        "/projeler/tamamlanan/img/yaphan-gecenin-8.webp",
       ],
       currentIndex: 0,
       isMobile: false,
       windowWidth: 0,
+      isScrolling: false,
+      scrollTimeout: null,
     };
   },
 
@@ -184,83 +194,142 @@ export default {
       }
       return 144;
     },
-    thumbnailSliderWidth() {
-      // Görsel sayısına göre dinamik genişlik hesapla
-      const itemWidth = this.thumbnailWidth;
-      const itemMargin = 16; // margin-right
-      return `${this.images.length * (itemWidth + itemMargin)}px`;
+    displayedImages() {
+      // Görselleri 10 kez tekrarla tamamen smooth olması için
+      const repeatedImages = [];
+      for (let i = 0; i < 10; i++) {
+        repeatedImages.push(...this.images);
+      }
+      return repeatedImages;
     },
   },
 
   methods: {
-    previousThumbnail() {
-      this.previousImage();
+    initializeSlider() {
+      if (!this.$refs.thumbnailSlider) return;
+
+      const slider = this.$refs.thumbnailSlider;
+      slider.addEventListener("scroll", this.updateActiveThumbnail);
+
+      // Başlangıç pozisyonunu ayarla
+      this.currentIndex = 0; // İlk görseli ayarla
+      slider.scrollLeft = this.currentIndex * (this.thumbnailWidth + 16);
     },
 
-    nextThumbnail() {
-      this.nextImage();
-    },
+    updateActiveThumbnail() {
+      if (!this.$refs.thumbnailSlider) return;
 
-    previousImage() {
-      this.currentIndex = 
-        this.currentIndex === 0 
-          ? this.images.length - 1 
-          : this.currentIndex - 1;
-      this.scrollToCurrentThumbnail();
-    },
+      const slider = this.$refs.thumbnailSlider;
+      const scrollLeft = slider.scrollLeft;
+      const itemWidth = this.thumbnailWidth + 16;
+      const index = Math.round(scrollLeft / itemWidth);
 
-    nextImage() {
-      this.currentIndex = 
-        this.currentIndex === this.images.length - 1 
-          ? 0 
-          : this.currentIndex + 1;
-      this.scrollToCurrentThumbnail();
-    },
-
-    scrollToCurrentThumbnail() {
-      this.$nextTick(() => {
-        if (this.$refs.thumbnailSlider) {
-          const slider = this.$refs.thumbnailSlider;
-          const thumbnails = slider.querySelectorAll('.thumbnail-item');
-          
-          if (thumbnails[this.currentIndex]) {
-            thumbnails[this.currentIndex].scrollIntoView({
-              behavior: 'smooth',
-              block: 'nearest',
-              inline: 'center'
-            });
-          }
-        }
-      });
+      // Aktif thumbnail'i güncelle
+      if (this.currentIndex !== index % this.images.length) {
+        this.currentIndex = index % this.images.length;
+      }
     },
 
     selectImage(index) {
-      this.currentIndex = index;
-      this.scrollToCurrentThumbnail();
+      this.currentIndex = index % this.images.length;
+
+      // Seçilen thumbnail'e scroll
+      if (this.$refs.thumbnailSlider) {
+        this.$refs.thumbnailSlider.scrollTo({
+          left: index * (this.thumbnailWidth + 16),
+          behavior: "smooth",
+        });
+      }
+    },
+
+    nextThumbnail() {
+      if (!this.$refs.thumbnailSlider) return;
+      const slider = this.$refs.thumbnailSlider;
+      const currentScroll = slider.scrollLeft;
+      const itemWidth = this.thumbnailWidth + 16;
+
+      slider.scrollTo({
+        left: currentScroll + itemWidth,
+        behavior: "smooth",
+      });
+    },
+
+    previousThumbnail() {
+      if (!this.$refs.thumbnailSlider) return;
+      const slider = this.$refs.thumbnailSlider;
+      const currentScroll = slider.scrollLeft;
+      const itemWidth = this.thumbnailWidth + 16;
+
+      slider.scrollTo({
+        left: currentScroll - itemWidth,
+        behavior: "smooth",
+      });
+    },
+
+    handleScroll() {
+      if (!this.$refs.thumbnailSlider) return;
+
+      const slider = this.$refs.thumbnailSlider;
+      const scrollLeft = slider.scrollLeft;
+      const itemWidth = this.thumbnailWidth + 16;
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+      // Sonsuz scroll için kontrol
+      if (scrollLeft >= maxScroll - itemWidth) {
+        // Sona gelince ortaya dön
+        slider.scrollLeft = (this.images.length * itemWidth) / 2;
+      } else if (scrollLeft <= itemWidth) {
+        // Başa gelince ortaya dön
+        slider.scrollLeft = (this.images.length * itemWidth) / 2;
+      }
+    },
+
+    checkMobile() {
+      if (process.client) {
+        this.isMobile = window.innerWidth <= 768;
+        this.windowWidth = window.innerWidth;
+      }
+    },
+
+    initializeClientSide() {
+      if (process.client) {
+        this.checkMobile();
+        window.addEventListener("resize", this.checkMobile);
+      }
+    },
+
+    previousImage() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.images.length) % this.images.length;
+      this.selectImage(this.currentIndex);
+    },
+
+    nextImage() {
+      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      this.selectImage(this.currentIndex);
+    },
+
+    handleKeyPress(e) {
+      if (e.key === "ArrowLeft") {
+        this.previousImage();
+      } else if (e.key === "ArrowRight") {
+        this.nextImage();
+      }
     },
   },
 
   mounted() {
+    this.initializeClientSide();
+    this.initializeSlider();
     if (process.client) {
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          this.previousImage();
-        } else if (e.key === "ArrowRight") {
-          this.nextImage();
-        }
-      });
+      window.addEventListener("keydown", this.handleKeyPress);
     }
   },
 
   beforeDestroy() {
     if (process.client) {
-      window.removeEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          this.previousImage();
-        } else if (e.key === "ArrowRight") {
-          this.nextImage();
-        }
-      });
+      window.removeEventListener("resize", this.checkMobile);
+      window.removeEventListener("keydown", this.handleKeyPress);
     }
   },
 };
@@ -333,19 +402,13 @@ export default {
 
 .thumbnail-slider {
   display: flex;
+  gap: 1rem;
   overflow-x: auto;
-  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-snap-type: x mandatory;
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .thumbnail-slider {
-    width: auto;
-  }
 }
 
 .thumbnail-slider::-webkit-scrollbar {

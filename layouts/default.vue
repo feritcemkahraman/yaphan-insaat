@@ -44,7 +44,7 @@ router.afterEach(() => {
 });
 
 // Sadece serenity ve mavi-ufuklar sayfalarında footer'ı gizlemek için computed property
-const isProjelerPage = computed(() => route.path.includes('serenity') || route.path.includes('mavi-ufuklar'));
+const isProjelerPage = computed(() => route.path.includes('serenity') || route.path.includes('mavi-ufuklar') || route.path.includes('gecenin-isigi'));
 </script>
 
 <style scoped>
