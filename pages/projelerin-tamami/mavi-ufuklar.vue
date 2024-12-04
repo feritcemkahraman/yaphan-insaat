@@ -1,23 +1,9 @@
 <template>
   <div class="h-screen flex overflow-hidden bg-gray-800 text-white relative">
-    <!-- Ana Görsel Container -->
-    <div class="absolute inset-0 w-full h-full">
-      <transition name="fade" mode="out-in">
-        <img
-          :key="currentIndex"
-          :src="selectedImage"
-          :alt="`Görsel ${currentIndex + 1}`"
-          class="w-full h-full object-cover"
-        />
-      </transition>
-    </div>
-
     <!-- Overlay Container -->
     <div class="relative w-full h-full">
       <!-- Sol taraf - Başlık ve Açıklama -->
-      <div
-        class="absolute left-0 bottom-0 w-1/3 p-12 pb-0 bg-gradient-to-t from-black/80 to-transparent"
-      >
+      <div class="text-section">
         <h2 class="text-5xl font-light mb-6">
           Mavi Ufuklar Villası – Konfora Açılan Bir Yaşam Alanı
         </h2>
@@ -36,53 +22,65 @@
         </p>
       </div>
 
-      <!-- Ana Görsel Navigation Arrows -->
-      <button
-        class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full hover:bg-black/70 transition-colors z-20"
-        @click="previousImage"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 19l-7-7 7-7"
+      <!-- Ana Görsel Container -->
+      <div class="image-section">
+        <transition name="fade" mode="out-in">
+          <img
+            :key="currentIndex"
+            :src="selectedImage"
+            :alt="`Görsel ${currentIndex + 1}`"
+            class="w-full h-full object-cover"
           />
-        </svg>
-      </button>
+        </transition>
 
-      <button
-        class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full hover:bg-black/70 transition-colors z-20"
-        @click="nextImage"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+        <!-- Ana Görsel Navigation Arrows -->
+        <button
+          class="nav-arrow nav-arrow-left"
+          @click="previousImage"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+
+        <button
+          class="nav-arrow nav-arrow-right"
+          @click="nextImage"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </div>
 
       <!-- Thumbnail Slider Container -->
-      <div class="absolute bottom-0 right-0 bg-black/60 p-6 z-20">
+      <div class="thumbnail-section">
         <div class="flex items-center gap-4">
           <!-- Thumbnail Previous Button -->
           <button
-            class="p-2 bg-black/50 rounded-full hover:bg-black/70 transition-colors"
+            class="thumbnail-nav-btn"
             @click="previousThumbnail"
             :disabled="thumbnailStartIndex === 0"
             :class="{
@@ -107,8 +105,11 @@
 
           <!-- Thumbnails -->
           <div
-            class="flex gap-4 overflow-hidden"
-            :style="{ width: isMobile ? 'calc(100vw - 100px)' : '784px' }"
+            class="thumbnail-slider flex gap-4 overflow-x-auto"
+            :style="{ width: isMobile ? 'calc(100vw - 100px)' : `${images.length * 160}px` }"
+            @touchstart="handleTouchStart"
+            @touchmove="handleTouchMove"
+            @touchend="handleTouchEnd"
           >
             <div
               class="flex gap-4 transition-transform duration-300 ease-in-out"
@@ -147,7 +148,7 @@
 
           <!-- Thumbnail Next Button -->
           <button
-            class="p-2 bg-black/50 rounded-full hover:bg-black/70 transition-colors"
+            class="thumbnail-nav-btn"
             @click="nextThumbnail"
             :disabled="thumbnailStartIndex >= images.length - visibleThumbnails"
             :class="{
@@ -188,6 +189,8 @@ export default {
       thumbnailStartIndex: 0,
       isMobile: false,
       windowWidth: 0,
+      touchStartX: 0,
+      touchMoveX: 0,
     };
   },
 
@@ -278,6 +281,33 @@ export default {
         window.addEventListener("keydown", this.handleKeyPress);
       }
     },
+
+    handleTouchStart(e) {
+      this.touchStartX = e.touches[0].clientX;
+    },
+
+    handleTouchMove(e) {
+      this.touchMoveX = e.touches[0].clientX;
+      const diff = this.touchMoveX - this.touchStartX;
+      
+      // Yatay kaydırma mesafesi 50px'den fazlaysa
+      if (Math.abs(diff) > 50) {
+        if (diff > 0 && this.currentIndex > 0) {
+          // Sağa kaydırma
+          this.previousImage();
+          this.touchStartX = this.touchMoveX;
+        } else if (diff < 0 && this.currentIndex < this.images.length - 1) {
+          // Sola kaydırma
+          this.nextImage();
+          this.touchStartX = this.touchMoveX;
+        }
+      }
+    },
+
+    handleTouchEnd() {
+      this.touchStartX = 0;
+      this.touchMoveX = 0;
+    },
   },
 
   mounted() {
@@ -294,7 +324,7 @@ export default {
 </script>
 
 <style scoped>
-/* Masaüstü görünümü için mevcut stiller korunuyor */
+/* Transition efektleri */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.1s;
@@ -305,78 +335,175 @@ export default {
   opacity: 0;
 }
 
+/* Temel stiller */
+.text-section {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 33.333%;
+  padding: 3rem;
+  padding-bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  z-index: 10;
+}
+
+.image-section {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.thumbnail-section {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1.5rem;
+  z-index: 20;
+}
+
+.thumbnail-nav-btn {
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.thumbnail-nav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.thumbnail-slider {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.thumbnail-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.thumbnail-item {
+  flex: 0 0 auto;
+  width: calc((100vw - 32rem) / var(--image-count));
+  max-width: 144px;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.nav-arrow-left {
+  left: 1rem;
+}
+
+.nav-arrow-right {
+  right: 1rem;
+}
+
 /* Mobil görünüm için özel stiller */
 @media (max-width: 768px) {
-  /* Ana görsel container için mobil düzenlemeler */
-  .absolute.inset-0 {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+  /* Ana container düzenlemesi */
+  .h-screen.flex {
+    min-height: 100vh !important;
+    height: auto !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
   }
 
-  .absolute.inset-0 img {
-    height: 55vh !important;
-    object-fit: contain !important;
+  .relative.w-full.h-full {
+    position: static !important;
+    height: auto !important;
     width: 100% !important;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   /* Başlık ve açıklama için mobil düzenlemeler */
-  .absolute.left-0.bottom-0 {
+  .text-section {
+    position: static !important;
     width: 100% !important;
     padding: 1rem !important;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.2),
-      transparent
-    ) !important;
-    bottom: auto !important;
-    top: 0 !important;
-    z-index: 20;
+    background: #1f2937 !important;
+    order: 1 !important;
   }
 
-  .absolute.left-0.bottom-0 h2 {
-    font-size: 2rem !important;
-    margin-bottom: 0.5rem !important;
+  /* Ana görsel container için mobil düzenlemeler */
+  .image-section {
+    position: relative !important;
+    height: 50vh !important;
+    width: 100% !important;
+    order: 2 !important;
   }
 
-  .absolute.left-0.bottom-0 p {
-    font-size: 1rem !important;
-    margin-bottom: 1rem !important;
+  .image-section img {
+    position: static !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
 
   /* Thumbnail slider için mobil düzenlemeler */
-  .absolute.bottom-0.right-0 {
-    width: 100%;
-    padding: 1rem !important;
-    background: rgba(0, 0, 0, 0.5) !important;
-  }
-
-  .flex.gap-4.overflow-hidden {
-    width: calc(100vw - 100px) !important;
-  }
-
-  .flex.gap-4.overflow-hidden .flex.gap-4 > div {
-    width: calc((100vw - 120px) / 2) !important;
-    flex: 0 0 auto;
-  }
-
-  .flex.gap-4.overflow-hidden img {
+  .thumbnail-section {
+    position: relative !important;
     width: 100% !important;
-    height: 35vw !important;
+    padding: 1rem !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    order: 3 !important;
   }
 
-  /* Thumbnail görsel hover ve aktif durumları */
-  .flex.gap-4.overflow-hidden .flex.gap-4 > div {
-    opacity: 0.7;
-    transition: opacity 0.1s ease;
+  .thumbnail-slider {
+    width: 100% !important;
+    padding-bottom: 0.5rem;
   }
 
-  .flex.gap-4.overflow-hidden .flex.gap-4 > div:hover,
-  .flex.gap-4.overflow-hidden .flex.gap-4 > div.active {
-    opacity: 1;
+  .thumbnail-item {
+    flex: 0 0 auto;
+    width: 120px !important;
+  }
+
+  .nav-arrow {
+    position: absolute;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 30 !important;
+  }
+
+  .nav-arrow-left {
+    left: 1rem !important;
+  }
+
+  .nav-arrow-right {
+    right: 1rem !important;
   }
 }
 </style>
