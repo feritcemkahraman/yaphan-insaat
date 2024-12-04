@@ -22,8 +22,8 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { ref, computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 const loading = ref(false);
 const router = useRouter();
@@ -44,7 +44,13 @@ router.afterEach(() => {
 });
 
 // Sadece serenity ve mavi-ufuklar sayfalarında footer'ı gizlemek için computed property
-const isProjelerPage = computed(() => route.path.includes('serenity') || route.path.includes('mavi-ufuklar') || route.path.includes('gecenin-isigi'));
+const isProjelerPage = computed(
+  () =>
+    route.path.includes("serenity") ||
+    route.path.includes("mavi-ufuklar") ||
+    route.path.includes("gecenin-isigi") ||
+    route.path.includes("sultan-kosku")
+);
 </script>
 
 <style scoped>
