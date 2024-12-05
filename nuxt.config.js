@@ -41,6 +41,15 @@ export default defineNuxtConfig({
         lang: "tr",
       },
       meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+        {
+          hid: "description",
+          name: "description",
+          content:
+            "YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşabilirsiniz.",
+        },
         {
           hid: "og:title",
           name: "og:title",
@@ -57,15 +66,6 @@ export default defineNuxtConfig({
           hid: "apple-mobile-web-app-title",
           name: "apple-mobile-web-app-title",
           content: "YapHan İnşaat",
-        },
-        { charset: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "robots", content: "index, follow" },
-        {
-          hid: "description",
-          name: "description",
-          content:
-            "YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşabilirsiniz.",
         },
         { name: "msapplication-TileColor", content: "#da532c" },
         { name: "theme-color", content: "#ffffff" },
