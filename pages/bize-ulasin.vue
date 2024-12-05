@@ -219,48 +219,53 @@ definePageMeta({
 });
 
 const { setSeo } = useSeo({
-  title: "Bize Ulaşın - YapHan İnşaat | İletişim Bilgileri ve Adres",
+  title: "Bize Ulaşın - YapHan İnşaat | İletişim",
   description:
-    "YapHan İnşaat ile iletişime geçin. Lüks villa projeleri, inşaat, renovasyon, ticari yapılar ve lüks konut projeleriniz için bizimle iletişime geçebilirsiniz.",
+    "YapHan İnşaat ile iletişime geçin. Merkez ofisimiz Çorum'da bulunmaktadır. Projelerimiz hakkında bilgi almak için bize ulaşın.",
   keywords:
-    "yaphan inşaat iletişim, inşaat firması iletişim, yaphan telefon, yaphan adres",
+    "yaphan inşaat iletişim, yaphan iletişim, yaphan telefon, yaphan adres, yaphan konum",
   schema: {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
+    "@type": "WebPage",
     name: "YapHan İnşaat İletişim",
-    description: "YapHan İnşaat iletişim bilgileri ve formu",
+    description: "YapHan İnşaat iletişim bilgileri ve ofis konumu",
     url: "https://yaphan.com.tr/bize-ulasin",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "YapHan İnşaat",
+      url: "https://yaphan.com.tr",
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Ana Sayfa",
+          item: "https://yaphan.com.tr",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Bize Ulaşın",
+          item: "https://yaphan.com.tr/bize-ulasin",
+        },
+      ],
+    },
     mainEntity: {
       "@type": "Organization",
       name: "YapHan İnşaat",
       description:
-        "10 yılı aşkın süredir Çorum'da lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
+        "YapHan İnşaat, 10 yılı aşkın süredir lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
       url: "https://yaphan.com.tr",
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+90-XXX-XXX-XXXX",
         contactType: "customer service",
         areaServed: "TR",
-        availableLanguage: ["Turkish", "English"],
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "Üçtutlar Mahallesi Dr. İlhan Gürel Caddesi 68-14",
-          addressLocality: "Merkez",
-          addressRegion: "Çorum",
-          postalCode: "19000",
-          addressCountry: "TR",
-        },
+        availableLanguage: ["Turkish"],
       },
     },
-    isPartOf: {
-      "@type": "WebSite",
-      name: "YapHan İnşaat",
-      url: "https://yaphan.com.tr",
-    },
-    sameAs: [
-      "https://www.facebook.com/yaphaninsaat",
-      "https://www.instagram.com/yaphaninsaat",
-    ],
   },
 });
 

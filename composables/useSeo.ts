@@ -43,6 +43,15 @@ interface SchemaOrg {
     name: string;
     url: string;
   };
+  breadcrumb?: {
+    "@type": string;
+    itemListElement: {
+      "@type": string;
+      position: number;
+      name: string;
+      item: string;
+    }[];
+  };
   sameAs?: string[];
   hasOfferCatalog?: {
     "@type": string;
