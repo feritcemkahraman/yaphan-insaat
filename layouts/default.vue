@@ -24,6 +24,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { useHead } from "#imports";
 
 const loading = ref(false);
 const router = useRouter();
@@ -52,6 +53,66 @@ const isProjelerPage = computed(
     route.path.includes("sultan-kosku") ||
     route.path.includes("panorama")
 );
+
+// Structured Data
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'YapHan İnşaat',
+  description: 'YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir.',
+  url: 'https://yaphan.com.tr',
+  logo: 'https://yaphan.com.tr/favicon.svg',
+  sameAs: [
+    'https://www.instagram.com/',
+  ],
+  potentialAction: {
+    '@type': 'SearchAction',
+    'target': {
+      '@type': 'EntryPoint',
+      'urlTemplate': 'https://yaphan.com.tr/search?q={search_term_string}'
+    },
+    'query-input': 'required name=search_term_string'
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'YapHan İnşaat Projeleri',
+    itemListElement: [
+      {
+        '@type': 'OfferCatalog',
+        name: 'Tamamlanan Projeler',
+        url: 'https://yaphan.com.tr/projeler/tamamlanan'
+      },
+      {
+        '@type': 'OfferCatalog',
+        name: 'Devam Eden Projeler',
+        url: 'https://yaphan.com.tr/projeler/devameden'
+      }
+    ]
+  },
+  department: [
+    {
+      '@type': 'Organization',
+      name: 'Hakkımızda',
+      url: 'https://yaphan.com.tr/hakkimizda',
+      description: 'YapHan İnşaat hakkında detaylı bilgi'
+    },
+    {
+      '@type': 'Organization',
+      name: 'İletişim',
+      url: 'https://yaphan.com.tr/bize-ulasin',
+      description: 'YapHan İnşaat iletişim bilgileri'
+    }
+  ]
+};
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(jsonLd)
+    }
+  ]
+});
 </script>
 
 <style scoped>
