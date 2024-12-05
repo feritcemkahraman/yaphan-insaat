@@ -56,62 +56,86 @@ const isProjelerPage = computed(
 
 // Structured Data
 const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'YapHan İnşaat',
-  description: 'YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir.',
-  url: 'https://yaphan.com.tr',
-  logo: 'https://yaphan.com.tr/favicon.svg',
-  sameAs: [
-    'https://www.instagram.com/',
-  ],
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "YapHan İnşaat",
+  alternateName: "YapHan İnşaat | Geleceği Güvenle İnşa Ediyoruz",
+  url: "https://yaphan.com.tr",
+  description:
+    "YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir.",
   potentialAction: {
-    '@type': 'SearchAction',
-    'target': {
-      '@type': 'EntryPoint',
-      'urlTemplate': 'https://yaphan.com.tr/search?q={search_term_string}'
-    },
-    'query-input': 'required name=search_term_string'
+    "@type": "SearchAction",
+    target: "https://yaphan.com.tr/search?q={search_term_string}",
+    "query-input": "required name=search_term_string",
   },
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'YapHan İnşaat Projeleri',
-    itemListElement: [
-      {
-        '@type': 'OfferCatalog',
-        name: 'Tamamlanan Projeler',
-        url: 'https://yaphan.com.tr/projeler/tamamlanan'
-      },
-      {
-        '@type': 'OfferCatalog',
-        name: 'Devam Eden Projeler',
-        url: 'https://yaphan.com.tr/projeler/devameden'
-      }
-    ]
+};
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "YapHan İnşaat",
+  url: "https://yaphan.com.tr",
+  logo: "https://yaphan.com.tr/favicon.svg",
+  sameAs: ["https://www.instagram.com/"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "",
+    contactType: "customer service",
+    areaServed: "TR",
+    availableLanguage: ["Turkish"],
   },
-  department: [
+};
+
+const siteNavigationLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: [
     {
-      '@type': 'Organization',
-      name: 'Hakkımızda',
-      url: 'https://yaphan.com.tr/hakkimizda',
-      description: 'YapHan İnşaat hakkında detaylı bilgi'
+      "@type": "SiteNavigationElement",
+      position: 1,
+      name: "Hakkımızda",
+      description: "YapHan İnşaat kurumsal bilgileri ve tarihçesi",
+      url: "https://yaphan.com.tr/hakkimizda",
     },
     {
-      '@type': 'Organization',
-      name: 'İletişim',
-      url: 'https://yaphan.com.tr/bize-ulasin',
-      description: 'YapHan İnşaat iletişim bilgileri'
-    }
-  ]
+      "@type": "SiteNavigationElement",
+      position: 2,
+      name: "Tamamlanan Projeler",
+      description: "YapHan İnşaat'ın tamamlanmış projeleri",
+      url: "https://yaphan.com.tr/projeler/tamamlanan",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 3,
+      name: "Devam Eden Projeler",
+      description: "YapHan İnşaat'ın devam eden projeleri",
+      url: "https://yaphan.com.tr/projeler/devameden",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 4,
+      name: "İletişim",
+      description: "YapHan İnşaat iletişim bilgileri ve formu",
+      url: "https://yaphan.com.tr/bize-ulasin",
+    },
+  ],
 };
 
 useHead({
   script: [
     {
-      type: 'application/ld+json',
-      children: JSON.stringify(jsonLd)
-    }
-  ]
+      type: "application/ld+json",
+      children: JSON.stringify(jsonLd),
+    },
+    {
+      type: "application/ld+json",
+      children: JSON.stringify(organizationLd),
+    },
+    {
+      type: "application/ld+json",
+      children: JSON.stringify(siteNavigationLd),
+    },
+  ],
 });
 </script>
 
