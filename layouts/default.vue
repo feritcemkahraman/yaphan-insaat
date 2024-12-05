@@ -52,7 +52,8 @@ const isProjelerPage = computed(
     route.path.includes("gecenin-isigi") ||
     route.path.includes("sultan-kosku") ||
     route.path.includes("panorama") ||
-    route.path.includes("zephyros-villa")
+    route.path.includes("zephyros-villa") ||
+    route.path.includes("kristal-dusler-konagi")
 );
 
 // Structured Data
