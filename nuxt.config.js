@@ -8,7 +8,15 @@ export default defineNuxtConfig({
     preset: "cloudflare-pages",
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/hakkimizda", "/bize-ulasin", "/200.html", "/404.html"],
+      routes: [
+        "/",
+        "/hakkimizda",
+        "/bize-ulasin",
+        "/projeler/tamamlanan",
+        "/projeler/devameden",
+        "/200.html",
+        "/404.html"
+      ],
     }
   },
   modules: [
@@ -39,12 +47,15 @@ export default defineNuxtConfig({
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+        { 
+          name: "robots", 
+          content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+          hid: "robots"
+        },
         {
           hid: "description",
           name: "description",
-          content:
-            "YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşabilirsiniz.",
+          content: "YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşabilirsiniz."
         },
         {
           hid: "og:title",
