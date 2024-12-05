@@ -31,6 +31,7 @@
               isMobile ? 'w-full object-cover' : 'desktop-image',
             ]"
             :key="selectedImage"
+            @click="openModal"
           />
         </transition>
 
@@ -156,6 +157,19 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div v-if="isModalOpen" class="fullscreen-modal" @click="closeModal">
+      <div class="modal-content" @click.stop>
+        <img :src="selectedImage" class="fullsize-image" />
+        <button class="modal-close" @click="closeModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -196,6 +210,7 @@ export default {
       windowWidth: 0,
       isScrolling: false,
       scrollTimeout: null,
+      isModalOpen: false,
     };
   },
 
@@ -243,39 +258,13 @@ export default {
     },
 
     selectImage(index) {
-      const normalizedIndex =
-        ((index % this.images.length) + this.images.length) %
-        this.images.length;
+      const normalizedIndex = ((index % this.images.length) + this.images.length) % this.images.length;
       this.currentIndex = normalizedIndex;
-
-      if (this.$refs.thumbnailSlider) {
-        const itemWidth = this.thumbnailWidth + 16;
-        const slider = this.$refs.thumbnailSlider;
-
-        if (this.isMobile) {
-          const maxScroll = slider.scrollWidth - slider.clientWidth;
-          const targetScroll = normalizedIndex * itemWidth;
-          const finalScroll = Math.min(targetScroll, maxScroll);
-
-          this.isScrolling = true;
-          requestAnimationFrame(() => {
-            slider.scrollTo({
-              left: finalScroll,
-              behavior: "smooth",
-            });
-            setTimeout(() => {
-              this.isScrolling = false;
-            }, 300);
-          });
-        } else {
-          requestAnimationFrame(() => {
-            slider.scrollTo({
-              left: normalizedIndex * itemWidth,
-              behavior: "smooth",
-            });
-          });
-        }
-      }
+      
+      if (!this.$refs.thumbnailSlider) return;
+      const slider = this.$refs.thumbnailSlider;
+      const itemWidth = this.thumbnailWidth + 16;
+      slider.scrollLeft = normalizedIndex * itemWidth;
     },
 
     nextThumbnail() {
@@ -349,6 +338,16 @@ export default {
         this.previousImage();
       } else if (e.key === "ArrowRight") {
         this.nextImage();
+      }
+    },
+
+    closeModal() {
+      this.isModalOpen = false;
+    },
+
+    openModal() {
+      if (this.isMobile) {
+        this.isModalOpen = true;
       }
     },
   },
@@ -577,5 +576,57 @@ export default {
 
 .snap-center {
   scroll-snap-align: center;
+}
+
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullsize-image {
+  width: auto;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+}
+
+.modal-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+@media (max-width: 768px) {
+  .fullsize-image {
+    width: 100%;
+    height: auto;
+  }
 }
 </style>
