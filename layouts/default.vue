@@ -75,8 +75,6 @@ const organizationLd = {
   "@type": "Organization",
   name: "YapHan İnşaat",
   url: "https://yaphan.com.tr",
-  logo: "https://yaphan.com.tr/favicon.svg",
-  sameAs: ["https://www.instagram.com/"],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "",
@@ -94,31 +92,35 @@ const siteNavigationLd = {
       "@type": "SiteNavigationElement",
       position: 1,
       name: "Hakkımızda",
-      description: "10+ yılı aşkın tecrübesiyle, Han Holding İştiraki olan YapHan İnşaat'ın kurumsal değerleri, misyonu ve vizyonu hakkında detaylı bilgi edinin.",
-      url: "https://yaphan.com.tr/hakkimizda"
+      description:
+        "10+ yılı aşkın tecrübesiyle, Han Holding İştiraki olan YapHan İnşaat'ın kurumsal değerleri, misyonu ve vizyonu hakkında detaylı bilgi edinin.",
+      url: "https://yaphan.com.tr/hakkimizda",
     },
     {
       "@type": "SiteNavigationElement",
       position: 2,
       name: "Tamamlanan Projeler",
-      description: "Tamamlamış olduğumuz prestijli konut projelerimizi inceleyin. Güven ve kalite söz konusu olduğunda tercih YapHan İnşaat.",
-      url: "https://yaphan.com.tr/projeler/tamamlanan"
+      description:
+        "Tamamlamış olduğumuz prestijli konut projelerimizi inceleyin. Güven ve kalite söz konusu olduğunda tercih YapHan İnşaat.",
+      url: "https://yaphan.com.tr/projeler/tamamlanan",
     },
     {
       "@type": "SiteNavigationElement",
       position: 3,
       name: "Devam Eden Projeler",
-      description: "YapHan İnşaat'ın yeni nesil yaşam projeleri ve devam eden prestijli konut projelerimiz hakkında bilgi alın.",
-      url: "https://yaphan.com.tr/projeler/devameden"
+      description:
+        "YapHan İnşaat'ın yeni nesil yaşam projeleri ve devam eden prestijli konut projelerimiz hakkında bilgi alın.",
+      url: "https://yaphan.com.tr/projeler/devameden",
     },
     {
       "@type": "SiteNavigationElement",
       position: 4,
       name: "İletişim",
-      description: "Projelerimiz hakkında detaylı bilgi almak için bize ulaşın. Ofisimizi ziyaret edin veya telefon ile iletişime geçin.",
-      url: "https://yaphan.com.tr/bize-ulasin"
-    }
-  ]
+      description:
+        "Projelerimiz hakkında detaylı bilgi almak için bize ulaşın. Ofisimizi ziyaret edin veya telefon ile iletişime geçin.",
+      url: "https://yaphan.com.tr/bize-ulasin",
+    },
+  ],
 };
 
 useHead({
