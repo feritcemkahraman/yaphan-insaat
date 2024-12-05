@@ -10,6 +10,10 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ["/", "/hakkimizda", "/bize-ulasin", "/200.html", "/404.html"],
     },
+    routeRules: {
+      '/': { redirect: { to: 'https://yaphan.com.tr/', statusCode: 301 } },
+      '/projeler/tamamlanan': { redirect: { to: 'https://yaphan.com.tr/projeler/tamamlanan', statusCode: 301 } }
+    }
   },
   modules: [
     "@nuxtjs/tailwindcss",
