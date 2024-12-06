@@ -55,8 +55,8 @@
           <div class="relative h-full">
             <!-- First Image -->
             <NuxtImg
-              src="/serenity-villa.webp"
-              alt="About 1"
+              src="/projeler/tamamlanan/img/yaphan-panorama.jpg"
+              alt="yaphan inşaat"
               class="absolute w-3/5 h-4/5 object-cover will-change-transform"
               :style="{
                 transform: firstImageTransform,
@@ -66,8 +66,8 @@
             />
             <!-- Second Image -->
             <NuxtImg
-              src="/yapihan-hakkinda-section.jpg"
-              alt="About 2"
+              src="/projeler/tamamlanan/img/yaphan-mavi-ufuklar-villa.webp"
+              alt="yaphan inşaat"
               class="absolute w-3/5 h-4/5 object-cover mt-[20%] ml-[40%] will-change-transform"
               :style="{
                 transform: secondImageTransform,
@@ -208,10 +208,10 @@
     <!-- Başlık -->
     <div class="mb-12">
       <p class="text-gray-600 text-sm uppercase tracking-wider mb-2">
-        SON PROJELERİMİZ
+        TÜM PROJELERİMİZ
       </p>
       <h2 class="text-3xl md:text-4xl font-bold">
-        Son projelerimizden bazılarına göz atın.
+        Tamamlanan ve devam eden prestijli projelerimize göz atın.
       </h2>
     </div>
 
@@ -221,20 +221,24 @@
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-2/3">
           <img
-            src="/lumina-villa.jpg"
-            alt="Lumina Villaları"
+            src="/projeler/tamamlanan/img/yaphan-panorama-n.webp"
+            alt="yaphan inşaat tamamlanan projeler"
             class="w-full h-[400px] object-cover rounded-lg shadow-lg"
           />
         </div>
         <div class="md:w-1/3 md:ml-10">
-          <h3 class="text-4xl font-bold mb-4">Lumina Villaları</h3>
+          <h3 class="text-4xl font-bold mb-4">Tamamlanan Projelerimiz</h3>
           <p class="text-gray-600 mb-6">
-            Projenin mimarisi, elit yaşamın için tasarlanmış şıklın, estetik
-            alanların yanı sıra şık ve davetkar karşılama alanlarından oluşan
-            bir villann tamamlayıcı özelliklerini ifade etmektedir.
+            Hayallerinizdeki yaşam alanlarını gerçeğe dönüştürüyoruz. Her biri
+            özgün tasarımlar ve benzersiz mimari dokunuşlarla şekillenen
+            tamamlanan lüks projelerimiz, estetik, konfor ve fonksiyonelliği bir
+            arada sunuyor. Modern yaşamın gereksinimlerini karşılayan, aynı
+            zamanda zarif ve şık detaylarla donatılmış projelerimiz, siz değerli
+            müşterilerimizin yaşam tarzına en iyi hitap edecek şekilde
+            tasarlanmıştır.
           </p>
-          <a
-            href="#"
+          <NuxtLink
+            to="https://yaphan.com.tr/projeler/tamamlanan/"
             class="inline-flex items-center text-black border-2 px-5 py-2 border-gray-600 rounded hover:opacity-75 transition-opacity"
           >
             İncele
@@ -251,7 +255,7 @@
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </a>
+          </NuxtLink>
         </div>
       </div>
 
@@ -260,14 +264,17 @@
       <!-- Villa Luxoria -->
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-1/3 md:mr-10">
-          <h3 class="text-4xl font-bold mb-4">Villa Luxoria</h3>
+          <h3 class="text-4xl font-bold mb-4">Devam Eden Projelerimiz</h3>
           <p class="text-gray-600 mb-6">
-            Projenin mimarisi, elit yaşamın için tasarlanmış şıklın, estetik
-            alanların yanı sıra şık ve davetkar karşılama alanlarından oluşan
-            bir villanın tamamlayıcı özelliklerini ifade etmektedir.
+            Hayallerinizi gerçeğe dönüştürmek için çalışmaya devam ediyoruz! Şu
+            anda inşa edilen lüks konut projelerimiz, en yüksek kalite
+            standartlarıyla ilerleyen ve her aşamasında mükemmelliği hedefleyen
+            projelerdir. Her bir proje, geleceğin yaşam alanlarını bugünden
+            sizlere sunmak için titizlikle tasarlanmakta ve inşa edilmektedir.
+            Estetik, teknoloji, konfor ve sürdürülebilirlik odaklı projelerimize göz atın.
           </p>
-          <a
-            href="#"
+          <NuxtLink
+            to="https://yaphan.com.tr/projeler/devameden/"
             class="inline-flex items-center text-black border-2 px-5 py-2 border-gray-600 rounded hover:opacity-75 transition-opacity"
           >
             İncele
@@ -284,54 +291,14 @@
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </a>
+          </NuxtLink>
         </div>
         <div class="md:w-2/3">
           <img
-            src="/luxoria-villa.jpg"
-            alt="Villa Luxoria"
+            src="/yaphan-devameden.webp"
+            alt="yaphan inşaat devam eden projeler"
             class="w-full h-[400px] object-cover rounded-lg shadow-lg"
           />
-        </div>
-      </div>
-
-      <hr class="my-6 sm:mx-auto border-gray-400 lg:my-8" />
-
-      <!-- Serenity Villaları -->
-      <div class="flex flex-col md:flex-row gap-8 items-center">
-        <div class="md:w-2/3">
-          <img
-            src="/serenity-villa.webp"
-            alt="Serenity Villaları"
-            class="w-full h-[400px] object-cover rounded-lg shadow-lg"
-          />
-        </div>
-        <div class="md:w-1/3 md:ml-10">
-          <h3 class="text-4xl font-bold mb-4">Serenity Villaları</h3>
-          <p class="text-gray-600 mb-6">
-            Projenin mimarisi, elit yaşamın için tasarlanmış şıklın, estetik
-            alanların yanı sıra şık ve davetkar karşılama alanlarından oluşan
-            bir villanın tamamlayıcı özelliklerini ifade etmektedir.
-          </p>
-          <a
-            href="#"
-            class="inline-flex items-center text-black border-2 px-5 py-2 border-gray-600 rounded hover:opacity-75 transition-opacity"
-          >
-            İncele
-            <svg
-              class="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
         </div>
       </div>
 
@@ -403,9 +370,12 @@
 
 <script setup lang="ts">
 const { setSeo } = useSeo({
-  title: "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz | Lüks Villa ve Konut Projeleri",
-  description: "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. Modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
-  keywords: "yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması",
+  title:
+    "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz | Lüks Villa ve Konut Projeleri",
+  description:
+    "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. Modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
+  keywords:
+    "yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması",
   schema: {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -415,31 +385,34 @@ const { setSeo } = useSeo({
     isPartOf: {
       "@type": "WebSite",
       name: "YapHan İnşaat",
-      url: "https://yaphan.com.tr"
+      url: "https://yaphan.com.tr",
     },
     breadcrumb: {
       "@type": "BreadcrumbList",
-      itemListElement: [{
-        "@type": "ListItem",
-        position: 1,
-        name: "Ana Sayfa",
-        item: "https://yaphan.com.tr"
-      }]
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Ana Sayfa",
+          item: "https://yaphan.com.tr",
+        },
+      ],
     },
     mainEntity: {
       "@type": "Organization",
       name: "YapHan İnşaat",
-      description: "YapHan İnşaat, 10 yılı aşkın süredir lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
+      description:
+        "YapHan İnşaat, 10 yılı aşkın süredir lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
       url: "https://yaphan.com.tr",
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+90-XXX-XXX-XXXX",
         contactType: "yaphan insaat iletisim",
         areaServed: "TR",
-        availableLanguage: ["Turkish"]
-      }
-    }
-  }
+        availableLanguage: ["Turkish"],
+      },
+    },
+  },
 });
 
 setSeo();
