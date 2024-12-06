@@ -53,7 +53,8 @@ const isProjelerPage = computed(
     route.path.includes("sultan-kosku") ||
     route.path.includes("panorama") ||
     route.path.includes("zephyros-villa") ||
-    route.path.includes("kristal-dusler-konagi")
+    route.path.includes("kristal-dusler-konagi") ||
+    route.path.includes("yaphan-apartman")
 );
 
 // Structured Data
@@ -94,35 +95,40 @@ const siteNavigationLd = {
       "@type": "SiteNavigationElement",
       position: 1,
       name: "Ana Sayfa",
-      description: "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri. Kaliteli yaşam alanları ve modern mimari.",
+      description:
+        "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri. Kaliteli yaşam alanları ve modern mimari.",
       url: "https://yaphan.com.tr",
     },
     {
       "@type": "SiteNavigationElement",
       position: 2,
       name: "Hakkımızda",
-      description: "10+ yılı aşkın tecrübesiyle, Han Holding İştiraki olan YapHan İnşaat'ın kurumsal değerleri, misyonu ve vizyonu hakkında detaylı bilgi edinin.",
+      description:
+        "10+ yılı aşkın tecrübesiyle, Han Holding İştiraki olan YapHan İnşaat'ın kurumsal değerleri, misyonu ve vizyonu hakkında detaylı bilgi edinin.",
       url: "https://yaphan.com.tr/hakkimizda",
     },
     {
       "@type": "SiteNavigationElement",
       position: 3,
       name: "Tamamlanan Projeler",
-      description: "Tamamlamış olduğumuz prestijli konut projelerimizi inceleyin. Güven ve kalite söz konusu olduğunda tercih YapHan İnşaat.",
+      description:
+        "Tamamlamış olduğumuz prestijli konut projelerimizi inceleyin. Güven ve kalite söz konusu olduğunda tercih YapHan İnşaat.",
       url: "https://yaphan.com.tr/projeler/tamamlanan",
     },
     {
       "@type": "SiteNavigationElement",
       position: 4,
       name: "Devam Eden Projeler",
-      description: "YapHan İnşaat'ın yeni nesil yaşam projeleri ve devam eden prestijli konut projelerimiz hakkında bilgi alın.",
+      description:
+        "YapHan İnşaat'ın yeni nesil yaşam projeleri ve devam eden prestijli konut projelerimiz hakkında bilgi alın.",
       url: "https://yaphan.com.tr/projeler/devameden",
     },
     {
       "@type": "SiteNavigationElement",
       position: 5,
       name: "İletişim",
-      description: "Projelerimiz hakkında detaylı bilgi almak için bize ulaşın. Ofisimizi ziyaret edin veya telefon ile iletişime geçin.",
+      description:
+        "Projelerimiz hakkında detaylı bilgi almak için bize ulaşın. Ofisimizi ziyaret edin veya telefon ile iletişime geçin.",
       url: "https://yaphan.com.tr/bize-ulasin",
     },
   ],
