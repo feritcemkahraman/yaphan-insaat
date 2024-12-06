@@ -12,8 +12,6 @@ export default defineNuxtConfig({
         "/",
         "/hakkimizda",
         "/bize-ulasin",
-        "/projeler/tamamlanan",
-        "/projeler/devameden",
         "/200.html",
         "/404.html"
       ],
