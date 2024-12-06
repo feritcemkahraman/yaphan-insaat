@@ -108,6 +108,14 @@ export default defineNuxtConfig({
       priority: 0.8,
       lastmod: new Date().toISOString(),
     },
+    urls: [
+      "/",
+      "/hakkimizda",
+      "/projeler/tamamlanan",
+      "/projeler/devameden",
+      "/bize-ulasin"
+    ],
+    crawlLinks: true,
     routes: [
       {
         url: "/",
