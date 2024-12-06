@@ -4,16 +4,22 @@ Disallow: /api/
 Disallow: /_nuxt/
 Disallow: /.nuxt/
 Disallow: /.git/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /*.json$
+Disallow: /*.xml$
 
 # Cloudflare specific
 User-agent: CFBot
 Allow: /
 Crawl-delay: 5
 
+# Global crawl delay
+Crawl-delay: 10
+
 # Sitemaps
 Sitemap: https://yaphan.com.tr/sitemap.xml
 
-# Cache control hints
-# These are optional hints for Cloudflare's cache
+# Host directive
 Host: https://yaphan.com.tr
-Cache-Control: max-age=3600
