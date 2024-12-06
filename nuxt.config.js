@@ -96,42 +96,42 @@ export default defineNuxtConfig({
   css: ["flowbite/dist/flowbite.css"],
   sitemap: {
     hostname: "https://yaphan.com.tr",
+    siteUrl: "https://yaphan.com.tr",
     gzip: true,
     exclude: ["/404"],
+    trailingSlash: false,
     defaults: {
       changefreq: "daily",
       priority: 0.8,
       lastmod: new Date().toISOString(),
     },
-    siteUrl: "https://yaphan.com.tr",
-    trailingSlash: false,
     routes: [
       {
         url: "/",
         changefreq: "daily",
-        priority: 1.0,
+        priority: 1.0
       },
       {
         url: "/hakkimizda",
         changefreq: "weekly",
-        priority: 0.9,
+        priority: 0.9
       },
       {
         url: "/projeler/tamamlanan",
         changefreq: "daily",
-        priority: 0.8,
+        priority: 0.8
       },
       {
         url: "/projeler/devameden",
         changefreq: "daily",
-        priority: 0.7,
+        priority: 0.7
       },
       {
         url: "/bize-ulasin",
         changefreq: "weekly",
-        priority: 0.6,
-      },
-    ],
+        priority: 0.6
+      }
+    ]
   },
   runtimeConfig: {
     public: {
