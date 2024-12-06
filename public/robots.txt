@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /favicon-96x96.png
+Allow: /apple-touch-icon.png
+Allow: /site.webmanifest
 Disallow: /api/
 Disallow: /_nuxt/
 Disallow: /.nuxt/
