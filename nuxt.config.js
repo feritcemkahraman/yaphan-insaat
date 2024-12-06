@@ -98,7 +98,10 @@ export default defineNuxtConfig({
     hostname: "https://yaphan.com.tr",
     siteUrl: "https://yaphan.com.tr",
     gzip: true,
-    exclude: ["/404"],
+    exclude: [
+      "/404",
+      "/projelerin-tamami/**"
+    ],
     trailingSlash: false,
     defaults: {
       changefreq: "daily",
