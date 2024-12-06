@@ -218,7 +218,7 @@ const { setSeo } = useSeo({
       url: "https://yaphan.com.tr",
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+90-XXX-XXX-XXXX",
+        telephone: "+90-539-855-9382",
         contactType: "customer service",
         areaServed: "TR",
         availableLanguage: ["Turkish"],

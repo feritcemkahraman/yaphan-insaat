@@ -43,7 +43,7 @@
               Bize Ulaşın
             </h3>
             <div class="space-y-2 mb-6">
-              <p class="text-sm">+1 (234) 567 89 99</p>
+              <p class="text-sm">+90 539 855 93 82</p>
               <p class="text-sm">info@yaphan.com.tr</p>
               <p class="text-sm">
                 Üçutlar Mahallesi, Dr. İlhan Gürel Caddesi 68-14, Merkez/Çorum

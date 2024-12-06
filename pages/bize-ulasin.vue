@@ -45,7 +45,7 @@
             </div>
             <div class="ml-4">
               <p class="text-gray-600 mb-1">Telefon</p>
-              <h3 class="text-xl font-bold">+012 345 6789</h3>
+              <h3 class="text-xl font-bold">+90 539 855 93 82</h3>
             </div>
           </div>
 
@@ -260,7 +260,7 @@ const { setSeo } = useSeo({
       url: "https://yaphan.com.tr",
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+90-XXX-XXX-XXXX",
+        telephone: "+90-539-855-9382",
         contactType: "customer service",
         areaServed: "TR",
         availableLanguage: ["Turkish"],
