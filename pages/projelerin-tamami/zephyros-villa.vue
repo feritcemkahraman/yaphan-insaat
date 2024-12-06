@@ -163,7 +163,15 @@
       <div class="modal-content" @click.stop>
         <img :src="selectedImage" class="fullsize-image" />
         <button class="modal-close" @click="closeModal">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -204,6 +212,26 @@ export default {
         "/projeler/tamamlanan/img/yaphan-zephyros-villa-25.webp",
         "/projeler/tamamlanan/img/yaphan-zephyros-villa-26.webp",
         "/projeler/tamamlanan/img/yaphan-zephyros-villa-27.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-28.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-29.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-30.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-31.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-32.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-33.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-34.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-35.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-36.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-37.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-38.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-39.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-40.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-41.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-42.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-43.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-44.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-45.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-46.webp",
+        "/projeler/tamamlanan/img/yaphan-zephyros-villa-47.webp",
       ],
       currentIndex: 0,
       isMobile: false,
@@ -258,9 +286,11 @@ export default {
     },
 
     selectImage(index) {
-      const normalizedIndex = ((index % this.images.length) + this.images.length) % this.images.length;
+      const normalizedIndex =
+        ((index % this.images.length) + this.images.length) %
+        this.images.length;
       this.currentIndex = normalizedIndex;
-      
+
       if (!this.$refs.thumbnailSlider) return;
       const slider = this.$refs.thumbnailSlider;
       const itemWidth = this.thumbnailWidth + 16;
