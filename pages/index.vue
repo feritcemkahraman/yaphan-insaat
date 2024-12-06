@@ -373,7 +373,7 @@ const { setSeo } = useSeo({
   title:
     "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz | Lüks Villa ve Konut Projeleri",
   description:
-    "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün. Modern ve lüks konut projeleri, ticari yapılar inşa ediyoruz.",
+    "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
   keywords:
     "yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması",
   schema: {

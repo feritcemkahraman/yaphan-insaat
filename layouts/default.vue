@@ -96,7 +96,7 @@ const siteNavigationLd = {
       position: 1,
       name: "Ana Sayfa",
       description:
-        "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri. Kaliteli yaşam alanları ve modern mimari.",
+        "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
       url: "https://yaphan.com.tr",
     },
     {

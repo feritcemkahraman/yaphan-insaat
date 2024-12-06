@@ -246,7 +246,7 @@ const { setSeo } = useSeo({
         },
         {
           "@type": "ListItem",
-          position: 2,
+          position: 5,
           name: "Bize Ulaşın",
           item: "https://yaphan.com.tr/bize-ulasin",
         },
