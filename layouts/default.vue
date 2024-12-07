@@ -57,7 +57,8 @@ const isProjelerPage = computed(
     route.path.includes("yaphan-apartman") ||
     route.path.includes("yaphan-site") ||
     route.path.includes("yaphan-tower") ||
-    route.path.includes("villa-elysium-ankara")
+    route.path.includes("villa-elysium-ankara") ||
+    route.path.includes("dosemealti-villalari")
 );
 
 // Structured Data
