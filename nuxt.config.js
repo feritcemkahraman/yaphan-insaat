@@ -1,22 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
+
   site: {
     url: "https://yaphan.com.tr",
   },
+
   nitro: {
     preset: "cloudflare-pages",
     prerender: {
       crawlLinks: true,
-      routes: [
-        "/",
-        "/hakkimizda",
-        "/bize-ulasin",
-        "/200.html",
-        "/404.html"
-      ],
-    }
+      routes: ["/", "/hakkimizda", "/bize-ulasin", "/200.html", "/404.html"],
+    },
   },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
@@ -24,6 +21,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/sitemap",
   ],
+
   image: {
     quality: 80,
     format: ["webp", "jpeg", "jpg", "png"],
@@ -36,34 +34,45 @@ export default defineNuxtConfig({
       xxl: 1536,
     },
   },
+
   app: {
     head: {
-      title: "YapHan İnşaat | Geleceği Güvenle İnşa Ediyoruz",
+      title: "YapHan İnşaat",
       htmlAttrs: {
         lang: "tr",
       },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { 
-          name: "robots", 
-          content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-          hid: "robots"
+        {
+          name: "robots",
+          content:
+            "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+          hid: "robots",
         },
         {
           hid: "description",
           name: "description",
-          content: "YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşabilirsiniz."
+          content:
+            "YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşabilirsiniz.",
+        },
+        {
+          hid: "og:type",
+          property: "og:type",
+          content: "website",
+        },
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: "https://yaphan.com.tr",
         },
         {
           hid: "og:title",
-          name: "og:title",
           property: "og:title",
           content: "YapHan İnşaat",
         },
         {
           hid: "og:site_name",
-          name: "og:site_name",
           property: "og:site_name",
           content: "YapHan İnşaat",
         },
@@ -78,8 +87,17 @@ export default defineNuxtConfig({
       link: [
         { rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-        { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon-96x96.png" },
-        { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "96x96",
+          href: "/favicon-96x96.png",
+        },
+        {
+          rel: "apple-touch-icon",
+          sizes: "180x180",
+          href: "/apple-touch-icon.png",
+        },
         { rel: "manifest", href: "/site.webmanifest" },
         {
           rel: "stylesheet",
@@ -88,20 +106,20 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   googleFonts: {
     families: {
       Montserrat: true,
     },
   },
+
   css: ["flowbite/dist/flowbite.css"],
+
   sitemap: {
     hostname: "https://yaphan.com.tr",
     siteUrl: "https://yaphan.com.tr",
     gzip: true,
-    exclude: [
-      "/404",
-      "/projelerin-tamami/**"
-    ],
+    exclude: ["/404", "/projelerin-tamami/**"],
     trailingSlash: false,
     defaults: {
       changefreq: "daily",
@@ -113,41 +131,44 @@ export default defineNuxtConfig({
       "/hakkimizda",
       "/projeler/tamamlanan",
       "/projeler/devameden",
-      "/bize-ulasin"
+      "/bize-ulasin",
     ],
     crawlLinks: true,
     routes: [
       {
         url: "/",
         changefreq: "daily",
-        priority: 1.0
+        priority: 1.0,
       },
       {
         url: "/hakkimizda",
         changefreq: "weekly",
-        priority: 0.9
+        priority: 0.9,
       },
       {
         url: "/projeler/tamamlanan",
         changefreq: "daily",
-        priority: 0.8
+        priority: 0.8,
       },
       {
         url: "/projeler/devameden",
         changefreq: "daily",
-        priority: 0.7
+        priority: 0.7,
       },
       {
         url: "/bize-ulasin",
         changefreq: "weekly",
-        priority: 0.6
-      }
-    ]
+        priority: 0.6,
+      },
+    ],
   },
+
   runtimeConfig: {
     public: {
       siteUrl: "https://yaphan.com.tr",
       siteName: "YapHan İnşaat",
     },
   },
+
+  compatibilityDate: "2024-12-07",
 });
