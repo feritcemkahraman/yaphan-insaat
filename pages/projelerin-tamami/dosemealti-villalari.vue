@@ -195,7 +195,7 @@ export default {
         "/projeler/devameden/img/yaphan-dosemealti-villalari-12.webp",
         "/projeler/devameden/img/yaphan-dosemealti-villalari-13.webp",
         "/projeler/devameden/img/yaphan-dosemealti-villalari-14.webp",
-        // "/projeler/devameden/img/yaphan-dosemealti-villalari-15.webp",
+        "/projeler/devameden/img/yaphan-dosemealti-villalari-15.webp",
         "/projeler/devameden/img/yaphan-dosemealti-villalari-16.webp",
         "/projeler/devameden/img/yaphan-dosemealti-villalari-17.webp",
         "/projeler/devameden/img/yaphan-dosemealti-villalari-18.webp",
