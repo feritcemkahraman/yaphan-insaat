@@ -14,16 +14,9 @@ export default defineNuxtConfig({
     },
     routeRules: {
       // HTTP'den HTTPS'e yönlendirme
-      "http://**": {
+      "^https?://([^/]+)(.*)$": {
         redirect: {
-          to: "https://:authority:path",
-          statusCode: 301,
-        },
-      },
-      // www'dan www olmayan versiyona yönlendirme
-      "https://www.yaphan.com.tr/**": {
-        redirect: {
-          to: "https://yaphan.com.tr:path",
+          to: "https://yaphan.com.tr$2",
           statusCode: 301,
         },
       },
