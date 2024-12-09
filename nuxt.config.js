@@ -12,6 +12,22 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ["/", "/hakkimizda", "/bize-ulasin", "/200.html", "/404.html"],
     },
+    routeRules: {
+      // HTTP'den HTTPS'e yönlendirme
+      "http://**": {
+        redirect: {
+          to: "https://yaphan.com.tr/**",
+          statusCode: 301,
+        },
+      },
+      // WWW'dan non-WWW'ya yönlendirme
+      "https://www.yaphan.com.tr/**": {
+        redirect: {
+          to: "https://yaphan.com.tr/**",
+          statusCode: 301,
+        },
+      },
+    },
   },
 
   modules: [
@@ -119,7 +135,14 @@ export default defineNuxtConfig({
     hostname: "https://yaphan.com.tr",
     siteUrl: "https://yaphan.com.tr",
     gzip: true,
-    exclude: ["/404", "/projelerin-tamami/**"],
+    exclude: [
+      "/404",
+      "/projelerin-tamami/**",
+      "/api/**",
+      "/_nuxt/**",
+      "/.nuxt/**",
+      "/.git/**",
+    ],
     trailingSlash: false,
     defaults: {
       changefreq: "daily",
