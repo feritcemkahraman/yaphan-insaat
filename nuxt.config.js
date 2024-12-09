@@ -37,13 +37,15 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "YapHan İnşaat",
+      titleTemplate: "%s | YapHan İnşaat",
+      defaultTitle: "YapHan İnşaat - Güven ve Kalite İnşa Ediyoruz",
       htmlAttrs: {
         lang: "tr",
       },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "format-detection", content: "telephone=no" },
         {
           name: "robots",
           content:
@@ -54,7 +56,12 @@ export default defineNuxtConfig({
           hid: "description",
           name: "description",
           content:
-            "YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir. Konut projeleri, lüks villa projeleri,ticari yapılar ve renovasyon işleri için bize ulaşabilirsiniz.",
+            "YapHan İnşaat, Han Holding güvencesiyle kaliteli ve güvenilir inşaat projeleri sunmaktadır. Konut projeleri ve lüks villalar için bize ulaşın.",
+        },
+        {
+          hid: "og:site_name",
+          property: "og:site_name",
+          content: "YapHan İnşaat",
         },
         {
           hid: "og:type",
@@ -69,12 +76,18 @@ export default defineNuxtConfig({
         {
           hid: "og:title",
           property: "og:title",
-          content: "YapHan İnşaat",
+          content: "YapHan İnşaat - Güven ve Kalite İnşa Ediyoruz",
         },
         {
-          hid: "og:site_name",
-          property: "og:site_name",
-          content: "YapHan İnşaat",
+          hid: "og:description",
+          property: "og:description",
+          content:
+            "YapHan İnşaat, Han Holding güvencesiyle kaliteli ve güvenilir inşaat projeleri sunmaktadır.",
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: "https://yaphan.com.tr/banner.jpg",
         },
         {
           hid: "apple-mobile-web-app-title",
@@ -85,8 +98,8 @@ export default defineNuxtConfig({
         { name: "theme-color", content: "#ffffff" },
       ],
       link: [
-        { rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico" },
-        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "canonical", href: "https://yaphan.com.tr" },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         {
           rel: "icon",
           type: "image/png",
