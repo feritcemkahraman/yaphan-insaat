@@ -12,15 +12,6 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ["/", "/hakkimizda", "/bize-ulasin", "/200.html", "/404.html"],
     },
-    routeRules: {
-      // HTTP'den HTTPS'e yönlendirme
-      "^https?://([^/]+)(.*)$": {
-        redirect: {
-          to: "https://yaphan.com.tr$2",
-          statusCode: 301,
-        },
-      },
-    },
   },
 
   modules: [
