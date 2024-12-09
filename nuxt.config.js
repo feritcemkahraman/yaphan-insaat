@@ -13,15 +13,19 @@ export default defineNuxtConfig({
       routes: ["/", "/hakkimizda", "/bize-ulasin", "/200.html", "/404.html"],
     },
     routeRules: {
-      // Tüm HTTP trafiğini HTTPS'e yönlendir
-      "/": {
-        redirect:
-          process.env.NODE_ENV === "production"
-            ? {
-                to: "https://yaphan.com.tr$1",
-                statusCode: 301,
-              }
-            : false,
+      // HTTP'den HTTPS'e yönlendirme
+      "http://**": {
+        redirect: {
+          to: "https://:authority:path",
+          statusCode: 301,
+        },
+      },
+      // www'dan www olmayan versiyona yönlendirme
+      "https://www.yaphan.com.tr/**": {
+        redirect: {
+          to: "https://yaphan.com.tr:path",
+          statusCode: 301,
+        },
       },
     },
   },
