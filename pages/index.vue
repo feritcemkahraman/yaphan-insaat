@@ -371,7 +371,7 @@
 <script setup lang="ts">
 const { setSeo } = useSeo({
   title:
-    "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz | Lüks Villa ve Konut Projeleri",
+    "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz.",
   description:
     "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
   keywords:

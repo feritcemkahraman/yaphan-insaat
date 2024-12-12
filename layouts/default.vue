@@ -66,10 +66,10 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "YapHan İnşaat",
-  alternateName: "YapHan İnşaat | Geleceği Güvenle İnşa Ediyoruz",
+  alternateName: "YapHan İnşaat | Geleceği Güvenle İnşa Ediyoruz.",
   url: "https://yaphan.com.tr",
   description:
-    "YapHan İnşaat, Han Holding iştiraki olan, kaliteli ve güvenilir inşaat hizmetleri sunan bir şirkettir.",
+    "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
   potentialAction: {
     "@type": "SearchAction",
     target: "https://yaphan.com.tr/search?q={search_term_string}",

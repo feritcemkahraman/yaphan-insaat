@@ -37,8 +37,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      titleTemplate: "%s | YapHan İnşaat",
-      defaultTitle: "YapHan İnşaat - Güven ve Kalite İnşa Ediyoruz",
+      title: "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz.",
       htmlAttrs: {
         lang: "tr",
       },
@@ -46,6 +45,10 @@ export default defineNuxtConfig({
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "format-detection", content: "telephone=no" },
+        {
+          name: "application-name",
+          content: "YapHan İnşaat",
+        },
         {
           name: "robots",
           content:
@@ -56,7 +59,7 @@ export default defineNuxtConfig({
           hid: "description",
           name: "description",
           content:
-            "YapHan İnşaat, Han Holding güvencesiyle kaliteli ve güvenilir inşaat projeleri sunmaktadır. Konut projeleri ve lüks villalar için bize ulaşın.",
+            "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
         },
         {
           hid: "og:site_name",
@@ -76,13 +79,13 @@ export default defineNuxtConfig({
         {
           hid: "og:title",
           property: "og:title",
-          content: "YapHan İnşaat - Güven ve Kalite İnşa Ediyoruz",
+          content: "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz.",
         },
         {
           hid: "og:description",
           property: "og:description",
           content:
-            "YapHan İnşaat, Han Holding güvencesiyle kaliteli ve güvenilir inşaat projeleri sunmaktadır.",
+            "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
         },
         {
           hid: "og:image",
