@@ -26,12 +26,11 @@
           İnşaat Sektöründe Geleceği Şekillendiren Yapılar Oluşturmak
         </h2>
         <p class="text-gray-600 mb-4">
-          YapHan olarak vizyonumuz, inşaat sektöründe yenilikçi ve
-          sürdürülebilir yaklaşımlarla geleceği şekillendiren lider bir marka
-          olmaktır. Yaşam alanlarının sadece birer yapı değil, insanların
-          hayatlarına değer katan mekanlar olduğunu bilincindeyiz. Bu nedenle,
-          modern mimariye estetik tasarımlarla birleştirerek, fonksiyonel ve
-          konforlu villalar inşa etmeyi hedefliyoruz.
+          Misyonumuz, müşterilerimizin beklentilerini aşan kaliteli ve güvenilir
+          hizmetler sunmaktır. İhtiyaçlarını doğru analiz ederek, onlara en
+          uygun çözümleri profesyonel bir yaklaşımla sağlamayı ilke ediniyoruz.
+          Satış öncesi ve sonrası desteklerle, müşteri memnuniyetini sürekli
+          kılmayı hedefliyoruz.
         </p>
         <div class="grid grid-cols-2 gap-4">
           <div>
@@ -92,11 +91,12 @@
           Müşteri Memnuniyetini En Üst Seviyeye Çıkarmak
         </h2>
         <p class="text-gray-600 mb-4">
-          Misyonumuz, müşterilerimizin beklentilerini aşan kaliteli ve güvenilir
-          hizmetler sunmaktır. İhtiyaçlarını doğru analiz ederek, onlara en
-          uygun çözümleri profesyonel bir yaklaşımla sağlamayı ilke ediniyoruz.
-          Satış öncesi ve sonrası desteklerle, müşteri memnuniyetini sürekli
-          kılmayı hedefliyoruz.
+          YapHan olarak vizyonumuz, inşaat sektöründe yenilikçi ve
+          sürdürülebilir yaklaşımlarla geleceği şekillendiren lider bir marka
+          olmaktır. Yaşam alanlarının sadece birer yapı değil, insanların
+          hayatlarına değer katan mekanlar olduğunu bilincindeyiz. Bu nedenle,
+          modern mimariye estetik tasarımlarla birleştirerek, fonksiyonel ve
+          konforlu villalar inşa etmeyi hedefliyoruz.
         </p>
         <div class="grid grid-cols-2 gap-4">
           <div>
