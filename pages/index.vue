@@ -271,7 +271,8 @@
             standartlarıyla ilerleyen ve her aşamasında mükemmelliği hedefleyen
             projelerdir. Her bir proje, geleceğin yaşam alanlarını bugünden
             sizlere sunmak için titizlikle tasarlanmakta ve inşa edilmektedir.
-            Estetik, teknoloji, konfor ve sürdürülebilirlik odaklı projelerimize göz atın.
+            Estetik, teknoloji, konfor ve sürdürülebilirlik odaklı projelerimize
+            göz atın.
           </p>
           <NuxtLink
             to="https://yaphan.com.tr/projeler/devameden/"
@@ -370,12 +371,11 @@
 
 <script setup lang="ts">
 const { setSeo } = useSeo({
-  title:
-    "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz.",
+  title: "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz.",
   description:
     "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
   keywords:
-    "yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması",
+    "yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması, yapıhan, yapıhan inşaat, inşaat, inşaat firması, inşaat projeleri, inşaat projeler, inşaat projeleri istanbul, han holding, han, holding",
   schema: {
     "@context": "https://schema.org",
     "@type": "WebPage",

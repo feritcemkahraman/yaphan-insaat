@@ -181,7 +181,7 @@ const { setSeo } = useSeo({
   description:
     "YapHan İnşaat, 10 yılı aşkın tecrübesiyle modern ve lüks konut projeleri, ticari yapılar inşa eden güvenilir bir inşaat firmasıdır.",
   keywords:
-    "yaphan inşaat hakkında, inşaat firması, yaphan kurumsal, yaphan vizyon, yaphan misyon",
+    "yaphan inşaat hakkında, inşaat firması, yaphan kurumsal, yaphan vizyon, yaphan misyon, yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması, yapıhan, yapıhan inşaat, inşaat, inşaat firması, inşaat projeleri, inşaat projeler, inşaat projeleri istanbul, han holding, han, holding",
   schema: {
     "@context": "https://schema.org",
     "@type": "WebPage",
