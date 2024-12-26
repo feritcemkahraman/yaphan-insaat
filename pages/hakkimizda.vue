@@ -3,7 +3,7 @@
   <div class="bg-gray-800 py-20 px-4 md:px-8">
     <div class="max-w-3xl mx-auto text-center opacity-0 animate-fade-in">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        <p class="text-gray-400 text-lg mb-4">YapHan İnşaat Hakkında</p>
+        <p class="text-gray-400 text-lg mb-4">YapHan İnşaat ve Mühendislik A.Ş. Hakkında</p>
         Projelerimize, yenilikçi çözümler ve kapsamlı analizlerle yön veriyoruz.
       </h2>
     </div>
@@ -16,7 +16,7 @@
       <div>
         <img
           src="/misyon.jpg"
-          alt="YapHan İnşaat Misyon ve Vizyon - Lüks ve Modern İnşaat Projeleri"
+          alt="YapHan İnşaat ve Mühendislik A.Ş. Misyon ve Vizyon - Lüks ve Modern İnşaat Projeleri"
           class="w-full md:w-4/5 h-auto shadow-lg mx-auto"
         />
       </div>
@@ -130,7 +130,7 @@
       <div class="order-1 md:order-2">
         <img
           src="/vizyonumuz.webp"
-          alt="YapHan İnşaat Misyon ve Vizyon - Lüks ve Modern İnşaat Projeleri"
+          alt="YapHan İnşaat ve Mühendislik A.Ş. Misyon ve Vizyon - Lüks ve Modern İnşaat Projeleri"
           class="w-full md:w-4/5 h-auto shadow-lg mx-auto"
         />
       </div>
@@ -177,20 +177,20 @@
 
 <script setup lang="ts">
 const { setSeo } = useSeo({
-  title: "Hakkımızda - YapHan İnşaat | Kurumsal",
+  title: "Hakkımızda - YapHan İnşaat ve Mühendislik A.Ş. | Kurumsal",
   description:
-    "YapHan İnşaat, 10 yılı aşkın tecrübesiyle modern ve lüks konut projeleri, ticari yapılar inşa eden güvenilir bir inşaat firmasıdır.",
+    "YapHan İnşaat ve Mühendislik A.Ş., 10 yılı aşkın tecrübesiyle modern ve lüks konut projeleri, ticari yapılar inşa eden güvenilir bir inşaat firmasıdır.",
   keywords:
-    "yaphan inşaat hakkında, inşaat firması, yaphan kurumsal, yaphan vizyon, yaphan misyon, yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması, yapıhan, yapıhan inşaat, inşaat, inşaat firması, inşaat projeleri, inşaat projeler, inşaat projeleri istanbul, han holding, han, holding",
+    "yaphan inşaat ve mühendislik a.ş. hakkında, inşaat firması, yaphan kurumsal, yaphan vizyon, yaphan misyon, yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması, yapıhan, yapıhan inşaat, inşaat, inşaat firması, inşaat projeleri, inşaat projeler, inşaat projeleri istanbul, han holding, han, holding",
   schema: {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "YapHan İnşaat Hakkında",
-    description: "YapHan İnşaat kurumsal bilgileri, misyon ve vizyonu",
+    name: "YapHan İnşaat ve Mühendislik A.Ş. Hakkında",
+    description: "YapHan İnşaat ve Mühendislik A.Ş. kurumsal bilgileri, misyon ve vizyonu",
     url: "https://yaphan.com.tr/hakkimizda",
     isPartOf: {
       "@type": "WebSite",
-      name: "YapHan İnşaat",
+      name: "YapHan İnşaat ve Mühendislik A.Ş.",
       url: "https://yaphan.com.tr",
     },
     breadcrumb: {
@@ -212,9 +212,9 @@ const { setSeo } = useSeo({
     },
     mainEntity: {
       "@type": "Organization",
-      name: "YapHan İnşaat",
+      name: "YapHan İnşaat ve Mühendislik A.Ş.",
       description:
-        "YapHan İnşaat, 10 yılı aşkın süredir lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
+        "YapHan İnşaat ve Mühendislik A.Ş., 10 yılı aşkın süredir lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
       url: "https://yaphan.com.tr",
       contactPoint: {
         "@type": "ContactPoint",

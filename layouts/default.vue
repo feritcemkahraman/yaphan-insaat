@@ -65,11 +65,11 @@ const isProjelerPage = computed(
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "YapHan İnşaat",
-  alternateName: "YapHan İnşaat | Geleceği Güvenle İnşa Ediyoruz.",
+  name: "YapHan İnşaat ve Mühendislik A.Ş.",
+  alternateName: "YapHan İnşaat ve Mühendislik A.Ş. | Geleceği Güvenle İnşa Ediyoruz.",
   url: "https://yaphan.com.tr",
   description:
-    "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
+    "YapHan İnşaat ve Mühendislik A.Ş. - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
   potentialAction: {
     "@type": "SearchAction",
     target: "https://yaphan.com.tr/search?q={search_term_string}",
@@ -80,7 +80,7 @@ const jsonLd = {
 const organizationLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "YapHan İnşaat",
+  name: "YapHan İnşaat ve Mühendislik A.Ş.",
   url: "https://yaphan.com.tr",
   contactPoint: {
     "@type": "ContactPoint",
@@ -100,7 +100,7 @@ const siteNavigationLd = {
       position: 1,
       name: "Ana Sayfa",
       description:
-        "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
+        "YapHan İnşaat ve Mühendislik A.Ş. - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
       url: "https://yaphan.com.tr",
     },
     {
@@ -108,7 +108,7 @@ const siteNavigationLd = {
       position: 2,
       name: "Hakkımızda",
       description:
-        "10+ yılı aşkın tecrübesiyle, Han Holding İştiraki olan YapHan İnşaat'ın kurumsal değerleri, misyonu ve vizyonu hakkında detaylı bilgi edinin.",
+        "10+ yılı aşkın tecrübesiyle, Han Holding İştiraki olan YapHan İnşaat ve Mühendislik A.Ş.'nin kurumsal değerleri, misyonu ve vizyonu hakkında detaylı bilgi edinin.",
       url: "https://yaphan.com.tr/hakkimizda",
     },
     {
@@ -116,7 +116,7 @@ const siteNavigationLd = {
       position: 3,
       name: "Tamamlanan Projeler",
       description:
-        "Tamamlamış olduğumuz prestijli konut projelerimizi inceleyin. Güven ve kalite söz konusu olduğunda tercih YapHan İnşaat.",
+        "Tamamlamış olduğumuz prestijli konut projelerimizi inceleyin. Güven ve kalite söz konusu olduğunda tercih YapHan İnşaat ve Mühendislik A.Ş.",
       url: "https://yaphan.com.tr/projeler/tamamlanan",
     },
     {
@@ -124,7 +124,7 @@ const siteNavigationLd = {
       position: 4,
       name: "Devam Eden Projeler",
       description:
-        "YapHan İnşaat'ın yeni nesil yaşam projeleri ve devam eden prestijli konut projelerimiz hakkında bilgi alın.",
+        "YapHan İnşaat ve Mühendislik A.Ş.'nin' yeni nesil yaşam projeleri ve devam eden prestijli konut projelerimiz hakkında bilgi alın.",
       url: "https://yaphan.com.tr/projeler/devameden",
     },
     {

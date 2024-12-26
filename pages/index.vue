@@ -56,7 +56,7 @@
             <!-- First Image -->
             <NuxtImg
               src="/projeler/tamamlanan/img/yaphan-panorama.jpg"
-              alt="yaphan inşaat"
+              alt="YapHan İnşaat ve Mühendislik A.Ş."
               class="absolute w-3/5 h-4/5 object-cover will-change-transform"
               :style="{
                 transform: firstImageTransform,
@@ -67,7 +67,7 @@
             <!-- Second Image -->
             <NuxtImg
               src="/projeler/tamamlanan/img/yaphan-mavi-ufuklar-villa.webp"
-              alt="yaphan inşaat"
+              alt="YapHan İnşaat ve Mühendislik A.Ş."
               class="absolute w-3/5 h-4/5 object-cover mt-[20%] ml-[40%] will-change-transform"
               :style="{
                 transform: secondImageTransform,
@@ -91,7 +91,7 @@
             amaçlıyoruz.
           </h1>
           <p class="mb-4">
-            YapHan olarak, belirlediğimiz vizyon ve misyon doğrultusunda
+            YapHan İnşaat ve Mühendislik A.Ş. olarak, belirlediğimiz vizyon ve misyon doğrultusunda
             çalışmalarımıza yön veriyor, sektörde kalıcı ve olumlu izler
             bırakmayı hedefliyoruz. Güçlü ekibimiz ve değerlerimizle, geleceğe
             güvenle bakıyoruz.
@@ -192,7 +192,7 @@
             <h3 class="text-xl font-bold mb-4">Dış Mekan</h3>
             <p class="text-gray-600 leading-relaxed">
               Yapılarımızın dış görünüşünde sağlamlık ve zarafeti birleştirerek,
-              çevreye değer katan bir mimari yaklaşımı benimsiyoruz. YapHan
+              çevreye değer katan bir mimari yaklaşımı benimsiyoruz. YapHan İnşaat ve Mühendislik A.Ş.
               olarak, dış cephedeki her detayla kalıcı izler bırakmayı
               hedefliyoruz.
             </p>
@@ -222,7 +222,7 @@
         <div class="md:w-2/3">
           <img
             src="/projeler/tamamlanan/img/yaphan-panorama-n.webp"
-            alt="yaphan inşaat tamamlanan projeler"
+            alt="YapHan İnşaat ve Mühendislik A.Ş. tamamlanan projeler"
             class="w-full h-[400px] object-cover rounded-lg shadow-lg"
           />
         </div>
@@ -297,7 +297,7 @@
         <div class="md:w-2/3">
           <img
             src="/yaphan-devameden.webp"
-            alt="yaphan inşaat devam eden projeler"
+            alt="YapHan İnşaat ve Mühendislik A.Ş. devam eden projeler"
             class="w-full h-[400px] object-cover rounded-lg shadow-lg"
           />
         </div>
@@ -371,20 +371,20 @@
 
 <script setup lang="ts">
 const { setSeo } = useSeo({
-  title: "YapHan İnşaat - Geleceği Güvenle İnşa Ediyoruz.",
+  title: "YapHan İnşaat ve Mühendislik A.Ş. - Geleceği Güvenle İnşa Ediyoruz.",
   description:
-    "YapHan İnşaat - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
+    "YapHan İnşaat ve Mühendislik A.Ş. - Han Holding güvencesiyle prestijli konut projeleri, kaliteli yaşam alanları ve modern mimari.",
   keywords:
-    "yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması, yapıhan, yapıhan inşaat, inşaat, inşaat firması, inşaat projeleri, inşaat projeler, inşaat projeleri istanbul, han holding, han, holding",
+    "yaphan inşaat ve mühendislik a.ş., yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması, yapıhan, yapıhan inşaat, inşaat, inşaat firması, inşaat projeleri, inşaat projeler, inşaat projeleri istanbul, han holding, han, holding",
   schema: {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "YapHan İnşaat Ana Sayfa",
-    description: "YapHan İnşaat ile hayalinizdeki projeyi gerçeğe dönüştürün.",
+    name: "YapHan İnşaat ve Mühendislik A.Ş. Ana Sayfa",
+    description: "YapHan İnşaat ve Mühendislik A.Ş. ile hayalinizdeki projeyi gerçeğe dönüştürün.",
     url: "https://yaphan.com.tr",
     isPartOf: {
       "@type": "WebSite",
-      name: "YapHan İnşaat",
+      name: "YapHan İnşaat ve Mühendislik A.Ş.",
       url: "https://yaphan.com.tr",
     },
     breadcrumb: {
@@ -400,9 +400,9 @@ const { setSeo } = useSeo({
     },
     mainEntity: {
       "@type": "Organization",
-      name: "YapHan İnşaat",
+      name: "YapHan İnşaat ve Mühendislik A.Ş.",
       description:
-        "YapHan İnşaat, 10 yılı aşkın süredir lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
+        "YapHan İnşaat ve Mühendislik A.Ş., 10 yılı aşkın süredir lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
       url: "https://yaphan.com.tr",
       contactPoint: {
         "@type": "ContactPoint",

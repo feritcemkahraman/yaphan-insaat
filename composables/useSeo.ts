@@ -96,7 +96,7 @@ export function useSeo(config: SeoConfig) {
   const defaultSchema: SchemaOrg = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: config.title || "YapHan İnşaat",
+    name: config.title || "YapHan İnşaat ve Mühendislik A.Ş.",
     description: config.description,
     url: `${runtimeConfig.public.siteUrl}${route.path}`,
     potentialAction: {
@@ -114,13 +114,13 @@ export function useSeo(config: SeoConfig) {
           "@type": "Offer",
           name: "Hakkımızda",
           url: `${runtimeConfig.public.siteUrl}/hakkimizda`,
-          description: "YapHan İnşaat hakkında detaylı bilgi"
+          description: "YapHan İnşaat ve Mühendislik A.Ş. hakkında detaylı bilgi"
         },
         {
           "@type": "Offer",
           name: "Bize Ulaşın",
           url: `${runtimeConfig.public.siteUrl}/bize-ulasin`,
-          description: "YapHan İnşaat iletişim bilgileri"
+          description: "YapHan İnşaat ve Mühendislik A.Ş. iletişim bilgileri"
         }
       ]
     }

@@ -28,7 +28,7 @@
             </div>
             <!-- Açıklama -->
             <p class="text-sm leading-relaxed opacity-90 max-w-lg mt-4">
-              YapHan İnşaat olarak, işimizin temelinde kolektif bir tasarım
+              YapHan İnşaat ve Mühendislik A.Ş. olarak, işimizin temelinde kolektif bir tasarım
               anlayışı yatmaktadır. İlk günden bu yana, fikirlerin
               paylaşılmasının, ortak emeğin, bilgi alışverişinin ve tutkunun
               projelerimizi mükemmelleştirdiğine inanıyoruz.
@@ -58,7 +58,7 @@
         class="py-4 border-t border-white/10 flex flex-col md:flex-row md:justify-between items-center footer-bottom"
       >
         <p class="text-xs text-white/70 uppercase tracking-wider mb-4 md:mb-0">
-          YAPHAN İNŞAAT - HAN HOLDİNG KURULUŞUDUR (C) 2024 TÜM HAKLARI SAKLIDIR.
+          YAPHAN İNŞAAT VE MÜHENDİSLİK A.Ş. - HAN HOLDİNG KURULUŞUDUR (C) 2024 TÜM HAKLARI SAKLIDIR.
         </p>
 
         <!-- Sosyal Medya İkonları -->

@@ -134,7 +134,7 @@
     <!-- Map Section -->
     <div class="w-full h-[450px] mt-16 mb-[90px]">
       <iframe
-        title="YapHan İnşaat Çorum Merkez Ofisi - Google Haritalar"
+        title="YapHan İnşaat ve Mühendislik A.Ş. Çorum Merkez Ofisi - Google Haritalar"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.2626248658207!2d34.96412060000001!3d40.5799581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4086d58d9d1e55a5%3A0x601a6c6d76414539!2sYeksun%20M%C3%BChendislik!5e0!3m2!1str!2str!4v1732711220636!5m2!1str!2str"
         width="100%"
         height="100%"
@@ -219,20 +219,20 @@ definePageMeta({
 });
 
 const { setSeo } = useSeo({
-  title: "Bize Ulaşın - YapHan İnşaat | İletişim",
+  title: "Bize Ulaşın - YapHan İnşaat ve Mühendislik A.Ş. | İletişim",
   description:
-    "YapHan İnşaat ile iletişime geçin. Merkez ofisimiz Çorum'da bulunmaktadır. Projelerimiz hakkında bilgi almak için bize ulaşın.",
+    "YapHan İnşaat ve Mühendislik A.Ş. ile iletişime geçin. Merkez ofisimiz Çorum'da bulunmaktadır. Projelerimiz hakkında bilgi almak için bize ulaşın.",
   keywords:
-    "yaphan inşaat iletişim, yaphan iletişim, yaphan telefon, yaphan adres, yaphan konum, yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması, yapıhan, yapıhan inşaat, inşaat, inşaat firması, inşaat projeleri, inşaat projeler, inşaat projeleri istanbul, han holding, han, holding",
+    "yaphan inşaat ve mühendislik a.ş. iletişim, yaphan iletişim, yaphan telefon, yaphan adres, yaphan konum, yaphan inşaat, lüks konut projeleri, güvenilir müteahhit, modern konut projeleri, ticari yapılar, inşaat firması çorum, yaphan, kat karşılığı, arsa satışı, villa inşaatı, istanbul inşaat firması, yapıhan, yapıhan inşaat, inşaat, inşaat firması, inşaat projeleri, inşaat projeler, inşaat projeleri istanbul, han holding, han, holding",
   schema: {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "YapHan İnşaat İletişim",
-    description: "YapHan İnşaat iletişim bilgileri ve ofis konumu",
+    name: "YapHan İnşaat ve Mühendislik A.Ş. İletişim",
+    description: "YapHan İnşaat ve Mühendislik A.Ş. iletişim bilgileri ve ofis konumu",
     url: "https://yaphan.com.tr/bize-ulasin",
     isPartOf: {
       "@type": "WebSite",
-      name: "YapHan İnşaat",
+      name: "YapHan İnşaat ve Mühendislik A.Ş.",
       url: "https://yaphan.com.tr",
     },
     breadcrumb: {
@@ -254,9 +254,9 @@ const { setSeo } = useSeo({
     },
     mainEntity: {
       "@type": "Organization",
-      name: "YapHan İnşaat",
+      name: "YapHan İnşaat ve Mühendislik A.Ş.",
       description:
-        "YapHan İnşaat, 10 yılı aşkın süredir lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
+        "YapHan İnşaat ve Mühendislik A.Ş., 10 yılı aşkın süredir lüks villa projeleri, modern konut projeleri ve ticari yapılar inşa eden güvenilir inşaat şirketi.",
       url: "https://yaphan.com.tr",
       contactPoint: {
         "@type": "ContactPoint",
