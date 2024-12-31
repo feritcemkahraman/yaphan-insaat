@@ -32,29 +32,20 @@ const route = useRoute();
 </script>
 
 <template>
-  <nav class="bg-black bg-opacity-70">
+  <nav class="bg-white">
     <div
       class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <!-- Logo (değişmedi) -->
-      <a href="/" class="flex flex-col items-center">
-        <span
-          class="self-center text-2xl text-gold font-semibold whitespace-nowrap"
-        >
-          Y A P H A N
-        </span>
-        <span
-          class="self-center text-l font-semibold whitespace-nowrap text-gold mt-1"
-        >
-          İ N Ş A A T
-        </span>
+      <!-- Logo -->
+      <a href="/" class="flex items-center">
+        <img src="/public/yaphan-logo.png" alt="YapHan İnşaat ve Mühendislik A.Ş. Han Holding" class="h-36 w-auto" />
       </a>
 
       <!-- Mobil Menü Butonu (değişmedi) -->
       <button
         @click="isMenuOpen = !isMenuOpen"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black rounded-lg md:hidden"
       >
         <svg
           class="w-5 h-5"
@@ -82,7 +73,7 @@ const route = useRoute();
               <NuxtLink
                 :to="item.path"
                 class="px-4 py-2 font-bold uppercase transition-colors hover:text-gold"
-                :class="[route.path === item.path ? 'text-gold' : 'text-white']"
+                :class="[route.path === item.path ? 'text-gold' : 'text-black']"
               >
                 {{ item.name }}
               </NuxtLink>
@@ -91,18 +82,18 @@ const route = useRoute();
             <!-- Dropdown Menü -->
             <div v-else class="menu-item">
               <div
-                class="px-4 py-2 font-bold uppercase transition-colors hover:text-gold text-white cursor-pointer"
+                class="px-4 py-2 font-bold uppercase transition-colors hover:text-gold text-black cursor-pointer"
               >
                 {{ item.name }}
               </div>
 
               <!-- Dropdown İçeriği -->
-              <div class="dropdown-menu">
+              <div class="dropdown-menu bg-white">
                 <a
                   v-for="dropdownItem in item.dropdownItems"
                   :key="dropdownItem.path"
                   :href="dropdownItem.path"
-                  class="block px-4 py-2 text-white font-bold uppercase transition-colors hover:text-gold"
+                  class="block px-4 py-2 text-black font-bold uppercase transition-colors hover:text-gold"
                   :class="[route.path === dropdownItem.path ? 'text-gold' : '']"
                   :target="dropdownItem.isExternal ? '_self' : undefined"
                 >
@@ -195,13 +186,13 @@ const route = useRoute();
 }
 
 .dropdown-menu {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
   min-width: 200px;
-  background-color: #4c4c4c;
-  z-index: 50;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .menu-item:hover .dropdown-menu {
