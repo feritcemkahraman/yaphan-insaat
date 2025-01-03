@@ -38,7 +38,7 @@ const route = useRoute();
     >
       <!-- Logo -->
       <a href="/" class="flex items-center">
-        <img src="/public/yaphan-logo.png" alt="YapHan İnşaat ve Mühendislik A.Ş. Han Holding" class="h-36 w-auto" />
+        <img src="/public/yaphan-insaat-logo.png" alt="YapHan İnşaat ve Mühendislik A.Ş. Han Holding" class="h-36 w-auto" />
       </a>
 
       <!-- Mobil Menü Butonu (değişmedi) -->
